@@ -37,17 +37,16 @@ public class ScreenshotRule extends TestWatcher {
 	int parte2 = 0;
 	BufferedImage image;
 	Robot robot;
-	private Screen s = new Screen(); 
+	private Screen s = new Screen(); /*
 	private Pattern m_sincronismo = new Pattern(getImage("imgSincronismo/sincronismo.png")).similar(0.80f);
-	private Pattern m_fecharSincronismo = new Pattern(getImage("imgSincronismo/fecharSincronismo.png")).similar(0.97f);
-	private Pattern m_popup = new Pattern(getImage("imgGeral/popup.png")).similar(0.90f);
+	
 
 	private String getImage(String path) {
 		URL url = getClass().getClassLoader().getResource(path);
 		imageString = url.toString();
 		return imageString;
 	}
-
+*/
 	@SuppressWarnings("deprecation")
 	@Rule
 	public Timeout globalTimeout = new Timeout(1000);

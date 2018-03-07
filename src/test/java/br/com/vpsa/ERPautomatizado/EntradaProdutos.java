@@ -21,8 +21,8 @@ public class EntradaProdutos {
 	public BancoDadosERP bd = new BancoDadosERP();
 	private Boolean entradaAtiva = false;
 	private Screen s = new Screen(); 
-	private String imageString;
-	private String linkEntradaProdutos = "https://qa.varejonline.com.br:7443/erp/web/migracao/1014";
+	private String imageString, url;
+	private String linkEntradaProdutos = "/erp/web/migracao/1014";
 
 	private Pattern m_compraComercializacao = new Pattern(getImage("imgEntradaProdutos/compraComercializacao.png")).similar(0.90f);
 	private Pattern m_selecioneOperacao = new Pattern(getImage("imgEntradaProdutos/selecioneOperacao.png")).similar(0.90f);
@@ -60,8 +60,7 @@ public class EntradaProdutos {
 	@Before
 	public void verificaLogin(){
 		entradaAtiva = bd.pesquisarEntradaProdutos();
-		chrome.abriERP();
-		
+		url = chrome.getUrl();
 		if(entradaAtiva != null){
 			excluirEntradaProdutos();
 		}
@@ -71,8 +70,8 @@ public class EntradaProdutos {
 	
 	public void cadastrarEntradaProdutos(){
 		try {
-			if(chrome.driver.getCurrentUrl() != linkEntradaProdutos){
-				chrome.driver.navigate().to(linkEntradaProdutos);
+			if(chrome.driver.getCurrentUrl() != url+linkEntradaProdutos){
+				chrome.driver.navigate().to(url+linkEntradaProdutos);
 				System.out.println("-- Abrindo Entrada de Produtos --");
 			}
 
@@ -123,8 +122,8 @@ public class EntradaProdutos {
 
 	public void excluirEntradaProdutos(){
 		try {
-			if(chrome.driver.getCurrentUrl() != linkEntradaProdutos){
-				chrome.driver.navigate().to(linkEntradaProdutos);
+			if(chrome.driver.getCurrentUrl() != url+linkEntradaProdutos){
+				chrome.driver.navigate().to(url+linkEntradaProdutos);
 				System.out.println("-- Abrindo entrada de produtos --");
 			}
 			s.wait(m_lupaPesquisar, 15.0);

@@ -54,7 +54,6 @@ public class BancoDadosERP {
 					resultado = resultSet.getString("NUMINTERNO");
 					System.out.println("Encontrou recebimento de notas");
 				}
-
 				stmt.close();
 			}
 		}

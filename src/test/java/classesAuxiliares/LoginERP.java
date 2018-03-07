@@ -28,7 +28,7 @@ public class LoginERP {
 
 		
 		url = System.getProperty("url");
-		if (url == null) url = "https://qa.varejonline.com.br:7443/erp";
+		if (url == null) url = "https://qa.varejonline.com.br:7443";
 		
 		System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
 		System.out.println("Iniciando o Chrome");
@@ -41,7 +41,7 @@ public class LoginERP {
 	public void abriERP(){
 		iniciandoChrome();
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		driver.navigate().to(url);
+		driver.navigate().to(url+"/erp");
 		String strPageTitle = driver.getTitle();
 		System.out.println("Pagina: - "+strPageTitle);
 		
@@ -58,5 +58,17 @@ public class LoginERP {
 			System.out.println("Closing chrome browser");
 			driver.quit();
 		}
+	}
+
+	
+	public String getUrl() {
+	
+		return url;
+	}
+
+	
+	public void setUrl(String url) {
+	
+		this.url = url;
 	}
 }
