@@ -1,22 +1,22 @@
 <nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="3.10">
 	<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
-		<infNFe Id="NFe42180275552133001303550030000036581360541163" versao="3.10">
+		<infNFe Id="NFe42180375552133001303550030000037201177473547" versao="3.10">
 			<ide>
 				<cUF>42</cUF>
-				<cNF>36054116</cNF>
+				<cNF>17747354</cNF>
 				<natOp>Venda</natOp>
 				<indPag>0</indPag>
 				<mod>55</mod>
 				<serie>3</serie>
-				<nNF>3658</nNF>
-				<dhEmi>2018-02-22T15:08:26-03:00</dhEmi>
-				<dhSaiEnt>2018-02-22T15:08:26-03:00</dhSaiEnt>
+				<nNF>3720</nNF>
+				<dhEmi>2018-03-13T14:11:40-03:00</dhEmi>
+				<dhSaiEnt>2018-03-13T14:11:40-03:00</dhSaiEnt>
 				<tpNF>1</tpNF>
 				<idDest>1</idDest>
 				<cMunFG>4206504</cMunFG>
 				<tpImp>1</tpImp>
 				<tpEmis>1</tpEmis>
-				<cDV>3</cDV>
+				<cDV>7</cDV>
 				<tpAmb>2</tpAmb>
 				<finNFe>1</finNFe>
 				<indFinal>0</indFinal>
@@ -64,14 +64,13 @@
 					<NCM>61046300</NCM>
 					<CFOP>5102</CFOP>
 					<uCom>PC</uCom>
-					<qCom>1.2000</qCom>
-					<vUnCom>40</vUnCom>
-					<vProd>48</vProd>
+					<qCom>1</qCom>
+					<vUnCom>23.5600</vUnCom>
+					<vProd>23.56</vProd>
 					<cEANTrib>7909352215090</cEANTrib>
 					<uTrib>PC</uTrib>
-					<qTrib>1.2000</qTrib>
-					<vUnTrib>40</vUnTrib>
-					<vDesc>2.88</vDesc>
+					<qTrib>1</qTrib>
+					<vUnTrib>23.5600</vUnTrib>
 					<indTot>1</indTot>
 				</prod>
 				<imposto>
@@ -80,9 +79,9 @@
 							<orig>7</orig>
 							<CST>00</CST>
 							<modBC>3</modBC>
-							<vBC>45.12</vBC>
+							<vBC>23.56</vBC>
 							<pICMS>17</pICMS>
-							<vICMS>7.67</vICMS>
+							<vICMS>4.01</vICMS>
 						</ICMS00>
 					</ICMS>
 					<IPI>
@@ -94,17 +93,17 @@
 					<PIS>
 						<PISAliq>
 							<CST>01</CST>
-							<vBC>45.12</vBC>
+							<vBC>23.56</vBC>
 							<pPIS>1.65</pPIS>
-							<vPIS>0.74</vPIS>
+							<vPIS>0.39</vPIS>
 						</PISAliq>
 					</PIS>
 					<COFINS>
 						<COFINSAliq>
 							<CST>01</CST>
-							<vBC>45.12</vBC>
+							<vBC>23.56</vBC>
 							<pCOFINS>7.60</pCOFINS>
-							<vCOFINS>3.43</vCOFINS>
+							<vCOFINS>1.79</vCOFINS>
 						</COFINSAliq>
 					</COFINS>
 				</imposto>
@@ -118,13 +117,12 @@
 					<CFOP>5102</CFOP>
 					<uCom>PC</uCom>
 					<qCom>1</qCom>
-					<vUnCom>40</vUnCom>
-					<vProd>40</vProd>
+					<vUnCom>23.5800</vUnCom>
+					<vProd>23.58</vProd>
 					<cEANTrib>7909352215106</cEANTrib>
 					<uTrib>PC</uTrib>
 					<qTrib>1</qTrib>
-					<vUnTrib>40</vUnTrib>
-					<vDesc>0.80</vDesc>
+					<vUnTrib>23.5800</vUnTrib>
 					<indTot>1</indTot>
 				</prod>
 				<imposto>
@@ -133,9 +131,9 @@
 							<orig>0</orig>
 							<CST>00</CST>
 							<modBC>3</modBC>
-							<vBC>39.20</vBC>
+							<vBC>23.58</vBC>
 							<pICMS>17</pICMS>
-							<vICMS>6.66</vICMS>
+							<vICMS>4.01</vICMS>
 						</ICMS00>
 					</ICMS>
 					<IPI>
@@ -147,17 +145,17 @@
 					<PIS>
 						<PISAliq>
 							<CST>01</CST>
-							<vBC>39.20</vBC>
+							<vBC>23.58</vBC>
 							<pPIS>1.65</pPIS>
-							<vPIS>0.65</vPIS>
+							<vPIS>0.39</vPIS>
 						</PISAliq>
 					</PIS>
 					<COFINS>
 						<COFINSAliq>
 							<CST>01</CST>
-							<vBC>39.20</vBC>
+							<vBC>23.58</vBC>
 							<pCOFINS>7.60</pCOFINS>
-							<vCOFINS>2.98</vCOFINS>
+							<vCOFINS>1.79</vCOFINS>
 						</COFINSAliq>
 					</COFINS>
 				</imposto>
@@ -216,21 +214,21 @@
 			</det>
 			<total>
 				<ICMSTot>
-					<vBC>122.82</vBC>
-					<vICMS>20.87</vICMS>
+					<vBC>85.64</vBC>
+					<vICMS>14.56</vICMS>
 					<vICMSDeson>0.00</vICMSDeson>
 					<vBCST>0</vBCST>
 					<vST>0</vST>
-					<vProd>126.50</vProd>
+					<vProd>85.64</vProd>
 					<vFrete>0</vFrete>
 					<vSeg>0</vSeg>
-					<vDesc>3.68</vDesc>
+					<vDesc>0</vDesc>
 					<vII>0</vII>
 					<vIPI>0</vIPI>
-					<vPIS>2.03</vPIS>
-					<vCOFINS>9.34</vCOFINS>
+					<vPIS>1.42</vPIS>
+					<vCOFINS>6.51</vCOFINS>
 					<vOutro>0</vOutro>
-					<vNF>122.82</vNF>
+					<vNF>85.64</vNF>
 				</ICMSTot>
 			</total>
 			<transp>
@@ -242,29 +240,29 @@
 			<cobr>
 				<dup>
 					<nDup>1</nDup>
-					<dVenc>2018-02-22</dVenc>
-					<vDup>122.82</vDup>
+					<dVenc>2018-03-13</dVenc>
+					<vDup>85.64</vDup>
 				</dup>
 			</cobr>
 			<infAdic>
-				<infAdFisco>Documentos associados a esta nota fiscal: 1-176.</infAdFisco>
-				<infCpl>Val Aprox dos Tributos F: R$ 15,94 (12,60%), E: R$ 20,87 (16,50%) Fonte: IBPT PED.: 1-176:</infCpl>
+				<infAdFisco>Documentos associados a esta nota fiscal: 1-240.</infAdFisco>
+				<infCpl>Val Aprox dos Tributos F: R$ 11,52 (13,45%), E: R$ 14,56 (17,00%) Fonte: IBPT PED.: 1-240:</infCpl>
 			</infAdic>
 		</infNFe>
 		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
 			<SignedInfo>
 				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-				<Reference URI="#NFe42180275552133001303550030000036581360541163">
+				<Reference URI="#NFe42180375552133001303550030000037201177473547">
 					<Transforms>
 						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
 						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 					</Transforms>
 					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-					<DigestValue>52Iu5KjmXGjKLbSQly98L59nwfs=</DigestValue>
+					<DigestValue>RM3/JpwAIekzsw1KNjTcBmZHOfs=</DigestValue>
 				</Reference>
 			</SignedInfo>
-			<SignatureValue>ZlaMpQimb9jtT3uIUM1jrYP/eawIcBXtHnUzdCmejahFCCf27EiJev6EHSrVS4awS/d1otxdkDTD0+15Ni++r/sXjPgS+rbaBPCoM1rQkh/3dVfOab8FKHBJFOJM4P3oU5Kww5k0Aab/UZl6Nps58UM85RfmFJTg6z5ZkPH5ww29cXIzz5yC4EYeBaOuELLgIpteWZRW0eAuwt6cyRkou507RpLgicI2ubxJlR++RdV6qNKQ+uZtVKxcSx/txVH9/e92dVmYDWBLzXxyRWhuD1h6WSwgRkWlKL0LsCpkg1ibCjxdbkBIhwVQUzVs6TGy03Gh7wmWvZn+fxq1CtuOUA==</SignatureValue>
+			<SignatureValue>ZdFViIqYaiMSaPjaGuyU2dAtvW+xf8RMiugD/o0n/wX3MnufL76k6NzjaJ6walp7xczc0mHzTNlG/gNllI8z13zZD+r+WaDAMGfiYj6l+0wu7PcUk8gLhQRg3JVYbekhJgSyvjlIXxIq94Kf++uHp2eS5K+X0eQrSlWJqrsFCArGLPafTwH6fhrcfB9LvyMBsIdi3Axndwue8/ku9lhRRNVn/hA+dB5jt6v/9o5NbP3cJ+E20YwFE+jH21oC/+soZaoeHuowMpB9IGLEMDWzaIQ2qkYHSaiPObGaZSCWokCFTijguTiHt1Jvgeh9QRBFClmT96nskTTbWSgGTCQEcw==</SignatureValue>
 			<KeyInfo>
 				<X509Data>
 					<X509Certificate>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</X509Certificate>
@@ -275,11 +273,11 @@
 	<protNFe versao="3.10">
 		<infProt>
 			<tpAmb>2</tpAmb>
-			<verAplic>SVRS201712041453</verAplic>
-			<chNFe>42180275552133001303550030000036581360541163</chNFe>
-			<dhRecbto>2018-02-22T15:08:24-03:00</dhRecbto>
-			<nProt>342180000115611</nProt>
-			<digVal>52Iu5KjmXGjKLbSQly98L59nwfs=</digVal>
+			<verAplic>SVRS201802051656</verAplic>
+			<chNFe>42180375552133001303550030000037201177473547</chNFe>
+			<dhRecbto>2018-03-13T14:11:55-03:00</dhRecbto>
+			<nProt>342180000149655</nProt>
+			<digVal>RM3/JpwAIekzsw1KNjTcBmZHOfs=</digVal>
 			<cStat>100</cStat>
 			<xMotivo>Autorizado o uso da NF-e</xMotivo>
 		</infProt>

@@ -24,9 +24,10 @@ import classesAuxiliares.LoginERP;
 import classesAuxiliares.ScreenshotRule;
 
 public class RecebimentoXML {
+
 	public LoginERP chrome = new LoginERP();
 	public BancoDadosERP bd = new BancoDadosERP();
-	private Screen s = new Screen(); 
+	private Screen s = new Screen();
 	private String imageString, caminhoProjeto, pedidocompra = null, dataRelatorio, url = null;
 	private String linkRecebimentoNotas = "/erp/web/migracao/4012";
 	private Pattern m_botaoAlterar = new Pattern(getImage("imgRecebimentoXML/botaoAlterarFlex.png")).similar(0.90f);
@@ -40,13 +41,14 @@ public class RecebimentoXML {
 	private Pattern m_aVista = new Pattern(getImage("imgRecebimentoXML/aVistaFlex.png")).similar(0.90f);
 	private Pattern m_selecionarTexto = new Pattern(getImage("imgRecebimentoXML/selecionarTexto.png")).similar(0.90f);
 	private Pattern m_mensagemRecebimentoProcessando = new Pattern(getImage("imgRecebimentoXML/mensagemRecebimentoProcessando.png")).similar(0.95f);
-	//PESQUISA
+	// PESQUISA
 	private Pattern m_lupaPesquisar = new Pattern(getImage("imgRecebimentoXML/lupaPesquisarFlex.png")).similar(0.90f);
 	private Pattern m_nroPedido = new Pattern(getImage("imgRecebimentoXML/nroPedidoFlex.png")).similar(0.90f);
 	private Pattern m_botaoPesquisar = new Pattern(getImage("imgRecebimentoXML/botaoPesquisarFlex.png")).similar(0.90f);
-	private Pattern m_calendarioAno = new Pattern(getImage("imgRecebimentoXML/calendarioAno.png")).similar(0.98f);
+	private Pattern m_calendarioAno = new Pattern(getImage("imgRecebimentoXML/calendarioAno.png")).similar(0.97f);
 	private Pattern m_checkboxMarcado = new Pattern(getImage("imgRecebimentoXML/checkboxMarcado.png")).similar(0.90f);
-	//EXCLUSÃO
+	private Pattern m_entidadesCarregadas = new Pattern(getImage("imgRecebimentoXML/listaEntidadesEmCima.png")).similar(0.95f);
+	// EXCLUSÃO
 	private Pattern m_notaFiscal = new Pattern(getImage("imgRecebimentoXML/notaFiscal.png")).similar(0.99f);
 	private Pattern m_botaoExcluir = new Pattern(getImage("imgRecebimentoXML/botaoExcluirFlex.png")).similar(0.80f);
 	private Pattern m_botaoSim = new Pattern(getImage("imgRecebimentoXML/botaoSimFlex.png")).similar(0.90f);
@@ -54,6 +56,7 @@ public class RecebimentoXML {
 	private Pattern m_mensagemPedCompraExcluido = new Pattern(getImage("imgRecebimentoXML/mensagemPedCompraExcluido.png")).similar(0.95f);
 
 	private String getImage(String path) {
+
 		URL url = getClass().getClassLoader().getResource(path);
 		imageString = url.toString();
 		return imageString;
@@ -64,24 +67,26 @@ public class RecebimentoXML {
 	@SuppressWarnings("deprecation")
 	public Timeout globalTimeout = new Timeout(600000);
 
-	public void dataRelatorio(){
-		SimpleDateFormat sd = new SimpleDateFormat("ddMMyyyy"); 
+	public void dataRelatorio() {
+
+		SimpleDateFormat sd = new SimpleDateFormat("ddMMyyyy");
 		Calendar c = new GregorianCalendar();
-		c.add(Calendar.DAY_OF_MONTH, -3); 
-		dataRelatorio = sd.format(c.getTime()); 
+		c.add(Calendar.DAY_OF_MONTH, -3);
+		dataRelatorio = sd.format(c.getTime());
 	}
 
 	@Before
-	public void verificaLogin(){
+	public void verificaLogin() {
+
 		chrome.abriERP();
 		url = chrome.getUrl();
-		
+
 		pedidocompra = bd.pesquisarRecebimento();
-		while(pedidocompra != null){
+		while (pedidocompra != null) {
 			excluirRecebimentoNotas();
 			pedidocompra = bd.pesquisarRecebimento();
 		}
-		
+
 		File f = new File(".");
 		try {
 			caminhoProjeto = f.getCanonicalPath();
@@ -91,15 +96,16 @@ public class RecebimentoXML {
 	}
 
 	@Test
-	public void efetuarRecebimento(){
+	public void efetuarRecebimento() {
+
 		try {
-			if(chrome.driver.getCurrentUrl() != url+linkRecebimentoNotas){
-				chrome.driver.navigate().to(url+linkRecebimentoNotas);
+			if (chrome.driver.getCurrentUrl() != url + linkRecebimentoNotas) {
+				chrome.driver.navigate().to(url + linkRecebimentoNotas);
 				System.out.println("-- Abrindo Recebimento de Notas --");
 			}
 
-			if (s.exists(m_botaoAlterar) == null){
-				s.wait(m_botaoAlterar,5000.0);
+			if (s.exists(m_botaoAlterar) == null) {
+				s.wait(m_botaoAlterar, 5000.0);
 				System.out.println("OK - Rotina carregada");
 			}
 			s.exists(s.click(m_botaoSelecionar));
@@ -108,22 +114,22 @@ public class RecebimentoXML {
 			s.wait(1.0);
 			s.exists(s.click(m_selecionarXML));
 			s.exists(s.click(m_importarXML));
-			s.paste(caminhoProjeto+"\\src\\test\\resources\\3658.xml");
+			s.paste(caminhoProjeto + "\\src\\test\\resources\\3720.xml");
 			s.type(Key.ENTER);
 			s.wait(1.0);
 			s.exists(s.click(m_EAN));
 			s.wait(1.0);
 			s.exists(s.click(m_confirmar.similar(0.90f)));
 
-			if (s.exists(m_quantidadesRecebimento) == null){
-				s.wait(m_quantidadesRecebimento,500.0);
+			if (s.exists(m_quantidadesRecebimento) == null) {
+				s.wait(m_quantidadesRecebimento, 500.0);
 			}
 			s.exists(s.click(m_selecionarTexto));
 			s.type("A VISTA");
 			s.exists(s.click(m_aVista));
 			s.wait(2.0);
 			s.exists(s.click(m_confirmar.similar(0.80f)));
-			s.wait(m_mensagemRecebimentoProcessando,30);
+			s.wait(m_mensagemRecebimentoProcessando, 30);
 
 			excluirRecebimentoNotas();
 		} catch (FindFailed e) {
@@ -132,24 +138,27 @@ public class RecebimentoXML {
 		}
 	}
 
-	public void pesquisarRecebimentoNotas(){
+	public void pesquisarRecebimentoNotas() {
+
 		try {
-			if(chrome.driver.getCurrentUrl() != url+linkRecebimentoNotas){
-				chrome.driver.navigate().to(url+linkRecebimentoNotas);
+			String urlAtual = chrome.driver.getCurrentUrl();
+			if (!urlAtual.equals(url + linkRecebimentoNotas)) {
+				chrome.driver.navigate().to(url + linkRecebimentoNotas);
 				System.out.println("-- Abrindo Recebimento de Notas --");
 
 				if (s.exists(m_botaoAlterar) == null)
-					s.wait(m_botaoAlterar,5000.0);
+					s.wait(m_botaoAlterar, 5000.0);
 				System.out.println("OK - Rotina carregada");
 			}
 			s.wait(m_lupaPesquisar, 15.0);
 			s.exists(s.click(m_lupaPesquisar));
 			s.wait(3.0);
+			s.wait(m_entidadesCarregadas, 30.0);
 			s.exists(s.click(m_calendarioAno));
 			s.type("A", KeyModifier.CTRL);
 
 			int i = 0;
-			while (i < 10){
+			while (i < 10) {
 				s.type(Key.BACKSPACE);
 				i++;
 			}
@@ -165,23 +174,24 @@ public class RecebimentoXML {
 		}
 	}
 
-	public void excluirRecebimentoNotas(){
+	public void excluirRecebimentoNotas() {
+
 		dataRelatorio();
-		if(pedidocompra == null){
+		if (pedidocompra == null) {
 			pedidocompra = bd.pesquisarRecebimento();
 		}
 		pesquisarRecebimentoNotas();
 
 		try {
-			s.wait(m_notaFiscal,15.0);
+			s.wait(m_notaFiscal, 15.0);
 			s.exists(s.click(m_notaFiscal));
 			s.click(s.getRegionFromPSRM(m_botaoExcluir));
-			s.wait(m_botaoSim,15.0);
+			s.wait(m_botaoSim, 15.0);
 			s.exists(s.click(m_botaoSim));
-			s.wait(m_mensagemRecebimentoExcluido,1000);
-			s.wait(m_botaoSim,15.0);
+			s.wait(m_mensagemRecebimentoExcluido, 1000);
+			s.wait(m_botaoSim, 15.0);
 			s.exists(s.click(m_botaoSim));
-			s.wait(m_mensagemPedCompraExcluido,1000);
+			s.wait(m_mensagemPedCompraExcluido, 1000);
 			pedidocompra = null;
 		} catch (FindFailed e) {
 			e.printStackTrace();
