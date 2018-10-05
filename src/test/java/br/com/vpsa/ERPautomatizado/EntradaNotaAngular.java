@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.Timeout;
@@ -84,6 +85,7 @@ public class EntradaNotaAngular {
 	    }
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Escolher arquivo']")));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span/button[@class='btn btn-primary' and 1]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='modal-open']")));
 		WebElement btn_operacao = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//app-vo-filtro-operacoes[1]/app-vo-select[1]/span[1]/span[1]/span[1]/span[2]/b[1]")));
 		btn_operacao.click();
 	    chrome.driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys("compra p/ comercia");
@@ -238,7 +240,7 @@ public class EntradaNotaAngular {
 		}
 	}
 	
-	@Test
+	@After
 	public void efetuarRecebimento() {
 		chrome.sairERP();
 	}
