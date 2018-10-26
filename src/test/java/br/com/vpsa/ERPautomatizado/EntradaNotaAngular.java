@@ -59,7 +59,7 @@ public class EntradaNotaAngular {
 		chrome.driver.navigate().to(chrome.url+"/server/erp/estoque/entradas");
 		chrome.driver.findElement(By.xpath("//button[@class='btn btn-secondary btn-primary']/span[1]")).click();
 		chrome.driver.findElement(By.xpath("//div[@class='form-group col-sm-4 offset-2']/button[@class='btn btn-default btn-block' and 1]")).click();
-		chrome.driver.findElement(By.xpath("//span/button[@class='btn btn-primary' and 1]")).click();
+		chrome.driver.findElement(By.xpath("//div/input[@class='form-control' and 1]")).click();
 		TimeUnit.SECONDS.sleep(3);
 		String libPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		libPath = libPath.replace("/C:/", "C:/");
@@ -75,7 +75,11 @@ public class EntradaNotaAngular {
 			    robot.keyRelease(KeyEvent.VK_V);
 			    robot.keyRelease(KeyEvent.VK_CONTROL);
 			    robot.keyPress(KeyEvent.VK_ENTER);
-			    robot.keyRelease(KeyEvent.VK_ENTER);		
+			    robot.keyRelease(KeyEvent.VK_ENTER);
+			    WebElement btn_codigo_nota = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[1]/label[2]/input[1]")));
+			    btn_codigo_nota.click();
+			    WebElement btn_codigo_sistema = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[4]/input[1]")));
+			    btn_codigo_sistema.click();
 				WebElement btn_importar_xml = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='modal-footer']/button[@class='btn btn-primary']")));
 				btn_importar_xml.click();
 				success = true;
@@ -83,7 +87,7 @@ public class EntradaNotaAngular {
 		    	
 		    }
 	    }
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Escolher arquivo']")));
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Escolher arquivo']")));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span/button[@class='btn btn-primary' and 1]")));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='modal-open']")));
 		WebElement btn_operacao = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//app-vo-filtro-operacoes[1]/app-vo-select[1]/span[1]/span[1]/span[1]/span[2]/b[1]")));
