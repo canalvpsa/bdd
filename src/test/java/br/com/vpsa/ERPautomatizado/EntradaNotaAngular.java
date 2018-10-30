@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 import static org.junit.Assert.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -37,12 +38,12 @@ public class EntradaNotaAngular {
 	
 	@Test
 	public void EfetuarEntradaComConciliacaoAutomatica() throws Exception{
-		InserirXML("42181075552133001303550040000004431110520775", 0, 1);
+		InserirXML("42181075552133001303550040000004431110520775", 9, 1);
 	}
 	
 	@Test
 	public void EfetuarEntradaConciliandoCincoItensManualmente() throws Exception{
-		InserirXML("42181075552133001303550040000004431110520775", 5, 1);
+		InserirXML("42181075552133001303550040000004431110520775", 9, 1);
 	}
 	
 	@Test
@@ -59,6 +60,7 @@ public class EntradaNotaAngular {
 		chrome.driver.navigate().to(chrome.url+"/server/erp/estoque/entradas");
 		chrome.driver.findElement(By.xpath("//button[@class='btn btn-secondary btn-primary']/span[1]")).click();
 		chrome.driver.findElement(By.xpath("//div[@class='form-group col-sm-4 offset-2']/button[@class='btn btn-default btn-block' and 1]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='close pull-right']/span")));
 		chrome.driver.findElement(By.xpath("//div/input[@class='form-control' and 1]")).click();
 		TimeUnit.SECONDS.sleep(3);
 		String libPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -95,6 +97,10 @@ public class EntradaNotaAngular {
 	    chrome.driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys("compra p/ comercia");
 		WebElement compra_comercializacao = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Compra p/ comercialização']")));
 		compra_comercializacao.click();
+		WebElement btn_entidade = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/app-vo-select[1]/span[@class='select2 select2-container select2-container--default' and 1]/span[@class='selection' and 1]/span[@class='select2-selection select2-selection--single' and 1]/span[2]")));
+		btn_entidade.click();
+		chrome.driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys("TUAREG - BRUSQUE");
+		chrome.driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys(Keys.ENTER);
 		WebElement btn_salvar_etapa_1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='btn btn-primary']")));
 		btn_salvar_etapa_1.click();
 		assertTrue(true);
@@ -233,6 +239,7 @@ public class EntradaNotaAngular {
 		chrome.driver.findElement(By.xpath("//*[@class='text-right']")).click();
 		chrome.driver.findElement(By.xpath("//button[3]")).click();
 		chrome.driver.findElement(By.xpath("//*[text()='Sim']")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='noty_body']")));
 	}
 
 	public void verificarExistenciaDeNota(String numeroNota, String serieNota) {
