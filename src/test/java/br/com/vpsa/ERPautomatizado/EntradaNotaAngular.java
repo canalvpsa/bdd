@@ -33,7 +33,7 @@ public class EntradaNotaAngular {
 
 	@Before
 	public void dadosNecessarios() throws Exception{	
-		chrome.abriERP();
+		chrome.abriERPAut();
 	}
 	
 	@Test

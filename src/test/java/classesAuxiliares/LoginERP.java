@@ -52,6 +52,21 @@ public class LoginERP {
 		driver.findElement(By.id("login-submit")).click();
 
 	}
+	
+	public void abriERPAut() {
+
+		iniciandoChrome();
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		driver.navigate().to(url + "/erp");
+		String strPageTitle = driver.getTitle();
+		System.out.println("Pagina: - " + strPageTitle);
+
+		driver.findElement(By.id("username")).sendKeys("admin");
+		driver.findElement(By.id("password")).sendKeys("varejonline");
+		driver.findElement(By.id("cnpj")).sendKeys("qa_vpsa_aut");
+		driver.findElement(By.id("login-submit")).click();
+
+	}
 
 	// @After
 	public void sairERP() {

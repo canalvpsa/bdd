@@ -18,9 +18,9 @@ public class BuscaRecebimentoEstoque {
 			System.out.println("\n");
 			System.out.println("Procurando entrada no banco de dados ...");
 			String SQL_select_entrada = "select enf.ENTRADA_ID "
-			+"from qa_estoque.ENTRADA "
-			+"inner join qa_estoque.ENTRADA_NOTA_FISCAL enf on (ENTRADA.id = enf.entrada_id)"
-			+"inner join qa_estoque.NOTA_FISCAL nf on (nf.id = enf.notasfiscais_id)"
+			+"from qa_estoque_aut.ENTRADA "
+			+"inner join qa_estoque_aut.ENTRADA_NOTA_FISCAL enf on (ENTRADA.id = enf.entrada_id)"
+			+"inner join qa_estoque_aut.NOTA_FISCAL nf on (nf.id = enf.notasfiscais_id)"
 			+" where nf.STATUS = 'EMITIDO'"
 			+" and ENTRADA.NUMERODOCUMENTO = '" + String.valueOf(numeroPesquisar) + "'";
 			ResultSet resultSet1 = stmt.executeQuery(SQL_select_entrada);
