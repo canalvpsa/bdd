@@ -1,15 +1,26 @@
 include BotoesEntradaNota
 include CampoesEntradaNota
-include EfetuarLogin;
-include ApertarEnter;
-
+include EfetuarLogin
+include ApertarEnter
+require 'win32ole'
+wsh = WIN32OLE.new('Wscript.Shell')
+puts Dir.pwd
 Dado("que o usu\xC3\xA1rio informou todos os dados da entrada e o tipo da nota \xC3\xA9 {string}") do |tipo_nota|
 
-  visit 'https://erp.varejonline.com.br/server/erp/estoque/entradas/criar/manual'
+ # efetuarLogin('https://erp.varejonline.com.br/server/erp/estoque/entradas/criar/manual')
+  efetuarLogin('https://qa2.varejonline.com.br:8443/server/erp/estoque/entradas')
 
-  efetuarLogin
+  find('i', :text => ' Importar XML ').click
+  find('button', :text => 'Escolher arquivo').click
+  sleep 2
+  caminho = Dir.pwd + '/features/arquivosAuxiliares/42181275552133001303550040000005621722790267.xml{ENTER}';
+  wsh.SendKeys(caminho.gsub! '/', '\\')
+  sleep 2
+  find("input[value='CODIGO_PRODUTO']").click
+  find("input[value='CODIGO_INTERNO']").click
+  find('.modal-footer').find('button', :text => 'Importar').click
 
-  fornecedor = setarPesquisa(abrirCampoPesquisa, 'ARICANDUVA COMERCIAL ELETRICA');
+  fornecedor = setarPesquisa(abrirCampoPesquisa, 'ARICANDUVA COMERCIAL ELETRICA')
   sleep 3
   apertarEnter(fornecedor)
 
@@ -33,14 +44,14 @@ Dado("que o usu\xC3\xA1rio informou todos os dados da entrada e o tipo da nota \
   sleep 1
   clicarBotaoSalvar
 
-  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA VERMELHO');
+  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA VERMELHO')
   sleep 1
 
   setarQuantidade(20_000)
   clicarBotaoAdicionar
   sleep 1
 
-  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA Preto');
+  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA Preto')
   sleep 1
 
   setarQuantidade(20_000)
