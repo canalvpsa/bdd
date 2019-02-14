@@ -1,69 +1,71 @@
-include BotoesEntradaNota
-include CampoesEntradaNota
-include EfetuarLogin
-include ApertarEnter
-require 'win32ole'
-wsh = WIN32OLE.new('Wscript.Shell')
-puts Dir.pwd
+class EntradaManual_steps
+  def initialize
+    botaoSalvar = find('button', text: 'Salvar e continuar').click
+    botaoFinalizar = find('button', text: 'Finalizar').click
+  end
+end
 Dado("que o usu\xC3\xA1rio informou todos os dados da entrada e o tipo da nota \xC3\xA9 {string}") do |tipo_nota|
+  entrada = EntradaManual.new
 
- # efetuarLogin('https://erp.varejonline.com.br/server/erp/estoque/entradas/criar/manual')
-  efetuarLogin('https://qa2.varejonline.com.br:8443/server/erp/estoque/entradas')
+  visit 'https://erp.varejonline.com.br/server/erp/estoque/entradas/criar/manual'
+  find('input[id$=username]').set 'devcanal'
+  find('input[id$=password]').set 'devcanal'
+  find('input[id$=cnpj]').set 'vpsa_vpsa_348'
+  find('input[id$=login-submit]').click
 
-  find('i', :text => ' Importar XML ').click
-  find('button', :text => 'Escolher arquivo').click
-  sleep 2
-  caminho = Dir.pwd + '/features/arquivosAuxiliares/42181275552133001303550040000005621722790267.xml{ENTER}';
-  wsh.SendKeys(caminho.gsub! '/', '\\')
-  sleep 2
-  find("input[value='CODIGO_PRODUTO']").click
-  find("input[value='CODIGO_INTERNO']").click
-  find('.modal-footer').find('button', :text => 'Importar').click
+  fornecedor = find('.select2-search__field').click
+  fornecedor.set('ARICANDUVA COMERCIAL ELETRICA')
+  sleep 1
+  fornecedor.send_keys(:enter)
 
-  fornecedor = setarPesquisa(abrirCampoPesquisa, 'ARICANDUVA COMERCIAL ELETRICA')
-  sleep 3
-  apertarEnter(fornecedor)
+  entidade = find('.form-group col-sm-6, app-vo-filtro-entidades[formcontrolname=entidade] div', match: :first)
+             .find('.select2-selection__placeholder', text: 'Selecione...').click
 
-  abrirEntidades
-  setarEntidade('DEV')
+  find('li', text: 'DEV'.upcase).click
 
-  setarNumeroDocumento(1010)
-  setarSerieDocuimento(1)
+  find('input[formcontrolname=numeroDocumento]').set 1010
+  find('input[formcontrolname=serie]').set 1
 
-  abrirPesquisaOperacoes
-  operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')
+  operacao = find('app-vo-filtro-operacoes[formcontrolname=operacao]')
+             .find('.select2-selection__placeholder', text: 'Selecione...').click
+  operacao = find('.select2-search__field').click
 
+  operacao.set('COMPRA P/ COMERCIALIZA')
   sleep 1
   operacao.send_keys(:enter)
 
-  abrirPesquisaTipoNota
-  setarTipoNota(tipo_nota)
+  tipoNotaFiscal = find('app-vo-select[formcontrolname=tipoNotaFiscal]')
+  .find('.select2-selection__placeholder', text: 'Selecione...').click
+
+    find('.select2-results__option',text:tipo_nota, exact_text: true).click
 
   sleep 2
-  clicarBotaoSalvar
+  find('button', text: 'Salvar e continuar').click
   sleep 1
-  clicarBotaoSalvar
+  find('button', text: 'Salvar e continuar').click
 
-  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA VERMELHO')
-  sleep 1
-
-  setarQuantidade(20_000)
-  clicarBotaoAdicionar
+  produto1 = find('.select2-search__field').click
+  produto1.set('PRODUTO DA LETICIA VERMELHO')
   sleep 1
 
-  setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA Preto')
+  quantidade = find('input[formcontrolname=quantidade]').set 20_000
+  adicionar = find('button', text: 'Adicionar').click
   sleep 1
 
-  setarQuantidade(20_000)
-  clicarBotaoAdicionar
+  produto2 = find('.select2-search__field').click
+  produto2.set('PRODUTO DA LETICIA Preto')
   sleep 1
 
-  clicarBotaoSalvar
-  clicarBotaoSalvar
+  quantidade = find('input[formcontrolname=quantidade]').set 20_000
+  adicionar = find('button', text: 'Adicionar').click
+  sleep 1
+
+  find('button', text: 'Salvar e continuar').click
+  find('button', text: 'Salvar e continuar').click
 end
 
 Quando('finalizar a entrada') do
-  clicarBotaoFinalizar
+  find('button', text: 'Finalizar').click
   sleep 5
 end
 
