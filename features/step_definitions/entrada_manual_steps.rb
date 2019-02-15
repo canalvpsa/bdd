@@ -4,19 +4,17 @@ include EfetuarLogin
 include ApertarEnter
 include ConexaoBanco
 require 'win32ole'
-
 wsh = WIN32OLE.new('Wscript.Shell')
 
 resultado_consulta = consulta_banco('select * from QA_VPSA.TERCEIRO', 'QUANTIDADE')
 puts resultado_consulta.to_s + ' registros encontrados.'
-
 
 resultado_consulta = consulta_banco('select * from QA_VPSA.TERCEIRO', 'CONTEUDO')
 resultado_consulta.fetch() {|row|
   print row
 }
 
- sleep 3
+sleep 3
 
 Dado("que o usu\xC3\xA1rio informou todos os dados da entrada e o tipo da nota \xC3\xA9 {string}") do |tipo_nota|
 
