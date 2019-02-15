@@ -9,8 +9,9 @@ wsh = WIN32OLE.new('Wscript.Shell')
 resultado_consulta = consulta_banco('select * from QA_VPSA.TERCEIRO', 'QUANTIDADE')
 puts resultado_consulta.to_s + ' registros encontrados.'
 
-resultado_consulta = consulta_banco('select * from QA_VPSA.TERCEIRO', 'CONTEUDO')
-resultado_consulta.fetch() {|row|
+resultado_consultaC = consulta_banco('select * from QA_VPSA.TERCEIRO', 'CONTEUDO')
+resultado_consultaC.exec
+resultado_consultaC.fetch() {|row|
   print row
 }
 

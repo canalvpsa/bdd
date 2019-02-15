@@ -18,10 +18,6 @@ module ConexaoBanco
       end
     elsif (tipoRetorno == 'CONTEUDO')
       cursor = con.parse(query)
-      cursor.exec
-      cursor.fetch() {|row|
-          print row
-        }
     end
   end
 end
