@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Cadastrar desconto de títulos
+Funcionalidade: Desconto de títulos
 
 
 Cenário: Efetuar desconto de títulos de modalidade contas a receber

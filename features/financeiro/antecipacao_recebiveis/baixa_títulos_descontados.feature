@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Cadastrar baixa de títulos descontados
+Funcionalidade: Baixa de títulos descontados
 
 
 Cenário: Pesquisar títulos descontados para realizar a baixa de títulos descontados
@@ -15,6 +15,6 @@ Então será exibida mensagem de sucesso
 E será registrada individualmente a baixa de cada conta a receber informada 
 E o seguinte lançamento contábil será realizado para cada conta a receber:
 """
-|Débito                               |Crédito          |Valor                   |
-|TÍTULOS DESCONTADOS DIVERSOS (13451) |CLIENTES (13101) |Conta a receber original| -> Título gerado
+|               Débito               |     Crédito    |          Valor         |                
+|TÍTULOS DESCONTADOS DIVERSOS (13451)|CLIENTES (13101)|Conta a receber original|-> Título gerado|
 """

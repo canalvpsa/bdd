@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Excluir títulos descontados e títulos baixados de contas a receber e cartão transação unitário e em lote
+Funcionalidade: Pesquisa de títulos descontados
 
 
 Cenário: Pesquisar título descontado que possui baixa
