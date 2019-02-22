@@ -42,7 +42,7 @@
 				<CRT>3</CRT>
 			</emit>
 			<dest>
-				<CNPJ>75552133001303</CNPJ>
+				<CNPJ>92258069000138</CNPJ>
 				<xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
 				<enderDest>
 					<xLgr>RUA ANTONIO RIBEIRO</xLgr>
@@ -57,9 +57,9 @@
 			</dest>
 			<det nItem="1">
 				<prod>
-					<cProd>47.0002</cProd>
-					<cEAN>SEM GTIN</cEAN>
-					<xProd>TESTE ENTRADA DE NOTA AUTOMATIZADA .</xProd>
+					<cProd>2541.001</cProd>
+                    <cEAN>SEM GTIN</cEAN>
+                    <xProd>REGATA CETIM BASICA CINZA 36</xProd>
 					<NCM>84501100</NCM>
 					<CFOP>5101</CFOP>
 					<uCom>UN</uCom>

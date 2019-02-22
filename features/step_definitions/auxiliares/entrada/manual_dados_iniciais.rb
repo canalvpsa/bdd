@@ -4,12 +4,12 @@ include CamposEntradaNota
 module EntradaManual
 
     def preencherDadosIniciais(tipo_nota)
-        fornecedor = setarPesquisa(abrirCampoPesquisa, 'ARICANDUVA COMERCIAL ELETRICA')
+        fornecedor = setarPesquisa(abrirCampoPesquisa, 'EMPRESA RIO')
         sleep 3
         apertarEnter(fornecedor)
       
         abrirEntidades
-        setarEntidade('DEV')
+        setarEntidade('ENTIDADE SÃO PAULO - LUCRO REAL')
       
         setarNumeroDocumento(1010)
         setarSerieDocuimento(1)

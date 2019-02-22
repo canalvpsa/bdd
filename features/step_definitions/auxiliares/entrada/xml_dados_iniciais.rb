@@ -1,8 +1,26 @@
+require 'win32ole'
+
+
 module EntradaXML
+
+    def importarXML(nomeXML)
+        
+        wsh = WIN32OLE.new('Wscript.Shell')
+        find('button', text: 'Importar XML').click;
+        find('button', text: 'Escolher arquivo').click
+        sleep 2
+        caminho = Dir.pwd + '/resources/'+nomeXML+'{ENTER}'
+        wsh.SendKeys(caminho.tr!('/', '\\'))
+        sleep 2
+        find("input[value='CODIGO_PRODUTO']").click
+        find("input[value='CODIGO_INTERNO']").click
+        find('.modal-footer').find('button', text: 'Importar').click
+    end
+
 
     def preencherDadosIniciaisXML()      
         abrirEntidades
-        setarEntidade('DEV')
+        setarEntidade('ENTIDADE SÃO PAULO - LUCRO REAL')
       
         abrirPesquisaOperacoes
         operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')

@@ -1,34 +1,34 @@
 module EntradaProdutos
 
     def incluirProdutos()
- setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA VERMELHO')
- sleep 1
+         setarPesquisa(abrirCampoPesquisa, '2541.001')
+         sleep 1
 
- setarQuantidade(20_000)
- clicarBotaoAdicionar
- sleep 1
+         setarQuantidade(20_000)
+         clicarBotaoAdicionar
+         sleep 1
 
- setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA Preto')
- sleep 1
+         setarPesquisa(abrirCampoPesquisa, '2541.002')
+         sleep 1
 
- setarQuantidade(20_000)
- clicarBotaoAdicionar
- sleep 1
+         setarQuantidade(20_000)
+         clicarBotaoAdicionar
+         sleep 1
     end
 
     def incluirProdutos_AlterandoValorUnitario()
-        setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA VERMELHO')
+        setarPesquisa(abrirCampoPesquisa, '2541.001')
         sleep 1
        
         setarQuantidade(20_000)
         clicarBotaoAdicionar
         sleep 1
        
-        setarPesquisa(abrirCampoPesquisa, 'PRODUTO DA LETICIA Preto')
+        setarPesquisa(abrirCampoPesquisa, '2541.002')
         sleep 1
        
         setarQuantidade(20_000)
         clicarBotaoAdicionar
         sleep 1
-           end
+   end
 end

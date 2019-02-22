@@ -79,6 +79,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-oci8 (2.2.7-x64-mingw32)
     ruby-oci8 (2.2.7-x86-mingw32)
     rubyzip (1.2.2)
     selenium-webdriver (3.141.0)
