@@ -73,11 +73,12 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   else
     puts "CST/CSOSN nao previsto"
   end
-  
-  #Salvar na visão geral
-  clicarBotaoSalvar
 end          
 
-Então("nenhuma mensagem de divergência de valores deve ser exibida") do   
-  expect(page).not_to include('Totalizador e somatório dos itens estão com valores divergentes.')                 
+Então("nenhuma mensagem de divergência de valores deve ser exibida") do
+  expect(page).not_to have_selector('.alert-danger alert')      
+
+  #Salvar na visão geral
+  sleep 2
+  clicarBotaoSalvar
 end                                                                                              

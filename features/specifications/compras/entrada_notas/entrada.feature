@@ -42,6 +42,7 @@ Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSO
     Quando validar os dados da nota fiscal de entrada
     Então na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado "<XML>"
     E nenhuma mensagem de divergência de valores deve ser exibida
+    E finalizar a entrada
     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
   
 
