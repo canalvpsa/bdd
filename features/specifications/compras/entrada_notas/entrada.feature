@@ -19,7 +19,7 @@ Esquema do Cenário: Tipos de nota que ficam "não escrituradas"
     |55      |NAO_ESCRITURADA    |
     |4       |ESCRITURADA_EXTERNO|
 
-@tipoNota
+@tipoNota @teste
 Cenário: Entrada de notas com tipo de nota 55 com chave
 Quando o usuário informar na entrada o tipo de nota "55"
 E informar chave de acesso
@@ -28,11 +28,11 @@ Então a entrada é realizada com sucesso exibindo a mensagem com o número do d
 E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
 
-@tipoNota
+@xmlEntrada
 Cenário: Entrada de notas com XML
 Quando preenche os dados iniciais informando um XML
 E finalizar a entrada
-Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "1010" e série "1" 
+Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "562" e série "4" 
 E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
 

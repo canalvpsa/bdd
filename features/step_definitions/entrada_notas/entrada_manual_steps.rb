@@ -35,17 +35,21 @@ Quando('finalizar a entrada') do
 end
 
 Quando("o usu\xC3\xA1rio informar na entrada o tipo de nota {string}") do |tipo_nota|
+  efetuarLogin('https://qa.varejonline.com.br:7443/server/erp/estoque/entradas/criar/manual')
+
   preencherDadosIniciais(tipo_nota)
    #Salvar nos dados iniciais
-   sleep 2
-   clicarBotaoSalvar
 end
 
 Quando('informar chave de acesso') do
-  find('input[formcontrolname=serie]').set '000000000000000000000000000000000000000000000'
+  find('input[formcontrolname=chaveNfe]').set '42181275552133001303550040000005621722790267'
   sleep 1
   #Salvar nos dados iniciais
   clicarBotaoSalvar
+
+   #Salvar nos dados adicionais
+   sleep 1
+   clicarBotaoSalvar
 
   incluirProdutos
   #Salvar nos produtos

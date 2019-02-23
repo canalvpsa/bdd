@@ -1,17 +1,18 @@
 module ConexaoBanco
 
-
-  if(!File.file?(Dir.pwd.gsub!('/', '\\') + '..\Cliente_ORACLE\oraocci11.dll'))
+  client = '\resources\Cliente_ORACLE\\'
+  if(!File.file?(Dir.pwd.gsub!('/', '\\') + '..'+client+'oraocci11.dll'))
     puts 'Extraindo DLL Oracle'
-    Zip::File.open(Dir.pwd.gsub!('/', '\\') + '\Cliente_ORACLE\oraocci11.zip') do |zip_file|
+    Zip::File.open(Dir.pwd.gsub!('/', '\\') +client+'oraocci11.zip') do |zip_file|
       zip_file.each do |f|
-      fpath = File.join(Dir.pwd.gsub!('/', '\\') + '\Cliente_ORACLE\\', f.name)
+      fpath = File.join(Dir.pwd.gsub!('/', '\\') + client, f.name)
       zip_file.extract(f, fpath) unless File.exist?(fpath)
       end
     end
   end
 
-  ENV['PATH'] = ENV['PATH'] + ';' + Dir.pwd.gsub!('/', '\\') + '\Cliente_ORACLE'
+
+  ENV['PATH'] = ENV['PATH'] + ';' + Dir.pwd.gsub!('/', '\\') + client
   
   def consulta_banco(query)
 
