@@ -17,7 +17,6 @@ module ConexaoBanco
   def consulta_banco(query)
 
     require 'oci8' 
-    export NLS_LANG=$LANG
       con = OCI8.new('vpsa', 'vpsa', '//bd.varejonline.com.br:1521/vpsa')
       retorno = ''
       dbConsulta = con.parse(query)
