@@ -4,7 +4,7 @@ include CamposEntradaNota
 module EntradaManual
 
     def preencherDadosIniciais(tipo_nota)
-        fornecedor = setarPesquisa(abrirCampoPesquisa, 'EMPRESA RIO')
+        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI')
         sleep 3
         apertarEnter(fornecedor)
       

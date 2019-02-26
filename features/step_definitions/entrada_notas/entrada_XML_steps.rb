@@ -58,8 +58,11 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   
   case xml
 
-  when 'ICMSSN202_correto.xml'
-    validaCSOSN202
+  when 'CST00_correto.xml'
+    validaCST00_correto
+
+  when 'CST00_incorreto.xml'
+    validaCST00_incorreto
 
   when 'CST10_correto.xml'
     validaCST10_correto
@@ -67,8 +70,11 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   when 'CST10_incorreto.xml'
     validaCST10_incorreto
 
-  when 'CST51_correto.xml'
-    validaCST51_correto
+  when 'CST51_correto.xml', 'CST51_incorreto.xml'
+    validaCST51
+
+  when 'ICMSSN202_correto.xml'
+    validaCSOSN202
     
   else
     puts "CST/CSOSN nao previsto"

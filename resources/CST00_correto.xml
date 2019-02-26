@@ -1,21 +1,21 @@
 <nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
     <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
-        <infNFe Id="NFe42190275552133001303550100000000091918147191" versao="4.00">
+        <infNFe Id="NFe42190275552133001303550100000000171655292368" versao="4.00">
             <ide>
                 <cUF>42</cUF>
-                <cNF>91814719</cNF>
-                <natOp>VENDA</natOp>
+                <cNF>65529236</cNF>
+                <natOp>Venda</natOp>
                 <mod>55</mod>
                 <serie>10</serie>
-                <nNF>9</nNF>
-                <dhEmi>2019-02-19T11:03:59-03:00</dhEmi>
-                <dhSaiEnt>2019-02-19T11:03:59-03:00</dhSaiEnt>
+                <nNF>17</nNF>
+                <dhEmi>2019-02-22T19:17:44-03:00</dhEmi>
+                <dhSaiEnt>2019-02-22T19:17:44-03:00</dhSaiEnt>
                 <tpNF>1</tpNF>
                 <idDest>2</idDest>
                 <cMunFG>4206504</cMunFG>
                 <tpImp>1</tpImp>
                 <tpEmis>1</tpEmis>
-                <cDV>1</cDV>
+                <cDV>8</cDV>
                 <tpAmb>2</tpAmb>
                 <finNFe>1</finNFe>
                 <indFinal>0</indFinal>
@@ -58,12 +58,11 @@
             </dest>
             <det nItem="1">
                 <prod>
-                   <cProd>2541.001</cProd>
+                     <cProd>2541.001</cProd>
                     <cEAN>SEM GTIN</cEAN>
                     <xProd>REGATA CETIM BASICA CINZA 36</xProd>
                     <NCM>03019490</NCM>
-                    <CEST>2899900</CEST>
-                    <CFOP>6403</CFOP>
+                    <CFOP>6102</CFOP>
                     <uCom>PC</uCom>
                     <qCom>1</qCom>
                     <vUnCom>8.73000</vUnCom>
@@ -76,25 +75,23 @@
                 </prod>
                 <imposto>
                     <ICMS>
-                        <ICMS10>
+                        <ICMS00>
                             <orig>0</orig>
-                            <CST>10</CST>
+                            <CST>00</CST>
                             <modBC>3</modBC>
                             <vBC>8.73</vBC>
-                            <pICMS>7.00</pICMS>
-                            <vICMS>0.61</vICMS>
-                            <modBCST>4</modBCST>
-                            <pMVAST>30.00</pMVAST>
-                            <vBCST>11.35</vBCST>
-                            <pICMSST>0.00</pICMSST>
-                            <vICMSST>0.00</vICMSST>
-                        </ICMS10>
+                            <pICMS>12.00</pICMS>
+                            <vICMS>1.05</vICMS>
+                        </ICMS00>
                     </ICMS>
                     <IPI>
                         <cEnq>999</cEnq>
-                        <IPINT>
-                            <CST>53</CST>
-                        </IPINT>
+                        <IPITrib>
+                            <CST>50</CST>
+                            <vBC>8.73</vBC>
+                            <pIPI>0.80</pIPI>
+                            <vIPI>0.07</vIPI>
+                        </IPITrib>
                     </IPI>
                     <PIS>
                         <PISAliq>
@@ -117,10 +114,10 @@
             <total>
                 <ICMSTot>
                     <vBC>8.73</vBC>
-                    <vICMS>0.61</vICMS>
+                    <vICMS>1.05</vICMS>
                     <vICMSDeson>0.00</vICMSDeson>
                     <vFCP>0.00</vFCP>
-                    <vBCST>11.35</vBCST>
+                    <vBCST>0.00</vBCST>
                     <vST>0.00</vST>
                     <vFCPST>0.00</vFCPST>
                     <vFCPSTRet>0.00</vFCPSTRet>
@@ -129,12 +126,12 @@
                     <vSeg>0.00</vSeg>
                     <vDesc>0.00</vDesc>
                     <vII>0.00</vII>
-                    <vIPI>0.00</vIPI>
+                    <vIPI>0.07</vIPI>
                     <vIPIDevol>0.00</vIPIDevol>
                     <vPIS>0.14</vPIS>
                     <vCOFINS>0.66</vCOFINS>
                     <vOutro>0.00</vOutro>
-                    <vNF>8.73</vNF>
+                    <vNF>8.80</vNF>
                 </ICMSTot>
             </total>
             <transp>
@@ -147,28 +144,28 @@
                 <detPag>
                     <indPag>0</indPag>
                     <tPag>99</tPag>
-                    <vPag>8.91</vPag>
+                    <vPag>8.80</vPag>
                 </detPag>
             </pag>
             <infAdic>
-                <infAdFisco>Documentos associados a esta nota fiscal: 1-6087.</infAdFisco>
-                <infCpl>Val Aprox dos Tributos F: R$ 1,17 (13,45%), E: R$ 0,61 (6,99%) Fonte: IBPT PED.: 1-6087:</infCpl>
+                <infAdFisco>Documentos associados a esta nota fiscal: 1-6097.</infAdFisco>
+                <infCpl>Val Aprox dos Tributos F: R$ 1,17 (13,45%), E: R$ 1,05 (12,03%) Fonte: IBPT PED.: 1-6097:</infCpl>
             </infAdic>
         </infNFe>
         <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
             <SignedInfo>
                 <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
                 <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-                <Reference URI="#NFe42190275552133001303550100000000091918147191">
+                <Reference URI="#NFe42190275552133001303550100000000171655292368">
                     <Transforms>
                         <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
                         <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
                     </Transforms>
                     <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-                    <DigestValue>mcnEfrKgPB5SA+vB2W8668ZBnxk=</DigestValue>
+                    <DigestValue>JENVqwRbVjEh1znHBRcGShrzT+s=</DigestValue>
                 </Reference>
             </SignedInfo>
-            <SignatureValue>e4j2zMpD+LrLsafycifjhEQhhRXD2/hF6xi9MS6RmyUI9QYPfQXbjNX8CE6Ie+In21uukYKgkkmzIv3uS31Dhq4JTUCEXZuWNHYlWltmROIpB4fVrAmW25C/a/+MIaACsJrvaXUidSoeWTRVot6UvDz4nLyUiRGw+UGoo95nWIk/we3rzrmkEDnyD8jIqj/twf6mUQQGzTwDRFtUBBhRGcIZIcMkVMQt9PPxrX23PLzZI4jY1lQ1bXUYzae2xscDgkYOltPNyGzn6Pj4RgmLg8nW1LPmd7k0BpnS4RH0LqwzCv3m238jCTrY8P8AC1RdRlB2aU/7Ccdj9NYUslr4pA==</SignatureValue>
+            <SignatureValue>REL5lFEDS+eQbPFqqnIUdnn0WFiNLOlHESSz1ky710QoOo7Xg/8HZ2qquDdl84uNl/ysOGTMuvfhlefX3z6DWZksMnaOKd8TJylMHnQW61cBowkP8hbZ8XAfPJUkVCVqZVuEaJeYekrERokMfWzqBhSvd0n6YsllKwhsZB+vIW+cnDd+2N536PrYeBdDJtW85qHI8Z6rDirPRHrGJDV+kpI5ronTjTpZoFrwERqK/a9LG/+/FpZ6NU2d6vZ4kbGP6kF2XHztaom8CZE2vzoDtwl3IKv4C3/9v90FOONLliTIMTM87WMhOHVORM35at9z9Vbs8NAy2AC9pbo7bls67A==</SignatureValue>
             <KeyInfo>
                 <X509Data>
                     <X509Certificate>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</X509Certificate>
@@ -180,10 +177,10 @@
         <infProt>
             <tpAmb>2</tpAmb>
             <verAplic>SVRS201807191353</verAplic>
-            <chNFe>42190275552133001303550100000000091918147191</chNFe>
-            <dhRecbto>2019-02-19T11:04:09-03:00</dhRecbto>
-            <nProt>342190000069312</nProt>
-            <digVal>mcnEfrKgPB5SA+vB2W8668ZBnxk=</digVal>
+            <chNFe>42190275552133001303550100000000171655292368</chNFe>
+            <dhRecbto>2019-02-22T19:18:14-03:00</dhRecbto>
+            <nProt>342190000074646</nProt>
+            <digVal>JENVqwRbVjEh1znHBRcGShrzT+s=</digVal>
             <cStat>100</cStat>
             <xMotivo>Autorizado o uso da NF-e</xMotivo>
         </infProt>

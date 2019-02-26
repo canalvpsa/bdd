@@ -1,0 +1,16 @@
+[0222/211020.352:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/211020.355:ERROR:exception_snapshot_win.cc(88)] thread ID 8208 not found in process
+[0222/211132.900:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/211132.900:ERROR:exception_snapshot_win.cc(88)] thread ID 15944 not found in process
+[0222/214147.647:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/214147.660:ERROR:exception_snapshot_win.cc(88)] thread ID 1300 not found in process
+[0222/221852.352:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/221852.356:ERROR:exception_snapshot_win.cc(88)] thread ID 15860 not found in process
+[0222/222048.250:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/222048.250:ERROR:exception_snapshot_win.cc(88)] thread ID 12844 not found in process
+[0222/222247.445:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/222247.445:ERROR:exception_snapshot_win.cc(88)] thread ID 12448 not found in process
+[0222/222356.702:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/222356.702:ERROR:exception_snapshot_win.cc(88)] thread ID 12700 not found in process
+[0222/223044.727:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0222/223044.727:ERROR:exception_snapshot_win.cc(88)] thread ID 1236 not found in process
