@@ -3,7 +3,7 @@ include EfetuarLogin
 include VisaoGeral
 
 Quando('preenche os dados iniciais informando um XML') do
-  efetuarLogin('https://qa.varejonline.com.br:7443/server/erp/estoque/entradas/criar/manual')
+  efetuarLogin('/server/erp/estoque/entradas/criar/manual')
   importarXML('42181275552133001303550040000005621722790267.xml')
   preencherDadosIniciaisXML
   
@@ -28,7 +28,7 @@ end
 
 
 Dado("que o usuário preenche os dados iniciais informando o {string}") do |nomeXML|    
-  efetuarLogin('https://qa.varejonline.com.br:7443/server/erp/estoque/entradas/criar/manual')                           
+  efetuarLogin('/server/erp/estoque/entradas/criar/manual')                           
   importarXML(nomeXML)          
   preencherDadosIniciaisXML
   

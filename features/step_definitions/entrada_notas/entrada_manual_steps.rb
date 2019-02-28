@@ -35,7 +35,7 @@ Quando('finalizar a entrada') do
 end
 
 Quando("o usu\xC3\xA1rio informar na entrada o tipo de nota {string}") do |tipo_nota|
-  efetuarLogin('https://qa.varejonline.com.br:7443/server/erp/estoque/entradas/criar/manual')
+  efetuarLogin('/server/erp/estoque/entradas/criar/manual')
 
   preencherDadosIniciais(tipo_nota)
    #Salvar nos dados iniciais
