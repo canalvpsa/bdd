@@ -65,6 +65,10 @@ Cenário: Vincular produto original em item de grade pelas opções do cadastro 
     Quando informa um produto original nas opções do produto
     Então o produto item de grade é salvo como seminovo recebendo o vínculo com produto original
 
+Cenário: Vincular o próprio produto como produto original
+    Quando o usuário vincula o próprio produto como produto original
+    Então é exibida mensagem "Produto original deve ser diferente do seminovo"
+    E a alteração não é salva
 
 Cenário: Copiar produto e opção de seminovo desabilitado
     Dado que o usuário está na pesquisa do cadastro de produto
