@@ -1,11 +1,51 @@
-include EntradaXML
+include DadosAdicionais
 include EfetuarLogin
+include EntradaXML
+include LinkRotinas
 include VisaoGeral
 
-Quando('preenche os dados iniciais informando um XML') do
-  efetuarLogin('/server/erp/estoque/entradas/criar/manual')
+Quando('o usuário preenche os dados iniciais informando um XML') do
+  efetuarLogin(linkRotina('entrada'))
   importarXML('42181275552133001303550040000005621722790267.xml')
-  preencherDadosIniciaisXML
+  preencherDadosIniciaisXML_entidade('real')
+  
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar conciliação
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar dados adicionais
+  clicarBotaoSalvar
+
+  #Salvar nos produtos
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar na visão geral
+  clicarBotaoSalvar
+end
+
+Dado("que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao {string}") do |tributacao|
+  efetuarLogin(linkRotina('entrada'))
+  importarXML('custoProduto.xml')
+  preencherDadosIniciaisXML_entidade(tributacao)
+  
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar conciliação
+  sleep 2
+  clicarBotaoSalvar
+end
+
+Dado("que o usuário preencheu os dados iniciais informando um XML") do
+  efetuarLogin(linkRotina('entrada'))
+  importarXML('CST00_correto.xml')
+  preencherDadosIniciaisXML_entidade('real')
   
    #Salvar nos dados iniciais
    sleep 2
@@ -14,23 +54,18 @@ Quando('preenche os dados iniciais informando um XML') do
    #Salvar conciliação
    sleep 2
    clicarBotaoSalvar
-
-   #Salvar dados adicionais
-   clicarBotaoSalvar
-
-    #Salvar nos produtos
-    sleep 2
-    clicarBotaoSalvar
-
-     #Salvar na visão geral
-     clicarBotaoSalvar
 end
 
+Quando("confirma os produtos") do
+    #Salvar nos produtos
+    sleep 2
+    clicarBotaoSalvar  
+end
 
-Dado("que o usuário preenche os dados iniciais informando o {string}") do |nomeXML|    
-  efetuarLogin('/server/erp/estoque/entradas/criar/manual')                           
+Dado("que o usuário preencheu os dados iniciais informando o {string}") do |nomeXML|    
+  efetuarLogin(linkRotina('entrada'))                           
   importarXML(nomeXML)          
-  preencherDadosIniciaisXML
+  preencherDadosIniciaisXML_entidade('real')
   
    #Salvar nos dados iniciais
    sleep 2
@@ -50,9 +85,13 @@ end
 
                                                                                                                  
 Quando("validar os dados da nota fiscal de entrada") do                                                          
-  expect(page).to have_content("Atenção")       
-end                                                                                                                                                                                                                         
+  expect(page).to have_content('Atenção')       
+end        
 
+
+Então("nenhuma mensagem de divergência de valores deve ser exibida") do
+  expect(page).not_to have_content('Totalizador e somatório dos itens estão com valores divergentes') 
+end
 
 Então("na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado {string}") do |xml|
   
@@ -79,12 +118,8 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   else
     puts "CST/CSOSN nao previsto"
   end
-end          
-
-Então("nenhuma mensagem de divergência de valores deve ser exibida") do
-  expect(page).not_to have_selector('.alert-danger alert')      
-
-  #Salvar na visão geral
-  sleep 2
-  clicarBotaoSalvar
-end                                                                                              
+  
+   #Salvar na visão geral
+   sleep 2
+   clicarBotaoSalvar
+  end

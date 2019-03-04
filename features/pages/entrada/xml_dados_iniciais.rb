@@ -18,9 +18,20 @@ module EntradaXML
     end
 
 
-    def preencherDadosIniciaisXML()      
+    def preencherDadosIniciaisXML_entidade(entidade)   
+        case entidade
+        when 'real'
+            entidade = 'ENTIDADE SÃO PAULO - LUCRO REAL'
+
+        when 'presumido'
+            entidade = 'ENTIDADE SÃO PAULO - LUCRO PRESUMIDO'
+
+        when 'simples'
+            entidade = 'ENTIDADE SÃO PAULO - SIMPLES'
+        end
+
         abrirEntidades
-        setarEntidade('ENTIDADE SÃO PAULO - LUCRO REAL')
+        setarEntidade(entidade)
       
         abrirPesquisaOperacoes
         operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')

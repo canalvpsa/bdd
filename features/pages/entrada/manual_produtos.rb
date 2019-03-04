@@ -11,7 +11,7 @@ module EntradaProdutos
          setarPesquisa(abrirCampoPesquisa, '2541.002')
          sleep 1
 
-         setarQuantidade(20_000)
+         setarQuantidade(10_000)
          clicarBotaoAdicionar
          sleep 1
     end

@@ -8,9 +8,9 @@ include EntradaManual
 
 
 Dado("que o usuário informou todos os dados da entrada e o tipo da nota é {string}") do |tipo_nota|
-  efetuarLogin('https://qa.varejonline.com.br:7443/server/erp/estoque/entradas/criar/manual')
+  efetuarLogin(linkRotina('entrada'))
 
-  preencherDadosIniciais(tipo_nota)
+  preencherDadosIniciais_tiposNota(tipo_nota)
 
   #Salvar nos dados iniciais
   sleep 2
@@ -29,15 +29,28 @@ Dado("que o usuário informou todos os dados da entrada e o tipo da nota é {str
   clicarBotaoSalvar
 end
 
-Quando('finalizar a entrada') do
-  clicarBotaoFinalizar
-  sleep 5
+Dado("que o usuário preencheu manualmente os dados iniciais da entrada e a entidade é do sistema de tributacao {string}") do |tributacaoEntidade|
+
+  efetuarLogin(linkRotina('entrada'))
+
+  preencherDadosIniciais_tiposEntidade(tributacaoEntidade)
+
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
 end
 
-Quando("o usu\xC3\xA1rio informar na entrada o tipo de nota {string}") do |tipo_nota|
-  efetuarLogin('/server/erp/estoque/entradas/criar/manual')
+Quando("inclui os produtos para compra") do                                      
+  incluirProdutos
 
-  preencherDadosIniciais(tipo_nota)
+  #Salvar nos produtos
+  clicarBotaoSalvar
+end                                                                              
+
+Quando("o usuário informar na entrada o tipo de nota {string}") do |tipo_nota|
+  efetuarLogin(linkRotina('entrada'))
+
+  preencherDadosIniciais_tiposNota(tipo_nota)
    #Salvar nos dados iniciais
 end
 
@@ -57,16 +70,4 @@ Quando('informar chave de acesso') do
 
   #Salvar na visão Geral
   clicarBotaoSalvar
-end
-
-Então("a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
-  mensagemExibida = find('.noty_body', wait: 20).text
-  puts mensagemExibida
-  expect('A entrada '+ numeroDocumento+'/'+serie+' foi efetuada com sucesso.').to include mensagemExibida
-end
-
-
-Então("a nota fiscal é registrada com status {string}") do |status_escrituracao|
-  expect(status_escrituracao).to have_content consulta_escrituracao
-  
 end
