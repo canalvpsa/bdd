@@ -3,6 +3,7 @@ require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'rspec'
 
+ENV['url']
 
 Capybara.configure do |c|
     c.default_driver = :selenium 
