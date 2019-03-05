@@ -28,7 +28,7 @@ Exemplos:
 
 
 @troca_nacional @seminovo
-Cenário: Lançamento contábil de despesa efetuada no PDV
+Esquema do Cenário: Lançamento contábil de despesa efetuada no PDV
     Dado que o usuário efetuou um lançamento de despesa no PDV
     E o PDV foi sincronizado
     Quando a despesa (sangria) é exibida no ERP

@@ -40,7 +40,7 @@ Cenário: Cadastrar tabela de preço que possui tabela referência
     E os preços sugeridos também serão os mesmos
 
 
-Cenário: Alterar tabela de preço que é referência em outra tabela
+Esquema do Cenário: Alterar tabela de preço que é referência em outra tabela
     Dado que a tabela de preço está associada como referência em outra tabela de preço
     Quando inclui ou exclui produtos
     E altera o preço da tabela de preço
@@ -55,7 +55,7 @@ Exemplos:
 |   markup   |
 
 
-Cenário: Inativar tabela de preço que é referência em outra tabela de preço
+Esquema do Cenário: Inativar tabela de preço que é referência em outra tabela de preço
     Dado que a tabela de preço está associada como referência em outra tabela de preço
     Quando inativar a tabela de preço
     Então as tabelas de preço do tipo de cálculo "preço por produto" relacionadas não sofrem qualquer alteração, pois são apenas cópias
@@ -100,7 +100,7 @@ Esquema do Cenário: Cadastrar tabela de preço de configuração de desconto ou
     E realiza a configuração do percentual para todas as categorias ou somente para uma categoria
     Então será obrigatório informar uma tabela referência
 
-    Exemplos:
+Exemplos:
 |tipo_calculo|
 |  desconto  |
 |  acrescimo |

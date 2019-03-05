@@ -13,11 +13,11 @@ Esquema do Cenário: Tipos de nota que ficam "não escrituradas"
     E a nota fiscal é registrada com status "<statusEscrituracao>"
 
     Exemplos:
-    |tipoNota|statusEscrituracao |
-    |1A      |ESCRITURADA_EXTERNO|
-    |1       |ESCRITURADA_EXTERNO|
-    |55      |NAO_ESCRITURADA    |
-    |4       |ESCRITURADA_EXTERNO|
+|tipoNota| statusEscrituracao|
+|   1A   |ESCRITURADA_EXTERNO|
+|    1   |ESCRITURADA_EXTERNO|
+|   55   |  NAO_ESCRITURADA  |
+|    4   |ESCRITURADA_EXTERNO|
 
 
 @tipoNota @entradaManual
@@ -46,13 +46,14 @@ Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSO
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
     Exemplos:
-    |XML                  |numeroDocumento|serie|
-    |CST00_correto.xml    |17             |10   |
-    |CST00_incorreto.xml  |17             |10   |
-    |CST10_correto.xml    |8              |10   |
-    |CST10_incorreto.xml  |9              |10   |
-    |CST51_correto.xml    |6              |10   |
-    |ICMSSN202_correto.xml|101            |2    |
+|         XML         |numeroDocumento|serie|
+|  CST00_correto.xml  |       17      |  10 |
+| CST00_incorreto.xml |       17      |  10 |
+|  CST10_correto.xml  |       8       |  10 |
+| CST10_incorreto.xml |       9       |  10 |
+|  CST51_correto.xml  |       6       |  10 |
+|ICMSSN101_correto.xml|      105      |  2  |
+|ICMSSN202_correto.xml|      101      |  2  |
 
 
 @entradaXML @custoEntrada
@@ -66,10 +67,10 @@ Esquema do Cenário: Entrada de notas com XML e custo adicional
     E o custo total do item "2541.002" da nota será "<custoItem2>"
 
     Exemplos:
-    |tributacao|custoItem1|custoItem2|
-    |real|18,05|9,37|
-    |presumido|19,67|10,21|
-    |simples|20,89|10,84|
+|tributacao|custoItem1|custoItem2|
+|   real   |   18,05  |   9,37   |
+| presumido|   19,67  |   10,21  |
+|  simples |   20,89  |   10,84  |
 
 
 @entradaManual @custoEntrada
@@ -83,7 +84,8 @@ Esquema do Cenário: Entrada de notas manual e custo adicional
     E o custo total do item "2541.002" da nota será "<custoItem2>"
 
     Exemplos:
-    |tributacao|custoItem1|custoItem2|
-    |real|19,08|9,55|
-    |presumido|20,93|10,47|
-    |simples|23,33|11,67|
+|tributacao|custoItem1|custoItem2|
+|   real   |   19,08  |   9,55   |
+| presumido|   20,93  |   10,47  |
+|  simples |   23,33  |   11,67  |
+ 
