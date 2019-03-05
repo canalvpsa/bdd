@@ -8,8 +8,7 @@ module EfetuarLogin
             else
             url = server
             end
-            
-        puts url+link 
+
         visit url+link
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
