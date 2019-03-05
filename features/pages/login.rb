@@ -1,15 +1,16 @@
 module EfetuarLogin
    
     def efetuarLogin(link)
-            if ENV['url'].nil?
+        server = ENV['url']
+
+            if server.nil?
             url = 'https://qa.varejonline.com.br:7443'
             else
-            url = ENV['url']
+            url = server
             end
-
-        login =  url+link
-        puts login 
-        visit login
+            
+        puts url+link 
+        visit url+link
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
         find('input[id$=cnpj]').set 'qa_vpsa_aut'
