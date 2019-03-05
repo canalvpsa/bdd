@@ -7,3 +7,6 @@ gem 'cucumber'
 gem 'rspec'
 gem 'ruby-oci8'
 gem 'selenium-webdriver'
+gem "yard-cucumber"
+gem "redcarpet"
+gem "rake"
