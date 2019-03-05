@@ -7,8 +7,8 @@ module EfetuarLogin
             url = ENV['url']
             end
 
-        visit url+link
-
+        login =  url+link
+        visit login
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
         find('input[id$=cnpj]').set 'qa_vpsa_aut'
