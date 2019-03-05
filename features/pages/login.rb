@@ -8,6 +8,7 @@ module EfetuarLogin
             end
 
         login =  url+link
+        puts login 
         visit login
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
