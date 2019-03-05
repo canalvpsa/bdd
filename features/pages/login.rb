@@ -8,6 +8,7 @@ module EfetuarLogin
             end
 
         visit url+link
+
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
         find('input[id$=cnpj]').set 'qa_vpsa_aut'
