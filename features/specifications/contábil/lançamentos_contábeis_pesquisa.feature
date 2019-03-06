@@ -8,8 +8,7 @@ Esquema do Cenário: Lançamentos contábeis de troca nacional ou compra de semi
     Dado que o usuário finalizou uma troca nacional ou uma compra de seminovos no PDV
     E o PDV foi sincronizado
     Quando a compra estiver no ERP
-    Então é realizado lançamento contábil da compra na conta débito "<compra_debito>" e na conta crédito "<compra_credito>"
-    E é realizado lançamento contábil da compra na conta débito "<estoque_debito>" e na conta crédito "<estoque_credito>" 
+    Então é realizado lançamento contábil do tipo "<tipo_lançamento>" na conta débito "<conta_debito>" e na conta crédito "<conta_credito>"
     E o histórico destes lançamentos contábeis é : "<operacao>" + "nroCompra (substituir por NFe quando emitida)"
     
     Exemplos:
@@ -18,12 +17,9 @@ Esquema do Cenário: Lançamentos contábeis de troca nacional ou compra de semi
 |troca_nacional|
 
 Exemplos:
-|                    compra_debito                   |                     compra_credito                     |
-|Conta de COMPRA da classificação contábil do produto|Conta de FORNECEDOR da classificação contábil do produto|
-
-Exemplos:
-|                    estoque_debito                   |        estoque_credito       |
-|Conta de ESTOQUE da classificação contábil do produto|TRANSF. MERCADORIAS P/ ESTOQUE|
+|tipo_lançamento|                     conta_debito                    |                      conta_credito                     |
+|     compra    | Conta de COMPRA da classificação contábil do produto|Conta de FORNECEDOR da classificação contábil do produto|
+|    estoque    |Conta de ESTOQUE da classificação contábil do produto|             TRANSF. MERCADORIAS P/ ESTOQUE             |
 
 
 

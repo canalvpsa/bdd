@@ -1,10 +1,10 @@
 #language: pt
 
 
-Funcionalidade: Validar impacto da compra de seminovo e troca nacional no PDV
+Funcionalidade: Impactos da compra de seminovo e troca nacional no PDV
 
 
-@seminovo @trocaNacional
+@seminovo @troca_nacional
 Cenário: Configurar operação de "Compra p/ revenda"
 Dado que existe a operação de "compra p/ revenda" na listagem de operações de entrada
 Quando eu realizar a configuração
@@ -44,7 +44,7 @@ Cenário: Compra de seminovo pago com adiantamento
 
 
 
-@trocaNacional
+@troca_nacional
 Cenário: Impactos no ERP da troca nacional efetuado no PDV
     Dado que o usuário finalizou uma troca nacional no ERP
     E o PDV foi sincronizado

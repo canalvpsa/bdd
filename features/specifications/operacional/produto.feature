@@ -1,5 +1,6 @@
 #language: pt
 
+@produto
 Funcionalidade: Cadastro, alteração, cópia e pesquisa de produtos
 
 Cenário: Acesso ao cadastro de produto

@@ -1,5 +1,6 @@
 #language: pt
 
+@desconto_titulos
 Funcionalidade: Pesquisa de títulos descontados
 
 
