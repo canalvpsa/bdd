@@ -19,10 +19,16 @@ module VisaoGeral
           expect(@validarTotalizadores).to include('Valor ICMS R$ '+valor)
       
       when 'base_icms_st'
-         expect(@validarTotalizadores).to include('BC ICM ST R$ '+valor)
+         expect(@validarTotalizadores).to include('BC ICMS ST R$ '+valor)
       
       when 'valor_icms_st'
          expect(@validarTotalizadores).to include('Valor ICMS ST R$ '+valor)
+
+      when 'base_icms_sn'
+         expect(@validarTotalizadores).to include('BC ICMS SN R$ '+valor)
+      
+      when 'valor_icms_sn'
+         expect(@validarTotalizadores).to include('Valor ICMS SN R$ '+valor)
       
       when 'total_produto'
          expect(@validarTotalizadores).to include('Valor total produtos R$ '+valor)
@@ -86,6 +92,18 @@ module VisaoGeral
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
       validarCampos('total_nota','8,73')
+   end
+
+   def validaCSOSN101
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','0,00')
+      validarCampos('valor_icms_st','0,00')
+      validarCampos('base_icms_sn','26,52')
+      validarCampos('valor_icms_sn','5,04')
+      validarCampos('total_produto','26,52')
+      validarCampos('total_nota','26,52')
    end
 
    def validaCSOSN202

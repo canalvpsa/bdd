@@ -1,10 +1,12 @@
 module EfetuarLogin
    
     def efetuarLogin(link)
-            if ENV['url'].nil?
+        server = ENV['url']
+
+            if server.nil?
             url = 'https://qa.varejonline.com.br:7443'
             else
-            url = ENV['url']
+            url = server
             end
 
         visit url+link

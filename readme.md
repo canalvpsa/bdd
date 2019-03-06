@@ -4,10 +4,7 @@ Na pasta raiz do projeto execute:
 
 
 ```
-yard config load_plugins true
-
-
-bundle exec rake yard
+yard config load_plugins true & bundle exec rake yard
 ```
 
 
