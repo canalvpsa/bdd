@@ -76,7 +76,7 @@ Cenário: Vincular o próprio produto como produto original
     Então é exibida mensagem "Produto original deve ser diferente do seminovo"
     E a alteração não é salva
 
-@copiarProduto
+@copiar_produto
 Cenário: Copiar produto e opção de seminovo desabilitado
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto sem marcar opção de seminovo
@@ -84,7 +84,7 @@ Cenário: Copiar produto e opção de seminovo desabilitado
     E o preço de custo e preço de venda sugeridos são iguais ao do produto copiado
 
 
-@copiarProduto
+@copiar_produto
 Cenário: Copiar produto e opção de seminovo desabilitado vinculando manualmente produto original
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto sem marcar opção de seminovo
@@ -92,7 +92,7 @@ Cenário: Copiar produto e opção de seminovo desabilitado vinculando manualmen
     Então o produto é cadastrado como seminovo recebendo o vínculo com produto original
 
 
-@copiarProduto
+@copiar_produto
 Cenário: Copiar produto e opção de seminovo habilitado
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto marcando opção de seminovo
