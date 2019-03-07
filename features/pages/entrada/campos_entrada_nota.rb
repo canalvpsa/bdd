@@ -39,4 +39,10 @@ module CamposEntradaNota
     def setarTipoNota(tipoNota)
         find('.select2-results__option',text:tipoNota, exact_text: true).click
     end
+
+    def setarDataEmissao(data)
+      dataEmissao = find('app-vo-data[formcontrolname=dataEmissao]').find('input')
+      dataEmissao.send_keys [:control, 'a'], :backspace
+      dataEmissao.set data
+    end
 end

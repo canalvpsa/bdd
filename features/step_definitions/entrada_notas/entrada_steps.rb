@@ -1,14 +1,47 @@
 include VisaoGeral
 
-Quando('finalizar a entrada') do
-    clicarBotaoFinalizar
-  end
+Dado("que confirma os dados adicionais") do
+  #Salvar os dados adicionais
+  sleep 2
+  clicarBotaoSalvar
+end
 
- Quando("informa custo adicional de {string} nos dados adicionais") do |valorCusto|
-    #Salvar dados adicionais
-    preencherCustoAdicional(valorCusto)
-    clicarBotaoSalvar
- end
+
+Dado("que confirma os dados adicionais e confirma os produtos") do
+  #Salvar nos dados adicionais
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar nos produtos
+  sleep 2
+  clicarBotaoSalvar
+end
+
+
+Dado("que informa custo adicional de {string} nos dados adicionais") do |valorCusto|
+  #Salvar dados adicionais
+  preencherCustoAdicional(valorCusto)
+  clicarBotaoSalvar
+end
+
+
+Quando("confirma os produtos") do
+  #Salvar nos produtos
+  sleep 2
+  clicarBotaoSalvar  
+end
+
+
+Quando("que confirma a visão geral") do
+  #Salvar visão geral
+  sleep 2
+  clicarBotaoSalvar  
+end
+
+
+Quando('finaliza a entrada') do
+  clicarBotaoFinalizar
+  end
 
  Então("ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
     clicarBotaoFinalizar

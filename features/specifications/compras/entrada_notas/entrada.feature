@@ -5,10 +5,11 @@ Funcionalidade: Entrada de nota fiscal no ERP
 
 Contexto: Dado que o usuário inicia uma nova entrada de notas
 
-@tipo_nota
-Esquema do Cenário: Tipos de nota que ficam "não escrituradas"
+@tipo_nota @modelo_nota
+Esquema do Cenário: Entrada de notas manual validando status da escrituração para modelo 1A, 1, 55 e 4
     Dado que o usuário informou todos os dados da entrada e o tipo da nota é "<tipoNota>"
-    Quando finalizar a entrada
+    E que confirma os dados adicionais, adiciona os produtos e confirma a visão geral
+    Quando finaliza a entrada
     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "1010" e série "1" 
     E a nota fiscal é registrada com status "<statusEscrituracao>"
 
@@ -20,19 +21,20 @@ Esquema do Cenário: Tipos de nota que ficam "não escrituradas"
 |    4   |ESCRITURADA_EXTERNO|
 
 
-@tipo_nota @entrada_manual
-Cenário: Entrada de notas com tipo de nota 55 com chave
-    Quando o usuário informar na entrada o tipo de nota "55"
-    E informar chave de acesso
-    E finalizar a entrada
+@tipo_nota @entrada_manual @modelo_nota
+Cenário: Entrada de notas manual validando status da escrituração para modelo 55 e chave de acesso
+    Quando o usuário informar na entrada o tipo de nota "55" com número do documento "562" e série "4" informando chave de acesso
+    E que confirma os dados adicionais, adiciona os produtos e confirma a visão geral
+    E finaliza a entrada
     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "562" e série "4" 
     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
 
-@entrada_XML
-Cenário: Entrada de notas com XML
+@entrada_XML @modelo_nota
+Cenário: Entrada de notas com XML validando status da escrituração
     Quando o usuário preenche os dados iniciais informando um XML
-    E finalizar a entrada
+    E que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral
+    E finaliza a entrada
     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "562" e série "4" 
     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
@@ -40,6 +42,7 @@ Cenário: Entrada de notas com XML
 @entrada_XML
 Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSOSN
     Dado que o usuário preencheu os dados iniciais informando o "<XML>"
+    E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
     Quando validar os dados da nota fiscal de entrada
     Então nenhuma mensagem de divergência de valores deve ser exibida
     E na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado "<XML>"
@@ -59,8 +62,10 @@ Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSO
 @entrada_XML @custo
 Esquema do Cenário: Entrada de notas com XML e validação de custo do produto
     Dado que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao "<tributacao>"
-    Quando confirma os produtos
-    Então ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "22" e série "10" 
+    E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
+    E que confirma a visão geral
+    Quando finaliza a entrada
+    Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "22" e série "10" 
     E a fórmula para geração do custo do produto para a "<tributacao>" será o valor total do item + "<soma_custo>" + "<subtrai_custo>"
     E o custo unitário é a divisão do custo total pela quantidade
 
@@ -68,45 +73,46 @@ Exemplos:
 |tributacao|                     soma_custo                     |  subtrai_custo |
 |   real   |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|-ICMS-PIS-COFINS|
 | presumido|+IPI+ST+frete+seguro+outras_despesas+custo_adicional|      -ICMS     |
-|  simples |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|        -       |
+|  simples |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|                |
 
 
 
 @entrada_XML @custo
 Esquema do Cenário: Entrada de notas com XML e custo adicional
     Dado que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao "<tributacao>"
-    Quando informa custo adicional de "5,00" nos dados adicionais
-    E confirma os produtos
+    E que confirma a conciliação
+    E que informa custo adicional de "5,00" nos dados adicionais
+    Quando confirma os produtos
     Então na visão geral é exibido custo adicional de "5,00"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "22" e série "10" 
-    E o item "<codigo_item>" com quantidade "<quantidade>" e valor total "<valor_total_item>" utilizará a fórmula: "<soma_custo>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
+    E o item de código "<codigo_item>" com quantidade "<qtde>" e valor total "<valor_total_item1>" utilizará a fórmula: "<soma_custo1>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
 
 Exemplos:
-|codigo_item|tributacao|valor_total_item|           soma_custo           |           subtrai_custo          |custo_produto|quantidade|custo_unitario|
-|  2541.001 |   real   |      17,46     |+IPI(0,14)+custo_adicional(3,29)|-ICMS(1,22)-PIS(0,29)-COFINS(1,33)|    18,05    |     2    |     9,03     |
-|  2541.002 |   real   |      9,06      |+IPI(0,07)+custo_adicional(1,71)|-ICMS(0,63)-PIS(0,15)-COFINS(0,69)|     9,37    |     1    |     9,37     |
-|  2541.001 | presumido|      17,46     |+IPI(0,14)+custo_adicional(3,29)|            -ICMS(1,22)           |    19,67    |     2    |     9,84     |
-|  2541.002 | presumido|      9,06      |+IPI(0,07)+custo_adicional(1,71)|            -ICMS(0,63)           |    10,21    |     1    |     10,21    |
-|  2541.001 |  simples |      17,46     |+IPI(0,14)+custo_adicional(3,29)|                 -                |    20,89    |     2    |     10,45    |
-|  2541.002 |  simples |      9,06      |+IPI(0,07)+custo_adicional(1,71)|                 -                |    10,84    |     1    |     10,45    |
+| tributacao | codigo_item | qtde | valor_total_item | soma_custo                       | subtrai_custo                      | custo_produto | custo_unitario |
+| real       | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) | -ICMS(1,22)-PIS(0,29)-COFINS(1,33) | 18,05         | 9,03           |
+| presumido  | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) | -ICMS(1,22)                        | 19,67         | 9,84           |
+| simples    | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) |                                    | 20,89         | 10,45          |
+| real       | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) | -ICMS(0,63)-PIS(0,15)-COFINS(0,69) | 9,37          | 9,37           |
+| presumido  | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) | -ICMS(0,63)                        | 10,21         | 10,21          |
+| simples    | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) |                                    | 10,84         | 10,45          |
 
 
 
 @entrada_manual @custo
 Esquema do Cenário: Entrada de notas manual e custo adicional
     Dado que o usuário preencheu manualmente os dados iniciais da entrada e a entidade é do sistema de tributacao "<tributacao>"
-    Quando informa custo adicional de "5,00" nos dados adicionais
-    E inclui os produtos para compra
+    E que informa custo adicional de "5,00" nos dados adicionais
+    Quando adiciona e confirma os produtos
     Então na visão geral é exibido custo adicional de "5,00"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "1010" e série "1" 
-    E o item "<codigo_item>" com valor total do produto "<valor_total_item>" utilizará a fórmula: "<soma_custo>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
-    E o custo unitário é a divisão do "<custo_produto>" pela quantidade "<quantidade>"
+    E o item "<codigo_item>" com quantidade "<qtde>" e com valor total do produto "<valor_total_item>" utilizará a fórmula: "<soma_custo>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
+    E o custo unitário é a divisão do custo do produto pela quantidade
 
 Exemplos:
-|codigo_item|tributacao|valor_total_item|      soma_custo      |           subtrai_custo          |custo_produto|quantidade|custo_unitario|
-|  2541.001 |   real   |      20,00     |+custo_adicional(3,33)|-ICMS(2,40)-PIS(0,33)-COFINS(1,52)|    19,08    |     2    |     9,54     |
-|  2541.002 |   real   |      10,00     |+custo_adicional(1,67)|-ICMS(1,20)-PIS(0,16)-COFINS(0,76)|     9,55    |     1    |     9,55     |
-|  2541.001 | presumido|      20,00     |+custo_adicional(3,33)|            -ICMS(2,40)           |    20,93    |     2    |     10,47    |
-|  2541.002 | presumido|      10,00     |+custo_adicional(1,67)|           -ICMS(1,20))           |    10,47    |     1    |     10,47    |
-|  2541.001 |  simples |      20,00     |+custo_adicional(3,33)|                 -                |    23,33    |     2    |     11,67    |
-|  2541.002 |  simples |      10,00     |+custo_adicional(1,67)|                 -                |    11,67    |     1    |     11,67    |
+|tributacao|codigo_item|qtde|valor_total_item |      soma_custo        |           subtrai_custo          |custo_produto|custo_unitario |
+|   real   |2541.001   |2   |      20,00      |+custo_adicional(3,33)  |-ICMS(2,40)-PIS(0,33)-COFINS(1,52)|    19,08    |     9,54      |
+| presumido|2541.001   |2   |      20,00      |+custo_adicional(3,33)  |            -ICMS(2,40)           |    20,93    |     10,47     |
+|  simples |2541.001   |2   |      20,00      |+custo_adicional(3,33)  |                                  |    23,33    |     11,67     |
+|   real   |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |-ICMS(1,20)-PIS(0,16)-COFINS(0,76)|     9,55    |     9,55      |
+| presumido|2541.002   |1   |      10,00      |+custo_adicional(1,67)  |           -ICMS(1,20)            |    10,47    |     10,47     |
+|  simples |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |                                  |    11,67    |     11,67     |

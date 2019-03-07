@@ -55,3 +55,52 @@ Cenário: Impactos no ERP da troca nacional efetuado no PDV
     E o custo médio do produto não deve sofrer alteração
     E é gerada pendência de nota fiscal na funcionalidade "entrada mov. própria"
     E nenhum lançamento de contas a pagar ou a receber é realizado
+
+
+@seminovo @cancelamento_seminovo
+Cenário: Cancelamento de compra de seminovo com adiantamento em aberto
+    Dado que foi realizada uma compra de seminovo no PDV
+    E o pagamento foi efetuado com adiantamento
+    E que foi emitida nota fiscal desta compra no ERP
+    E o adiantamento está em aberto
+    E o cancelamento é realizado no PDV
+    Quando o ERP recebe o pedido de cancelamento
+    Então verifica a situação do adiantamento
+    E realiza o cancelamento da NFe
+    E realiza a exclusão dos lançamentos contábeis de compra e de estoque
+    E realiza o cancelamento do adiantamento em aberto
+
+
+@seminovo @cancelamento_seminovo
+Cenário: Cancelamento de compra de seminovo com adiantamento utilizado
+    Dado que foi realizada uma compra de seminovo no PDV
+    E o pagamento foi efetuado com adiantamento
+    E que foi emitida nota fiscal desta compra no ERP
+    E o adiantamento já foi utilizado
+    E o cancelamento é realizado no PDV
+    Quando o ERP recebe o pedido de cancelamento
+    Então verifica a situação do adiantamento
+    E o ERP retorna ao PDV que a venda não pode ser cancelada porque o adiantamento já foi utilizado
+
+
+
+@seminovo @cancelamento_seminovo
+Cenário: Cancelamento de compra de seminovo com pagamento em dinheiro
+    Dado que foi realizada uma compra de seminovo no PDV
+    E o pagamento foi efetuado com dinheiro
+    E que foi emitida nota fiscal desta compra no ERP
+    E o cancelamento é realizado no PDV
+    Quando o ERP recebe o pedido de cancelamento
+    Então nenhuma operação é realizada com relação ao pagamento em dinheiro
+
+
+
+@seminovo @cancelamento_seminovo
+Cenário: Cancelamento de compra de seminovo com NFe emitida e erro no cancelamento
+    Dado que foi realizada uma compra de seminovo no PDV
+    E que foi emitida nota fiscal desta compra no ERP
+    E o cancelamento é realizado no PDV
+    E o ERP recebe o pedido de cancelamento
+    Quando o ERP realiza o cancelamento da NFe
+    E ocorre erro ao realizar cancelamento
+    Então o ERP retorna ao PDV que a venda não pode ser cancelada exibindo a mensagem exibida para cancelamento da NFe

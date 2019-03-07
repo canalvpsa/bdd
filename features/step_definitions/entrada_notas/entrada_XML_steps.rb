@@ -4,40 +4,12 @@ include EntradaXML
 include LinkRotinas
 include VisaoGeral
 
-Quando('o usuário preenche os dados iniciais informando um XML') do
-  efetuarLogin(linkRotina('entrada'))
-  importarXML('42181275552133001303550040000005621722790267.xml')
-  preencherDadosIniciaisXML_entidade('real')
-  
-  #Salvar nos dados iniciais
-  sleep 2
-  clicarBotaoSalvar
-
-  #Salvar conciliação
-  sleep 2
-  clicarBotaoSalvar
-
-  #Salvar dados adicionais
-  clicarBotaoSalvar
-
-  #Salvar nos produtos
-  sleep 2
-  clicarBotaoSalvar
-
-  #Salvar na visão geral
-  clicarBotaoSalvar
-end
-
 Dado("que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao {string}") do |tributacao|
   efetuarLogin(linkRotina('entrada'))
   importarXML('custoProduto.xml')
   preencherDadosIniciaisXML_entidade(tributacao)
-  
-  #Salvar nos dados iniciais
-  sleep 2
-  clicarBotaoSalvar
 
-  #Salvar conciliação
+  #Salvar nos dados iniciais
   sleep 2
   clicarBotaoSalvar
 end
@@ -46,42 +18,75 @@ Dado("que o usuário preencheu os dados iniciais informando um XML") do
   efetuarLogin(linkRotina('entrada'))
   importarXML('CST00_correto.xml')
   preencherDadosIniciaisXML_entidade('real')
+
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
+end
+
+Dado("que confirma a conciliação, confirma os dados adicionais e confirma os produtos") do
+  #Salvar na conciliação
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar nos dados adicionais
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar nos produtos
+  sleep 2
+  clicarBotaoSalvar
+end
+
+Dado("que confirma a conciliação") do
+  #Salvar na conciliação
+  sleep 2
+  clicarBotaoSalvar
+end
+
+
+Quando('o usuário preenche os dados iniciais informando um XML') do
+  efetuarLogin(linkRotina('entrada'))
+  importarXML('42181275552133001303550040000005621722790267.xml')
+  preencherDadosIniciaisXML_entidade('real')
+
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
   
-   #Salvar nos dados iniciais
-   sleep 2
-   clicarBotaoSalvar
-
-   #Salvar conciliação
-   sleep 2
-   clicarBotaoSalvar
 end
 
-Quando("confirma os produtos") do
-    #Salvar nos produtos
-    sleep 2
-    clicarBotaoSalvar  
-end
 
 Dado("que o usuário preencheu os dados iniciais informando o {string}") do |nomeXML|    
   efetuarLogin(linkRotina('entrada'))                           
   importarXML(nomeXML)          
   preencherDadosIniciaisXML_entidade('real')
-  
-   #Salvar nos dados iniciais
-   sleep 2
-   clicarBotaoSalvar       
 
-    #Salvar conciliação
-    sleep 2
-   clicarBotaoSalvar
-
-   #Salvar dados adicionais
-   clicarBotaoSalvar
-
-    #Salvar nos produtos
-    sleep 2
-    clicarBotaoSalvar
+  #Salvar nos dados iniciais
+  sleep 2
+  clicarBotaoSalvar
 end  
+
+Dado("que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral") do
+  #Salvar conciliação
+  sleep 2
+  clicarBotaoSalvar
+  
+  
+  #Salvar nos dados adicionais
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar nos produtos
+  sleep 2
+  clicarBotaoSalvar
+
+  #Salvar visão geral
+  sleep 2
+  clicarBotaoSalvar
+end
+
+
 
                                                                                                                  
 Quando("validar os dados da nota fiscal de entrada") do                                                          
@@ -122,4 +127,4 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
    #Salvar na visão geral
    sleep 2
    clicarBotaoSalvar
-  end
+end

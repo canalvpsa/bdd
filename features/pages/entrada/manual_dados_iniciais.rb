@@ -3,7 +3,7 @@ include CamposEntradaNota
 
 module EntradaManual
 
-    def preencherDadosIniciais_tiposNota(tipo_nota)
+    def preencherDadosIniciais_tiposNota(tipo_nota, nro_documento, serie)
         fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI')
         sleep 3
         apertarEnter(fornecedor)
@@ -11,8 +11,8 @@ module EntradaManual
         abrirEntidades
         setarEntidade('ENTIDADE SÃO PAULO - LUCRO REAL')
       
-        setarNumeroDocumento(1010)
-        setarSerieDocuimento(1)
+        setarNumeroDocumento(nro_documento)
+        setarSerieDocuimento(serie)
       
         abrirPesquisaOperacoes
         operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')

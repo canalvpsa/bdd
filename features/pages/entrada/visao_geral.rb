@@ -4,7 +4,7 @@ module VisaoGeral
 
    def coletarDados()
       totalizadoresNota = find('.row, app-vo-entrada-visao-geral-edicao div', text: 'BC ICMS', match: :first).text
-      puts 'Totalizadores da visão geral:'"\n" + totalizadoresNota
+      #puts 'Totalizadores da visão geral:'"\n" + totalizadoresNota
       totalizadoresNota = totalizadoresNota.tr("\n"," ")
       return totalizadoresNota+"\n\n"
    end
