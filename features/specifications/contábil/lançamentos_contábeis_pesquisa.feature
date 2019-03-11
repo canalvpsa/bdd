@@ -1,6 +1,6 @@
 
 #language: pt
-
+@ERP
 Funcionalidade: ERP - Pesquisa de lançamentos contábeis
 
 @troca_nacional @seminovo

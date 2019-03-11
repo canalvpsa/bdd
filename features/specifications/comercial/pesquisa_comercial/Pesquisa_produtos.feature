@@ -1,5 +1,5 @@
 #language: pt
-
+@ERP
 Funcionalidade: ERP - Pesquisa de produtos
 
 @preço @tabelaPreço

@@ -1,6 +1,6 @@
 #language: pt
 
-@produto
+@ERP @produto
 Funcionalidade: ERP - Cadastro, alteração, cópia e pesquisa de produtos
 
 Cenário: Acesso ao cadastro de produto

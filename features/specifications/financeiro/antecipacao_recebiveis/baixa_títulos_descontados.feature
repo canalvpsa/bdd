@@ -1,6 +1,6 @@
 #language: pt
 
-@baixa_titulos
+@ERP @baixa_titulos
 Funcionalidade: ERP - Baixa de títulos descontados
 
 

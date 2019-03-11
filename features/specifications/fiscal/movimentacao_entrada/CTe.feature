@@ -1,6 +1,6 @@
 #language: pt
 
-@cte
+@ERP @cte
 Funcionalidade: ERP - Escrituração de CTe
 
 

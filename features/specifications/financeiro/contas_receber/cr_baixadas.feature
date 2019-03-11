@@ -1,6 +1,6 @@
 #language: pt
 
-@cr_baixadas
+@ERP @cr_baixadas
 Funcionalidade: ERP - CR baixadas
 
 Esquema do Cenário: Excluir desconto de título ou baixa de desconto de título

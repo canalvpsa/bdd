@@ -1,6 +1,6 @@
 #language: pt
 
- @entrada
+ @ERP @entrada
 Funcionalidade: ERP - Entrada de nota fiscal no ERP
 
 Contexto: Dado que o usuário inicia uma nova entrada de notas

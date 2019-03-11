@@ -1,6 +1,6 @@
 #language: pt
 
-@desconto_titulos
+@ERP @desconto_titulos
 Funcionalidade: ERP - Desconto de títulos
 
 
