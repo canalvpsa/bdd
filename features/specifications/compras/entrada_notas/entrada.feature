@@ -68,6 +68,8 @@ Esquema do Cenário: Entrada de notas com XML e validação de custo do produto
     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "22" e série "10" 
     E a fórmula para geração do custo do produto para a "<tributacao>" será o valor total do item + "<soma_custo>" + "<subtrai_custo>"
     E o custo unitário é a divisão do custo total pela quantidade
+    Mas se o parâmetro de estoque denominado "Impostos creditáveis não são descontados no custo médio" estiver habilitado
+    Então o comportamento para todas as tributações será igual ao "<simples>"
 
 Exemplos:
 |tributacao|                     soma_custo                     |  subtrai_custo |
