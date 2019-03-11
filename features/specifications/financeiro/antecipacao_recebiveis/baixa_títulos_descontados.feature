@@ -1,7 +1,7 @@
 #language: pt
 
 @baixa_titulos
-Funcionalidade: Baixa de títulos descontados
+Funcionalidade: ERP - Baixa de títulos descontados
 
 
 Cenário: Pesquisar títulos descontados para realizar a baixa de títulos descontados

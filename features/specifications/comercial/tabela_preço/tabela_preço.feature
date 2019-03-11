@@ -1,7 +1,7 @@
 #language: pt
 
 @tabela_preço
-Funcionalidade: Cadastro, alteração, exclusão e pesquisa de tabela de preço
+Funcionalidade: ERP - Cadastro, alteração, exclusão e pesquisa de tabela de preço
 
 Esquema do Cenário: Cadastrar tabela de preço com utilizações e tipos de configuração
     Dado que o usuário está cadastrando uma tabela de preço

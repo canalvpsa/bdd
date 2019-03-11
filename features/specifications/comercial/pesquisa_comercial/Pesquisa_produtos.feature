@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Pesquisa de produtos
+Funcionalidade: ERP - Pesquisa de produtos
 
 @preço @tabelaPreço
 Cenário: Validação de preço de venda para uma entidade

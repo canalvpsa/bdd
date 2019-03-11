@@ -1,7 +1,7 @@
 #language: pt
 
 @cte
-Funcionalidade: Escrituração de CTe
+Funcionalidade: ERP - Escrituração de CTe
 
 
 Cenário: Escriturar CTE previamente cadastrado

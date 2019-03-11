@@ -1,7 +1,7 @@
 
 #language: pt
 
-Funcionalidade: Pesquisa de lançamentos contábeis
+Funcionalidade: ERP - Pesquisa de lançamentos contábeis
 
 @troca_nacional @seminovo
 Esquema do Cenário: Lançamentos contábeis de troca nacional ou compra de seminovos

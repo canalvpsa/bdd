@@ -1,7 +1,7 @@
 #language: pt
 
 @produto
-Funcionalidade: Cadastro, alteração, cópia e pesquisa de produtos
+Funcionalidade: ERP - Cadastro, alteração, cópia e pesquisa de produtos
 
 Cenário: Acesso ao cadastro de produto
     Quando o usuário acessa o cadastro de produto

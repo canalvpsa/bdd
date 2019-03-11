@@ -1,7 +1,7 @@
 #language: pt
 
 @cr_baixadas
-Funcionalidade: CR baixadas
+Funcionalidade: ERP - CR baixadas
 
 Esquema do Cenário: Excluir desconto de título ou baixa de desconto de título
 Dado que a conta recebida foi gerada pela antecipação de recebíveis na "<rotina>"

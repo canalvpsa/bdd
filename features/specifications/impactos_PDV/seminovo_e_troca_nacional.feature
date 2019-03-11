@@ -1,7 +1,7 @@
 #language: pt
 
 
-Funcionalidade: Impactos da compra de seminovo e troca nacional no PDV
+Funcionalidade: ERP - Impactos da compra de seminovo e troca nacional no PDV
 
 
 @seminovo @troca_nacional
