@@ -35,3 +35,14 @@ Esquema do Cenário: Lançamento contábil de despesa efetuada no PDV
 |          despesa_debito         |despesa_credito|
 |Conta de DESPESA informada no PDV|     Caixa     |
 
+
+@troca_nacional @seminovo @adiantamento
+Esquema do Cenário: Lançamento contábil de adiantamento gerado em compra do PDV
+    Dado que o usuário efetuou uma compra com pagamento em adiantamento
+    E o PDV foi sincronizado
+    Quando a compra é exibida no ERP
+    Então é realizado lançamento contábil da geração do adiantamento na conta débito "<conta_debito>" e na conta crédito "<conta_credito>" com valor "<valor>"
+    E o documento é do tipo "sinal" e o número do documento é igual ao número da compra
+Exemplos:
+|conta_debito|          conta_credito          |    valor   |
+|    Caixa   |ADIANTAMENTO DE CLIENTES DIVERSOS|valor_compra|
