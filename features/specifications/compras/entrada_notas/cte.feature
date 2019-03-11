@@ -1,7 +1,7 @@
 #language: pt
 
-@cte
-Funcionalidade: CTE na entrada
+@ERP @cte
+Funcionalidade: ERP - CTE na entrada
 
 Contexto: Dado que o usuário inicia uma nova entrada de notas
 

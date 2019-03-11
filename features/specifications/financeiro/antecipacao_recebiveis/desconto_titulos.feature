@@ -1,7 +1,7 @@
 #language: pt
 
-@desconto_titulos
-Funcionalidade: Desconto de títulos
+@ERP @desconto_titulos
+Funcionalidade: ERP - Desconto de títulos
 
 
 Esquema do Cenário: Efetuar desconto de títulos de modalidade contas a receber

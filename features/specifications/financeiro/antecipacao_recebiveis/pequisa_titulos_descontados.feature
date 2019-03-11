@@ -1,7 +1,7 @@
 #language: pt
 
-@desconto_titulos
-Funcionalidade: Pesquisa de títulos descontados
+@ERP @desconto_titulos
+Funcionalidade: ERP - Pesquisa de títulos descontados
 
 
 Cenário: Pesquisar título descontado que possui baixa
