@@ -118,3 +118,18 @@ Exemplos:
 |   real   |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |-ICMS(1,20)-PIS(0,16)-COFINS(0,76)|     9,55    |     9,55      |
 | presumido|2541.002   |1   |      10,00      |+custo_adicional(1,67)  |           -ICMS(1,20)            |    10,47    |     10,47     |
 |  simples |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |                                  |    11,67    |     11,67     |
+
+
+@seminovo @troca_nacional
+Esquema do Cenário: Excluir entrada de notas de seminovo ou troca nacional
+    Dado que no PDV foi efetuada uma compra com o tipo "tipo"
+    E a compra estiver no ERP
+    E que o usuário pesquisou as entrada de notas do período
+    Quando excluir a entrada com o "tipo"
+    Então a entrada não será excluída
+    E será exibida mensagem: "<mensagem>"
+
+Exemplos:
+|tipo          |mensagem                                                          |
+|seminovo      |Não é possível cancelar uma entrada referente à compra de seminovo|
+|troca_nacional|Não é possível cancelar uma entrada referente à troca nacional    |
