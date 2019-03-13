@@ -19,7 +19,7 @@ Cenário: Terceiro sem endereço configurado
     Então os impostos são lançados utilizando a configuração interna da operação (UF da entidade)
 
 
-@seminovo
+@seminovo @custo
 Cenário: Impactos no ERP do seminovo efetuado no PDV
     Dado que o usuário finalizou uma compra de seminovo no ERP
     E o PDV foi sincronizado
@@ -30,6 +30,7 @@ Cenário: Impactos no ERP do seminovo efetuado no PDV
     E o custo médio do produto será calculado com base no valor da entrada
     E é gerada pendência de nota fiscal na funcionalidade "entrada mov. própria"
     E nenhum lançamento de contas a pagar ou a receber é realizado
+    E a compra é exibida na pesquisa de "entrada de notas" destacando o tipo "compra de seminovo"
    
 
 @seminovo @troca_nacional
@@ -52,7 +53,7 @@ Cenário: Compra no PDV pago com adiantamento
 
 
 
-@troca_nacional
+@troca_nacional @custo
 Cenário: Impactos no ERP da troca nacional efetuado no PDV
     Dado que o usuário finalizou uma troca nacional no ERP
     E o PDV foi sincronizado
@@ -63,6 +64,7 @@ Cenário: Impactos no ERP da troca nacional efetuado no PDV
     E o custo médio do produto não deve sofrer alteração
     E é gerada pendência de nota fiscal na funcionalidade "entrada mov. própria"
     E nenhum lançamento de contas a pagar ou a receber é realizado
+    E a compra é exibida na pesquisa de "entrada de notas" destacando o tipo "Troca nacional"
 
 
 @seminovo @troca_nacional @cancelamento_seminovo @cancelamento_troca_nacional
