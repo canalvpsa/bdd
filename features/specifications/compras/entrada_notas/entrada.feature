@@ -43,8 +43,7 @@ Cenário: Entrada de notas com XML validando status da escrituração
 Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSOSN
     Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_produto" e no sistema "codigo_interno"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
-    Quando validar os dados da nota fiscal de entradaC:\Users\varejonline\Documents\GitHub\teste_automatizado_erp\resources\total_produtos.xml
-
+    Quando validar os dados da nota fiscal de entrada
     Então nenhuma mensagem de divergência de valores deve ser exibida
     E na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado "<XML>"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
