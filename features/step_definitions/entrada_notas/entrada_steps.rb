@@ -1,5 +1,10 @@
 include VisaoGeral
 
+Dado("que o parâmetro de custo do ERP está configurado para {int} casas decimais") do |qtde_decimais|
+  parametro_decimais_custo(qtde_decimais)
+end
+
+
 Dado("que confirma os dados adicionais") do
   #Salvar os dados adicionais
   sleep 2
@@ -46,14 +51,14 @@ Quando('finaliza a entrada') do
  Então("ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
     clicarBotaoFinalizar
 
-    mensagemExibida = find('.noty_body', wait: 20).text
+    mensagemExibida = find('.noty_body', wait: 100).text
     puts mensagemExibida
     expect('A entrada '+ numeroDocumento+'/'+serie+' foi efetuada com sucesso.').to include mensagemExibida
   end
 
 
 Então("a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
-    mensagemExibida = find('.noty_body', wait: 20).text
+    mensagemExibida = find('.noty_body', wait: 100).text
     puts mensagemExibida
     expect('A entrada '+ numeroDocumento+'/'+serie+' foi efetuada com sucesso.').to include mensagemExibida
   end
@@ -70,6 +75,13 @@ Então("a entrada é realizada com sucesso exibindo a mensagem com o número do 
 
      #Salvar na visão geral
      clicarBotaoSalvar
+  end
+
+  Então("na visão geral o valor total dos produtos é {string}") do |total_produtos|
+    valida_total_produtos(total_produtos)
+
+    #Salvar na visão geral
+    clicarBotaoSalvar
   end
 
 

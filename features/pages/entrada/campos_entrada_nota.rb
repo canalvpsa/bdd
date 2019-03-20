@@ -45,4 +45,11 @@ module CamposEntradaNota
       dataEmissao.send_keys [:control, 'a'], :backspace
       dataEmissao.set data
     end
+
+
+    def wait_until_load
+        Timeout.timeout(1000) do
+          loop until page.has_no_css?(".block-ui-wrapper-custom")
+        end
+      end
 end

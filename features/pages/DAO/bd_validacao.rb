@@ -14,12 +14,27 @@ module BD_validacao
         return consulta_banco(query)
     end
 
+
     def consulta_ultimaEntrada()
         query = 'select * from (
             select ent.NUMERODOCUMENTO from QA_ESTOQUE_AUT.entrada ent order by ent.id desc)
             where ROWNUM <= 1'
         return consulta_banco(query)
     end
+
+
+    def parametro_decimais_custo(casas_decimais)
+        query = 'UPDATE QA_ESTOQUE_AUT.PARAMETROINTEGER SET VALOR = '+casas_decimais.to_s+'
+                 WHERE ID = (SELECT id FROM QA_ESTOQUE_AUT.PARAMETRO WHERE CHAVE = 5)'
+                 'UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
+        return update_banco(query)
+    end
+
+
+    def data_alteracao_parametro
+        query = 'UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
+   end
+
 
 
     def consulta_custoProduto(codigoInterno)

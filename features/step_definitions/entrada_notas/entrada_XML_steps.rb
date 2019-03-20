@@ -57,9 +57,9 @@ Quando('o usuário preenche os dados iniciais informando um XML') do
 end
 
 
-Dado("que o usuário preencheu os dados iniciais informando o {string}") do |nomeXML|    
+Dado("que o usuário preencheu os dados iniciais informando o {string} conciliando na nota {string} e no sistema {string}") do |nomeXML, conciliar_nota, conciliar_sistema|
   efetuarLogin(linkRotina('entrada'))                           
-  importarXML(nomeXML)          
+  importarXML(nomeXML, conciliar_nota, conciliar_sistema)          
   preencherDadosIniciaisXML_entidade('real')
 
   #Salvar nos dados iniciais
@@ -87,16 +87,17 @@ Dado("que confirma a conciliação, confirma os dados adicionais, confirma os pr
 end
 
 
-
                                                                                                                  
-Quando("validar os dados da nota fiscal de entrada") do                                                          
+Quando("validar os dados da nota fiscal de entrada") do
   expect(page).to have_content('Atenção')       
-end        
+end
 
 
 Então("nenhuma mensagem de divergência de valores deve ser exibida") do
-  expect(page).not_to have_content('Totalizador e somatório dos itens estão com valores divergentes') 
+  wait_until_load
+  expect(page).not_to have_content('.alert alert-danger') 
 end
+
 
 Então("na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado {string}") do |xml|
   

@@ -44,6 +44,13 @@ module VisaoGeral
        end
    end
 
+
+   def valida_total_produtos(total_produtos)
+      @validarTotalizadores = coletarDados
+      validarCampos('total_produto', total_produtos)
+   end
+
+
    def validaCST00_correto
      @validarTotalizadores = coletarDados
       validarCampos('base_icms','8,73')

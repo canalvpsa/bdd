@@ -41,9 +41,10 @@ Cenário: Entrada de notas com XML validando status da escrituração
 
 @entrada_XML
 Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSOSN
-    Dado que o usuário preencheu os dados iniciais informando o "<XML>"
+    Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_produto" e no sistema "codigo_interno"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
-    Quando validar os dados da nota fiscal de entrada
+    Quando validar os dados da nota fiscal de entradaC:\Users\varejonline\Documents\GitHub\teste_automatizado_erp\resources\total_produtos.xml
+
     Então nenhuma mensagem de divergência de valores deve ser exibida
     E na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado "<XML>"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
@@ -122,10 +123,10 @@ Exemplos:
 
 @seminovo @troca_nacional
 Esquema do Cenário: Excluir entrada de notas de seminovo ou troca nacional
-    Dado que no PDV foi efetuada uma compra com o tipo "tipo"
+    Dado que no PDV foi efetuada uma compra com o tipo "<tipo>"
     E a compra estiver no ERP
     E que o usuário pesquisou as entrada de notas do período
-    Quando excluir a entrada com o "tipo"
+    Quando excluir a entrada com o "<tipo>"
     Então a entrada não será excluída
     E será exibida mensagem: "<mensagem>"
 
@@ -133,3 +134,21 @@ Exemplos:
 |tipo          |mensagem                                                          |
 |seminovo      |Não é possível cancelar uma entrada referente à compra de seminovo|
 |troca_nacional|Não é possível cancelar uma entrada referente à troca nacional    |
+
+
+
+
+@entrada_XML @arredondamento
+Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
+    Dado que o parâmetro de custo do ERP está configurado para <casas_decimais> casas decimais
+    E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
+    E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
+    Quando validar os dados da nota fiscal de entrada
+    Então nenhuma mensagem de divergência de valores deve ser exibida
+    E na visão geral o valor total dos produtos é "4.015,66"
+    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
+
+Exemplos:
+|casas_decimais|      XML         |numeroDocumento|serie|
+|       2      |total_produtos.xml|     13154     | 1   |
+|       5      |total_produtos.xml|     13154     | 1   |
