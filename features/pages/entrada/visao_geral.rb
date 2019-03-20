@@ -51,7 +51,7 @@ module VisaoGeral
    end
 
 
-   def validaCST00_correto
+   def validaCST00_1
      @validarTotalizadores = coletarDados
       validarCampos('base_icms','8,73')
       validarCampos('valor_icms','1,05')
@@ -61,7 +61,7 @@ module VisaoGeral
       validarCampos('total_nota','8,80')
    end
 
-   def validaCST00_incorreto
+   def validaCST00_2
       @validarTotalizadores = coletarDados
       validarCampos('base_icms','0,00')
       validarCampos('valor_icms','0,00')
@@ -71,7 +71,7 @@ module VisaoGeral
       validarCampos('total_nota','8,80')
    end
 
-   def validaCST10_correto
+   def validaCST10_1
       @validarTotalizadores = coletarDados
       validarCampos('base_icms','8,73')
       validarCampos('valor_icms','0,61')
@@ -81,7 +81,7 @@ module VisaoGeral
       validarCampos('total_nota','8,91')
    end
 
-   def validaCST10_incorreto
+   def validaCST10_2
       @validarTotalizadores = coletarDados
       validarCampos('base_icms','8,73')
       validarCampos('valor_icms','0,61')

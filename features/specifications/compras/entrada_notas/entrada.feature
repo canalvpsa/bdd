@@ -39,24 +39,29 @@ Cenário: Entrada de notas com XML validando status da escrituração
     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
 
-@entrada_XML
+@entrada_XML @cst
 Esquema do Cenário: Entrada de notas com XML preenchido com determinado CST/CSOSN
     Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_produto" e no sistema "codigo_interno"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
     Quando validar os dados da nota fiscal de entrada
     Então nenhuma mensagem de divergência de valores deve ser exibida
     E na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado "<XML>"
-    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
+    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<num_Doc>" e série "<serie>" 
+
 
     Exemplos:
-|         XML         |numeroDocumento|serie|baseICMS|valorICMS|baseICMSST|valorICMSST|BaseICMSSN|valorICMSSN|totalProduto|totalNota|
-|  CST00_correto.xml  |       17      |  10 |  8,73  |   1,05  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,80  |
-| CST00_incorreto.xml |       17      |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,80  |
-|  CST10_correto.xml  |       8       |  10 |  8,73  |   0,61  |   11,35  |    0,18   |     -    |     -     |    8,73    |   8,91  |
-| CST10_incorreto.xml |       9       |  10 |  8,73  |   0,61  |   0,00   |    0,00   |   0,00   |    0,00   |    8,73    |   8,73  |
-|  CST51_correto.xml  |       6       |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,73  |
-|ICMSSN101_correto.xml|      105      |  2  |  0,00  |   0,00  |   0,00   |    0,00   |   26,52  |    5,04   |    26,52   |  26,52  |
-|ICMSSN202_correto.xml|      101      |  2  |  0,00  |   0,00  |   22,60  |    1,72   |     -    |     -     |    17,79   |  19,50  |
+|      XML      |num_Doc|serie|baseICMS|valorICMS|baseICMSST|valorICMSST|BaseICMSSN|valorICMSSN|totalProduto|totalNota|                                 obs_item                                 |
+|  CST00_1.xml  |   7   |  10 |  8,73  |   1,05  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,80  |                      vBC 8.73 pICMS 12.00 vICMS 1.05                     |
+|  CST00_2.xml  |   17  |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,80  |                      vBC 8.73 pICMS 0.00 vICMS 0.00                      |
+|  CST10_1.xml  |   8   |  10 |  8,73  |   0,61  |   11,35  |    0,18   |     -    |     -     |    8,73    |   8,91  |   vBC 8.73 pICMS 7.00 vICMS 0.61 vBCST 11.35 pICMSST 7.00 vICMSST>0.18   |
+|  CST10_2.xml  |   9   |  10 |  8,73  |   0,61  |   0,00   |    0,00   |   0,00   |    0,00   |    8,73    |   8,73  |   vBC 8.73 pICMS 7.00 vICMS 0.61 vBCST 11.35 pICMSST 0.00 vICMSST 0.00   |
+|  CST51_1.xml  |   6   |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,73  |                      vBC 0.00 pICMS 0.00 vICMS 0.00                      |
+|  CST51_2.xml  |   6   |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,73  |                      vBC 8.73 pICMS 0.00 vICMS 0.00                      |
+|  CST51_3.xml  |   6   |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,73  |                   Não existe as tags vBC, pICMS e vICMS                  |
+|  CST51_4.xml  |   6   |  10 |  0,00  |   0,00  |   0,00   |    0,00   |     -    |     -     |    8,73    |   8,73  |vBC 8.73 pICMS 18.0000 vICMSOp 1.57 pDif 100.0000 vICMSDif 1.57 vICMS 0.00|
+|ICMSSN101_1.xml|  105  |  2  |  0,00  |   0,00  |   0,00   |    0,00   |   26,52  |    5,04   |    26,52   |  26,52  |                      pCredSN 19.00 vCredICMSSN 3.32                      |
+|ICMSSN202_1.xml|  101  |  2  |  0,00  |   0,00  |   22,60  |    1,72   |     -    |     -     |    17,79   |  19,50  |                   BCST 11.09 pICMSST 17.00 vICMSST 0.84                  |
+
 
 
 @entrada_XML @custo
@@ -69,14 +74,13 @@ Esquema do Cenário: Entrada de notas com XML e validação de custo do produto
     E a fórmula para geração do custo do produto para a "<tributacao>" será o valor total do item + "<soma_custo>" + "<subtrai_custo>"
     E o custo unitário é a divisão do custo total pela quantidade
     Mas se o parâmetro de estoque denominado "Impostos creditáveis não são descontados no custo médio" estiver habilitado
-    Então o comportamento para todas as tributações será igual ao "<simples>"
+    Então o comportamento para todas as tributações será igual ao "simples"
 
 Exemplos:
 |tributacao|                     soma_custo                     |  subtrai_custo |
 |   real   |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|-ICMS-PIS-COFINS|
 | presumido|+IPI+ST+frete+seguro+outras_despesas+custo_adicional|      -ICMS     |
-|  simples |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|                |
-
+|  simples |+IPI+ST+frete+seguro+outras_despesas+custo_adicional|        -       |
 
 
 @entrada_XML @custo
@@ -87,16 +91,17 @@ Esquema do Cenário: Entrada de notas com XML e custo adicional
     Quando confirma os produtos
     Então na visão geral é exibido custo adicional de "5,00"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "22" e série "10" 
-    E o item de código "<codigo_item>" com quantidade "<qtde>" e valor total "<valor_total_item1>" utilizará a fórmula: "<soma_custo1>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
+    E o item de código "<codigo_item>" com quantidade "<qtde>" e valor total "<valor_total_item>" utilizará a fórmula: "<soma_custo>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
+    E o custo unitário é a divisão do custo do produto pela quantidade "<custo_unitario>"
 
 Exemplos:
-| tributacao | codigo_item | qtde | valor_total_item | soma_custo                       | subtrai_custo                      | custo_produto | custo_unitario |
-| real       | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) | -ICMS(1,22)-PIS(0,29)-COFINS(1,33) | 18,05         | 9,03           |
-| presumido  | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) | -ICMS(1,22)                        | 19,67         | 9,84           |
-| simples    | 2541.001    | 2    | 17,46            | +IPI(0,14)+custo_adicional(3,29) |                                    | 20,89         | 10,45          |
-| real       | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) | -ICMS(0,63)-PIS(0,15)-COFINS(0,69) | 9,37          | 9,37           |
-| presumido  | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) | -ICMS(0,63)                        | 10,21         | 10,21          |
-| simples    | 2541.002    | 1    | 9,06             | +IPI(0,07)+custo_adicional(1,71) |                                    | 10,84         | 10,45          |
+|tributacao|codigo_item|qtde|valor_total_item|           soma_custo           |           subtrai_custo          |custo_produto|custo_unitario|
+|   real   |  2541.001 |  2 |      17,46     |+IPI(0,14)+custo_adicional(3,29)|-ICMS(1,22)-PIS(0,29)-COFINS(1,33)|    18,05    |     9,03     |
+| presumido|  2541.001 |  2 |      17,46     |+IPI(0,14)+custo_adicional(3,29)|            -ICMS(1,22)           |    19,67    |     9,84     |
+|  simples |  2541.001 |  2 |      17,46     |+IPI(0,14)+custo_adicional(3,29)|                 -                |    20,89    |     10,45    |
+|   real   |  2541.002 |  1 |      9,06      |+IPI(0,07)+custo_adicional(1,71)|-ICMS(0,63)-PIS(0,15)-COFINS(0,69)|     9,37    |     9,37     |
+| presumido|  2541.002 |  1 |      9,06      |+IPI(0,07)+custo_adicional(1,71)|            -ICMS(0,63)           |    10,21    |     10,21    |
+|  simples |  2541.002 |  1 |      9,06      |+IPI(0,07)+custo_adicional(1,71)|                 -                |    10,84    |     10,45    |
 
 
 
@@ -108,16 +113,16 @@ Esquema do Cenário: Entrada de notas manual e custo adicional
     Então na visão geral é exibido custo adicional de "5,00"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "1010" e série "1" 
     E o item "<codigo_item>" com quantidade "<qtde>" e com valor total do produto "<valor_total_item>" utilizará a fórmula: "<soma_custo>" + "<subtrai_custo>" para chegar ao custo final "<custo_produto>" 
-    E o custo unitário é a divisão do custo do produto pela quantidade
+    E o custo unitário é a divisão do custo do produto pela quantidade "<custo_unitario>"
 
 Exemplos:
-|tributacao|codigo_item|qtde|valor_total_item |      soma_custo        |           subtrai_custo          |custo_produto|custo_unitario |
-|   real   |2541.001   |2   |      20,00      |+custo_adicional(3,33)  |-ICMS(2,40)-PIS(0,33)-COFINS(1,52)|    19,08    |     9,54      |
-| presumido|2541.001   |2   |      20,00      |+custo_adicional(3,33)  |            -ICMS(2,40)           |    20,93    |     10,47     |
-|  simples |2541.001   |2   |      20,00      |+custo_adicional(3,33)  |                                  |    23,33    |     11,67     |
-|   real   |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |-ICMS(1,20)-PIS(0,16)-COFINS(0,76)|     9,55    |     9,55      |
-| presumido|2541.002   |1   |      10,00      |+custo_adicional(1,67)  |           -ICMS(1,20)            |    10,47    |     10,47     |
-|  simples |2541.002   |1   |      10,00      |+custo_adicional(1,67)  |                                  |    11,67    |     11,67     |
+|tributacao|codigo_item|qtde|valor_total_item|      soma_custo      |           subtrai_custo          |custo_produto|custo_unitario|
+|   real   |  2541.001 |  2 |      20,00     |+custo_adicional(3,33)|-ICMS(2,40)-PIS(0,33)-COFINS(1,52)|    19,08    |     9,54     |
+| presumido|  2541.001 |  2 |      20,00     |+custo_adicional(3,33)|            -ICMS(2,40)           |    20,93    |     10,47    |
+|  simples |  2541.001 |  2 |      20,00     |+custo_adicional(3,33)|                 -                |    23,33    |     11,67    |
+|   real   |  2541.002 |  1 |      10,00     |+custo_adicional(1,67)|-ICMS(1,20)-PIS(0,16)-COFINS(0,76)|     9,55    |     9,55     |
+| presumido|  2541.002 |  1 |      10,00     |+custo_adicional(1,67)|            -ICMS(1,20)           |    10,47    |     10,47    |
+|  simples |  2541.002 |  1 |      10,00     |+custo_adicional(1,67)|                 -                |    11,67    |     11,67    |
 
 
 @seminovo @troca_nacional
@@ -130,9 +135,9 @@ Esquema do Cenário: Excluir entrada de notas de seminovo ou troca nacional
     E será exibida mensagem: "<mensagem>"
 
 Exemplos:
-|tipo          |mensagem                                                          |
-|seminovo      |Não é possível cancelar uma entrada referente à compra de seminovo|
-|troca_nacional|Não é possível cancelar uma entrada referente à troca nacional    |
+|     tipo     |                             mensagem                             |
+|   seminovo   |Não é possível cancelar uma entrada referente à compra de seminovo|
+|troca_nacional|  Não é possível cancelar uma entrada referente à troca nacional  |
 
 
 
@@ -148,6 +153,7 @@ Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|casas_decimais|      XML         |numeroDocumento|serie|
-|       2      |total_produtos.xml|     13154     | 1   |
-|       5      |total_produtos.xml|     13154     | 1   |
+|casas_decimais|        XML       |numeroDocumento|serie|
+|       2      |total_produtos.xml|     13154     |  1  |
+|       5      |total_produtos.xml|     13154     |  1  |
+ 

@@ -103,22 +103,25 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   
   case xml
 
-  when 'CST00_correto.xml'
-    validaCST00_correto
+  when 'CST00_1.xml'
+    validaCST00_1
 
-  when 'CST00_incorreto.xml'
-    validaCST00_incorreto
+  when 'CST00_2.xml'
+    validaCST00_2
 
-  when 'CST10_correto.xml'
-    validaCST10_correto
+  when 'CST10_1.xml'
+    validaCST10_1
 
-  when 'CST10_incorreto.xml'
-    validaCST10_incorreto
+  when 'CST10_2.xml'
+    validaCST10_2
 
-  when 'CST51_correto.xml', 'CST51_incorreto.xml'
+  when 'CST51_1.xml', 'CST51_2.xml', 'CST51_3.xml', 'CST51_4.xml'
     validaCST51
 
-  when 'ICMSSN202_correto.xml'
+  when 'ICMSSN101_1.xml'
+    validaCSOSN101
+
+  when 'ICMSSN202_1.xml'
     validaCSOSN202
     
   else
