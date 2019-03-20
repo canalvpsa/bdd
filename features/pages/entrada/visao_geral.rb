@@ -101,6 +101,16 @@ module VisaoGeral
       validarCampos('total_nota','8,73')
    end
 
+   def validaCST51_diferimento
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','8.73')
+      validarCampos('valor_icms','0.79')
+      validarCampos('base_icms_st','0.00')
+      validarCampos('valor_icms_st','0.00')
+      validarCampos('total_produto','8,73')
+      validarCampos('total_nota','8,73')
+   end
+
    def validaCSOSN101
       @validarTotalizadores = coletarDados
       validarCampos('base_icms','0,00')
