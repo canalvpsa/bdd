@@ -3,13 +3,14 @@
 @ERP @produto
 Funcionalidade: ERP - Cadastro, alteração, cópia e pesquisa de produtos
 
-Cenário: Acesso ao cadastro de produto
+@produto_original
+Cenário: Cadastro de produto com produto original informado
     Quando o usuário acessa o cadastro de produto
     Então nos dados do produto é possível vincular o produto original
     E nos itens de grade também é possível realizar o vínculo através das opções dos itens
 
-
-Cenário: Cadastrar produto novo simples
+@cadastrar_produto @produto_original
+Cenário: Cadastrar produto novo simples sem produto original informado
     Dado que o usuário está no cadastro do produto
     Quando realiza o preenchimento dos campos
     E não informa um produto original
@@ -17,7 +18,8 @@ Cenário: Cadastrar produto novo simples
     E o produto é cadastrado como novo
 
 
-Cenário: Cadastrar produto novo com grade
+@cadastrar_produto @produto_original
+Cenário: Cadastrar produto novo com grade sem produto original informado
     Dado que o usuário está no cadastro do produto
     Quando realiza o preenchimento dos campos
     E informa grade para o produto
@@ -26,14 +28,16 @@ Cenário: Cadastrar produto novo com grade
     E os produtos são cadastrados como novos
 
 
-Cenário: Cadastrar produto seminovo simples
+@cadastrar_produto @produto_original
+Cenário: Cadastrar produto seminovo simples com produto original informado
     Dado que o usuário está no cadastro do produto
     Quando realiza o preenchimento dos campos
     E informa um produto original
     Então o produto é cadastrado como seminovo recebendo o vínculo com produto original
 
 
-Cenário: Cadastrar produto seminovo com grade
+@cadastrar_produto @produto_original
+Cenário: Cadastrar produto seminovo com grade com produto original informado
     Dado que o usuário está no cadastro do produto
     Quando realiza o preenchimento dos campos
     E informa grade para o produto
@@ -41,6 +45,7 @@ Cenário: Cadastrar produto seminovo com grade
     Então os produtos são cadastrados como seminovos recebendo o vínculo com produto original
 
 
+@alterar_produto @produto_original
 Cenário: Alterar produto simples vinculando produto original
     Dado que o usuário está na alteração do produto
     E que o produto não possui vínculo com produto original
@@ -48,6 +53,7 @@ Cenário: Alterar produto simples vinculando produto original
     Então o produto é salvo como seminovo recebendo o vínculo com produto original
 
 
+@alterar_produto @produto_original
 Cenário: Alterar produto vinculando produto original de item de grade
     Dado que o usuário está na alteração do produto
     E o produto possui itens de grade
@@ -56,6 +62,7 @@ Cenário: Alterar produto vinculando produto original de item de grade
     Então o produto item de grade é salvo como seminovo recebendo o vínculo com produto original
 
 
+@produto_original @produto_original
 Cenário: Vincular produto original em produto simples pelas opções do cadastro do produto
     Dado que o usuário está na pesquisa do cadastro de produto
     E que o produto não possui vínculo com produto original
@@ -63,6 +70,7 @@ Cenário: Vincular produto original em produto simples pelas opções do cadastr
     Então o produto é salvo como seminovo recebendo o vínculo com produto original
 
 
+@produto_original @produto_original
 Cenário: Vincular produto original em item de grade pelas opções do cadastro do produto
     Dado que o usuário está na pesquisa do cadastro de produto
     E o produto é um item de grade
@@ -71,12 +79,14 @@ Cenário: Vincular produto original em item de grade pelas opções do cadastro 
     Então o produto item de grade é salvo como seminovo recebendo o vínculo com produto original
 
 
+@produto_original
 Cenário: Vincular o próprio produto como produto original
     Quando o usuário vincula o próprio produto como produto original
     Então é exibida mensagem "Produto original deve ser diferente do seminovo"
     E a alteração não é salva
 
-@copiar_produto
+
+@copiar_produto @produto_original
 Cenário: Copiar produto e opção de seminovo desabilitado
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto sem marcar opção de seminovo
@@ -84,7 +94,7 @@ Cenário: Copiar produto e opção de seminovo desabilitado
     E o preço de custo e preço de venda sugeridos são iguais ao do produto copiado
 
 
-@copiar_produto
+@copiar_produto @produto_original
 Cenário: Copiar produto e opção de seminovo desabilitado vinculando manualmente produto original
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto sem marcar opção de seminovo
@@ -92,7 +102,7 @@ Cenário: Copiar produto e opção de seminovo desabilitado vinculando manualmen
     Então o produto é cadastrado como seminovo recebendo o vínculo com produto original
 
 
-@copiar_produto
+@copiar_produto @produto_original
 Cenário: Copiar produto e opção de seminovo habilitado
     Dado que o usuário está na pesquisa do cadastro de produto
     Quando copia um produto marcando opção de seminovo
@@ -100,6 +110,7 @@ Cenário: Copiar produto e opção de seminovo habilitado
     E o preço de custo e preço de venda ficam zerados necessitando de preenchimento manual
 
 
+@alterar_produto @produto_original
 Cenário: Alterar produto simples removendo vínculo do produto original
     Dado que o usuário está na alteração do produto
     E que o produto possui vínculo com produto original
@@ -107,6 +118,7 @@ Cenário: Alterar produto simples removendo vínculo do produto original
     Então o produto é salvo como novo removendo o vínculo com produto original
 
 
+@alterar_produto @produto_original
 Cenário: Alterar produto removendo produto original de item de grade
     Dado que o usuário está na alteração do produto
     E o produto possui itens de grade
@@ -115,6 +127,7 @@ Cenário: Alterar produto removendo produto original de item de grade
     Então o produto item de grade é salvo como novo removendo o vínculo com produto original
 
 
+@alterar_produto @produto_original
 Cenário: Remover produto original de produto simples pelas opções do cadastro do produto
     Dado que o usuário está na pesquisa do cadastro de produto
     E que o produto possui vínculo com produto original
@@ -122,6 +135,7 @@ Cenário: Remover produto original de produto simples pelas opções do cadastro
     Então o produto é salvo como novo removendo o vínculo com produto original
 
 
+@alterar_produto @produto_original
 Cenário: Remover produto original em item de grade pelas opções do cadastro do produto
     Dado que o usuário está na pesquisa do cadastro de produto
     E o produto é um item de grade
