@@ -24,6 +24,23 @@ Então todos os campos devem ser preenchidos manualmente
 E deve ser possível gerar conta a pagar
 
 
+Cenário: Cadastrar CTE com base de ICMS menor que valor total
+Dado que o usuário está criando um CTE avulso
+Quando informa a base de ICMS menor que o valor total do CTe
+E salva a escrituração
+Então a escrituração é realizada com sucesso
+
+
+Cenário: Cadastrar CTE com base de ICMS maior que valor total
+Dado que o usuário está criando um CTE avulso
+Quando informa a base de ICMS maior que o valor total do CTe
+E salva a escrituração
+Então será exibida a mensagem:
+"""
+A base de cálculo de ICMS não pode ser maior que o valor total.
+"""
+
+
 Cenário: Cancelar escrituração de CTE
 Quando cancelar a escrituracao do CTE
 Então os lançamentos contábeis dos impostos são mantidos
@@ -62,7 +79,7 @@ E será gerada novamente o lançamento contábil da provisão e dos impostos
 Cenário: Alterar escrituração de CTE alterando provisão que já está baixada
 Quando alterar uma escrituração que já possui provisão baixada
 E marcar para gerar provisão
-Então será exibida mensagem:
+Então será exibida a mensagem:
 """
 Não é possível excluir a provisão pois ela possui parcelas com baixa. 
 """
