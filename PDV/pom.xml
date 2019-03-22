@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.vpsa</groupId>
+	<artifactId>PDVautomatizado</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TestePDV</name>
+	<description>Projeto de teste automatizado para o PDV</description>
+	<properties>
+		<sikuli.version>1.1.0-SNAPSHOT</sikuli.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
+		<junit.platform.version>1.0.0-M4</junit.platform.version>
+	</properties>
+	<dependencies>
+		<!-- Dependências de Teste -->
+		<dependency>
+			<groupId>org.sikuli</groupId>
+			<artifactId>sikuli-api</artifactId>
+			<version>1.0.2</version>
+			<systemPath>${project.basedir}\sikuli-ide\sikuli-script.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-html</artifactId>
+			<version>0.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.35.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-junit47</artifactId>
+			<version>2.18.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.safaribooks</groupId>
+			<artifactId>jenkins-helper-java</artifactId>
+			<version>1.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-engine</artifactId>
+			<version>1.0.0-M4</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<finalName>PDVautomatizado</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<argLine>-Xmx1024m</argLine>
+					<rerunFailingTestsCount>0</rerunFailingTestsCount>
+					<skipAfterFailureCount>0</skipAfterFailureCount>
+					<testSourceDirectory>${basedir}/src/test/resources</testSourceDirectory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.19</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<followSymLinks>false</followSymLinks>
+					<filesets>
+						<fileset>
+							<directory>C:\VPSA\PDV\Screenshots</directory>
+							<directory>${project.basedir}\screenshots</directory>
+							<directory>${project.basedir}\config</directory>
+							<directory>${project.basedir}\log</directory>
+							<directory>${project.basedir}\md5</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,6 @@
+descricaoBase;descricaoGrade;codigoInternoBase;codigoInternoGrade;grade;minMaxPorEntidade;unidadeEquivalente
+API - Produto simples;;API001;;false;false;false
+API - Produto estoque min max entidade;;API001;;false;true;false
+API - Produto base de grade;API - grade AZUL P;API001;API002;false;false;false
+API - Produto base de grade min max entidade;API - grade AZUL P;API001;API002;false;true;false
+API - Produto unidade equivalente;;API001;;false;false;true
