@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Pagamento
+Funcionalidade: Venda-Mobile - Pagamento
 
 Dado que o usuário gerou uma venda
 

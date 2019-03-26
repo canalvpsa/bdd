@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Gerar venda
+Funcionalidade: Venda-Mobile - Gerar venda
 
 Contexto: Dado que o usuário está em atendimento
 

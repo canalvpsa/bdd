@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Carrinho
+Funcionalidade: Venda-Mobile Carrinho
 
 Cenário: Carrinho não disponível para atendimento não iniciado
     Dado que o usuário não está em atendimento
@@ -22,7 +22,7 @@ Cenário: Carregar orçamento cadastrado
     Então os dados ?????
 
 
-Cenário: Incluir item para venda
+Esquema do Cenário: Incluir item para venda
     Dado que o usuário está no carrinho
     Quando acessa a inclusão de itens
     Então deve ser possível realizar a inclusão de item das seguinte maneiras: "<incluirItem>" para item do tipo "<tipoItem>"
@@ -45,7 +45,7 @@ Cenário: Incluir item para venda bipando código de barras
     E o produto não será inserido na venda
 
 
-Cenário: Incluir item para venda informando código do produto
+Esquema do Cenário: Incluir item para venda informando código do produto
     Dado que o usuário está no carrinho
     Quando acessa a inclusão de itens
     E digita o "<codigo>"
@@ -80,7 +80,7 @@ Cenário: Alterar quantidade dos itens no carrinho
     E o desconto total é recalculado
 
 
-Cenário: Conceder desconto unitário
+Esquema do Cenário: Conceder desconto unitário
     Dado que o usuário está no carrinho
     Quando incluir desconto para uma item
     Então deve ser possível informar o desconto do "<tipoDesconto>"

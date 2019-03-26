@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Minhas vendas
+Funcionalidade: Venda-Mobile - Minhas vendas
 
 
 Cenário: Minhas vendas para vendedor com perfil de gerente

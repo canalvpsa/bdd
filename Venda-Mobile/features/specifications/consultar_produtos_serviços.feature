@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Consultar produtos e serviços
+Funcionalidade: Venda-Mobile - Consultar produtos e serviços
 
 
 Cenário: Bipar código de barras na consulta de produtos

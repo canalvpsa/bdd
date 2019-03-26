@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Realizar login no aplicativo
+Funcionalidade: Venda-Mobile - Realizar login no aplicativo
 
 Contexto: Dado que o usuário inicia o aplicativo
 

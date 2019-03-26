@@ -1,6 +1,6 @@
 #language: pt
 
-Funcionalidade: Atendimento
+Funcionalidade: Venda-Mobile - Atendimento
 
 @atendimento
 Cenário: Iniciar atendimento

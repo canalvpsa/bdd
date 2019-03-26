@@ -8,3 +8,16 @@ Quando: Ação executada pelo usuário.
 Então: Resultado da ação executada.
 E: Complemento da instrução informada na linha anterior.
 Mas: Forma negativa do "então".
+
+
+# Como gerar documentação a partir de Features:
+
+Na pasta raiz do projeto execute:
+
+
+```
+yard config load_plugins true & bundle exec rake yard
+```
+
+
+Após concluído, abra o arquivo index.html na pasta doc.

@@ -1,7 +1,7 @@
 #language: pt
 
 @caixa
-Funcionalidade: Caixa
+Funcionalidade: Venda-Mobile - Caixa
 
 
 Cenário: Operações de caixa para usuário com permissão para movimentar caixa
