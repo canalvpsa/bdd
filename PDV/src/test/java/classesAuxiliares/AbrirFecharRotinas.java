@@ -46,7 +46,7 @@ public class AbrirFecharRotinas {
 	private Pattern m_funcoes = new Pattern(getImage("imgMenu/funcoes.png")).similar(0.98f);
 
 	// ImgVendas
-	private Pattern m_vendas = new Pattern(getImage("imgMenu/vendas.png")).similar(0.98f);
+	private Pattern m_movimentacoes = new Pattern(getImage("imgMenu/movimentacoes.png")).similar(0.98f);
 
 	// ImgBaixaParcela
 	private Pattern m_baixaParcela = new Pattern(getImage("imgMenu/baixaParcela.png")).similar(0.98f);
@@ -114,9 +114,9 @@ public class AbrirFecharRotinas {
 				s.find(m_baixaParcela).click(m_baixaParcela);
 				break;
 
-			case "vendas":
+			case "movimentacoes":
 				verificaPDVemAtendimento();
-				s.find(m_vendas).click(m_vendas);
+				s.find(m_movimentacoes).click(m_movimentacoes);
 				break;
 			}
 		}

@@ -72,7 +72,7 @@ public class Venda_cancelamento {
 
 	@Quando("^pesquisa pela venda efetuada$")
 	public void pesquisa_pela_venda_efetuada() throws Throwable {
-		cadastro.abrirRotina("vendas");
+		cadastro.abrirRotina("movimentacoes");
 		relVendas.pesquisarVenda();
 	}
 
