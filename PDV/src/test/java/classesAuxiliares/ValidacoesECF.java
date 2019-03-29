@@ -56,7 +56,7 @@ public class ValidacoesECF {
 			s.type(Key.ENTER);
 
 			s.wait(m_autorizacaoGerente, 200);
-			s.type("usuario");
+			s.type("cxsp");
 			s.type(Key.TAB);
 			s.type("varejonline");
 			s.type(Key.ENTER);

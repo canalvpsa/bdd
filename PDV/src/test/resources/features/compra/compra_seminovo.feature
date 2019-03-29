@@ -20,7 +20,7 @@ Esquema do Cenário: Pesquisa de itens para inclusão na compra
     |      tag     |
 
 
-Cenário: Inclusão de itens na compra
+Esquema do Cenário: Inclusão de itens na compra
     Dado que o usuário realizou a pesquisa de produtos
     E o usuário pesquisar pelo produto seminovo pesquisando por "<pesquisa>"
     E são listados todos os produtos seminovos relacionados ao produto informado
@@ -30,6 +30,13 @@ Cenário: Inclusão de itens na compra
     Então serão listadas tabelas de preço
     E o usuário deve escolher a tabela de preço que será aplicada
 
+    |   pesquisa   |
+    | codigo_barras|
+    | nome_produto |
+    |codigo_interno|
+    |codigo_sistema|
+    |      tag     |
+    
 
 Esquema do Cenário: Pagamento de compra
     Dado que o usuário já inseriu os itens para compra
@@ -69,6 +76,6 @@ Cenário: Finalização com pagamento em adiantamento
     Dado que o usuário escolheu pagamento adiantamento
     Quando finalizar a compra
     Então será exibida mensagem de sucesso
-    E no relatório de fechamento de caixa é registrado um "adiantamento gerado"
-    E na conferência de caixa o valor é somado na forma de pagamento "dinheiro"
+    E no relatório de fechamento de caixa não é registrado um "adiantamento gerado"
+    E na conferência de caixa o valor não é somado na forma de pagamento "dinheiro"
     E o terceiro recebe um saldo a utilizar de adiantamento

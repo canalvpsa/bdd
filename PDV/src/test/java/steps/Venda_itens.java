@@ -87,6 +87,7 @@ public class Venda_itens {
 	public void será_exibida_mensagem_de_saldo_insuficiente() throws Throwable {
 		
 		if(BDconfiguracao.getConfiguracao("PDV_PERMITE_ESTOQUE_NEGATIVO").equals("N")){
+			s.wait(m_produtoSemSaldo, 2.0);
 			if (s.exists(m_produtoSemSaldo) != null) {
 				s.type(Key.ENTER);
 				s.type(Key.ESC);
