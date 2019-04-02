@@ -115,6 +115,15 @@ Então("na visão geral da entrada com os impostos devem estar preenchidos de ac
   when 'CST10_zerado_com_BCST.xml'
     validaCST10_2
 
+  when 'CST30_desoneracao.xml'
+    validaCST30_deson
+
+  when 'CST40_deson_n_subtrai.xml'
+    validaCST40_deson_n_subtrai
+  
+  when 'CST40_deson_subtrai.xml'
+    validaCST40_deson_subtrai
+
   when 'CST51_zerado.xml', 'CST51_zerado_comBC.xml', 'CST51_sem_tags.xml', 'CST51_dif_sem_vICMS.xml'
     validaCST51
 

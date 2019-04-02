@@ -98,6 +98,39 @@ module VisaoGeral
       validarCampos('total_nota','8,73')
    end
 
+   def validaCST30_deson
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','13,68')
+      validarCampos('valor_icms_st','1,41')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','9,09')
+   end
+
+   def validaCST40_deson_n_subtrai
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','0,00')
+      validarCampos('valor_icms_st','0,00')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','8,73')
+   end
+
+   def validaCST40_deson_subtrai
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','0,00')
+      validarCampos('valor_icms_st','0,00')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','7,68')
+   end
+
    def validaCST51
       @validarTotalizadores = coletarDados
       validarCampos('base_icms','0,00')

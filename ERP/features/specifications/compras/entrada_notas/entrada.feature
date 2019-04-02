@@ -54,6 +54,9 @@ Esquema do Cenário: Entrada de notas com XML e validação de ICMS,ICMS ST e IP
 |  CST00_zerado_comBC.xml |   17  |  10 | 0,00| 0,00|  0,00 |  0,00 |8,73|0,07|   -   |   -   |  8,73  | 8,80 |                      vBC 8.73 pICMS 0.00 vICMS 0.00                      |
 |   CST10_com_ICMSST.xml  |   8   |  10 | 8,73| 0,61| 11,35 |  0,18 |0,00|0,00|   -   |   -   |  8,73  | 8,91 |   vBC 8.73 pICMS 7.00 vICMS 0.61 vBCST 11.35 pICMSST 7.00 vICMSST 0.18   |
 |CST10_zerado_com_BCST.xml|   9   |  10 | 8,73| 0,61|  0,00 |  0,00 |0,00|0,00|  0,00 |  0,00 |  8,73  | 8,73 |   vBC 8.73 pICMS 7.00 vICMS 0.61 vBCST 11.35 pICMSST 0.00 vICMSST 0.00   |
+|  CST30_desoneracao.xml  |   6   |  10 | 0,00| 0,00| 13,68 |  1,41 |0,00|0,00|  0,00 |  0,00 |  8,73  | 9,09 |                     vBCST 13.68 pICMSST vICMSST 1.41                     |
+|CST40_deson_n_subtrai.xml|   6   |  10 | 0,00| 0,00| 13,68 |  1,41 |0,00|0,00|  0,00 |  0,00 |  8,73  | 8,73 |                              vICMSDeson 1.05                             |
+| CST40_deson_subtrai.xml |   6   |  10 | 0,00| 0,00| 13,68 |  1,41 |0,00|0,00|  0,00 |  0,00 |  8,73  | 7,68 |                              vICMSDeson 1.05                             |
 |     CST51_zerado.xml    |   6   |  10 | 0,00| 0,00|  0,00 |  0,00 |0,00|0,00|   -   |   -   |  8,73  | 8,73 |                      vBC 0.00 pICMS 0.00 vICMS 0.00                      |
 |  CST51_zerado_comBC.xml |   6   |  10 | 0,00| 0,00|  0,00 |  0,00 |0,00|0,00|   -   |   -   |  8,73  | 8,73 |                      vBC 8.73 pICMS 0.00 vICMS 0.00                      |
 |    CST51_sem_tags.xml   |   6   |  10 | 0,00| 0,00|  0,00 |  0,00 |0,00|0,00|   -   |   -   |  8,73  | 8,73 |                   Não existe as tags vBC, pICMS e vICMS                  |
