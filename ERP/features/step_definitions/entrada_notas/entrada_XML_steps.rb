@@ -6,7 +6,7 @@ include VisaoGeral
 
 Dado("que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao {string}") do |tributacao|
   efetuarLogin(linkRotina('entrada'))
-  importarXML('custoProduto.xml')
+  importarXML('custoProduto.xml', 'codigo_produto', 'codigo_interno')
   preencherDadosIniciaisXML_entidade(tributacao)
 
   #Salvar nos dados iniciais
@@ -16,7 +16,7 @@ end
 
 Dado("que o usuário preencheu os dados iniciais informando um XML") do
   efetuarLogin(linkRotina('entrada'))
-  importarXML('CST00_correto.xml')
+  importarXML('CST00_correto.xml', 'codigo_produto', 'codigo_interno')
   preencherDadosIniciaisXML_entidade('real')
 
   #Salvar nos dados iniciais
@@ -47,7 +47,7 @@ end
 
 Quando('o usuário preenche os dados iniciais informando um XML') do
   efetuarLogin(linkRotina('entrada'))
-  importarXML('42181275552133001303550040000005621722790267.xml')
+  importarXML('42181275552133001303550040000005621722790267.xml', 'codigo_produto', 'codigo_interno')
   preencherDadosIniciaisXML_entidade('real')
 
   #Salvar nos dados iniciais
@@ -66,6 +66,7 @@ Dado("que o usuário preencheu os dados iniciais informando o {string} concilian
   sleep 2
   clicarBotaoSalvar
 end  
+
 
 Dado("que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral") do
   #Salvar conciliação

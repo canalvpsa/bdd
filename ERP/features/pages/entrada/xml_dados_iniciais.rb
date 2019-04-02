@@ -12,11 +12,9 @@ module EntradaXML
         caminho = Dir.pwd + '/resources/'+nomeXML+'{ENTER}'
         wsh.SendKeys(caminho.tr!('/', '\\'))
         sleep 2
-        conciliacao_nota = concilia_nota(concilia_nota)
-        conciliacao_nota.find('.checkmark').click
         
-        conciliacao_sistema = concilia_sistema(concilia_sistema)
-        conciliacao_sistema.find('.checkmark').click
+        concilia_nota(concilia_nota)
+        concilia_sistema(concilia_sistema)
 
         find('.modal-footer').find('button', text: 'Importar').click
     end
