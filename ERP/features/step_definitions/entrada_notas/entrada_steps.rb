@@ -79,7 +79,7 @@ Então("a entrada é realizada com sucesso exibindo a mensagem com o número do 
 
   Então("na visão geral o valor total dos produtos é {string}") do |total_produtos|
     valida_total_produtos(total_produtos)
-
+    
     #Salvar na visão geral
     clicarBotaoSalvar
   end

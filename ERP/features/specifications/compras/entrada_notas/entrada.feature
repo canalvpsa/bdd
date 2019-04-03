@@ -65,7 +65,6 @@ Esquema do Cenário: Entrada de notas com XML e validação de ICMS,ICMS ST e IP
 | ICMSSN101_com_ICMSSN.xml|  105  |  2  | 0,00| 0,00|  0,00 |  0,00 |0,00|0,00| 26,52 |  5,04 |  26,52 | 26,52|                      pCredSN 19.00 vCredICMSSN 3.32                      |
 | ICMSSN202_com_ICMSST.xml|  101  |  2  | 0,00| 0,00| 22,60 |  1,72 |0,00|0,00|   -   |   -   |  17,79 | 19,50|                   BCST 11.09 pICMSST 17.00 vICMSST 0.84                  |
 
-
 @entrada_XML @custo
 Esquema do Cenário: Entrada de notas com XML e validação de custo do produto
     Dado que o usuário preencheu os dados iniciais informando um XML e a entidade é do sistema de tributacao "<tributacao>"
@@ -144,18 +143,20 @@ Exemplos:
 
 
 
-@entrada_XML @arredondamento
+@entrada_XML @total_produtos
 Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
     Dado que o parâmetro de custo do ERP está configurado para <casas_decimais> casas decimais
     E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
     Quando validar os dados da nota fiscal de entrada
     Então nenhuma mensagem de divergência de valores deve ser exibida
-    E na visão geral o valor total dos produtos é "4.015,66"
+    E os centavos divergentes serão distribuídos entre os itens da nota
+    E na visão geral o valor total dos produtos é "<total_produtos>"
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|casas_decimais|        XML       |numeroDocumento|serie|
-|       2      |total_produtos.xml|     13154     |  1  |
-|       5      |total_produtos.xml|     13154     |  1  |
+|casas_decimais|               XML               |total_produtos|numeroDocumento|serie|
+|       2      |total_produtos_arredondamento.xml|   4.015,66   |     13154     |  1  |
+|       5      |total_produtos_arredondamento.xml|   4.015,66   |     13154     |  1  |
+|       4      | total_produtos_distribuicao.xml |   5.034,25   |     13378     |  1  |
  

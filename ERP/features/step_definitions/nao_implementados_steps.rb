@@ -1,4 +1,18 @@
 
+  
+  Quando("a soma do valor total dos itens é igual a {string}") do |string|
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+
+  Quando("o total dos produtos na nota é igual a {string}") do |string|
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+
+  Então("os centavos divergentes serão distribuídos entre os itens da nota") do
+  end
+
+  
+  
   Então("a fórmula para geração do custo do produto para a {string} será o valor total do item + {string} + {string}") do |string, string2, string3|
     pending # Write code here that turns the phrase above into concrete actions
   end

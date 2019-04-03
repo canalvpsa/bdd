@@ -53,6 +53,10 @@ module VisaoGeral
       validarCampos('total_produto', total_produtos)
    end
 
+   def valida_total_NF(total_NF)
+      @validarTotalizadores = coletarDados
+      validarCampos('total_nota', total_NF)
+   end
 
    def validaCST00_1
      @validarTotalizadores = coletarDados
