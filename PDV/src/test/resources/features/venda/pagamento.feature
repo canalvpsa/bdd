@@ -6,13 +6,14 @@ Funcionalidade: PDV - Venda no PDV com plano de pagamento em dinheiro, dinheiro 
 Contexto:
 Dado que o usuário inicia uma venda
 
+@dinheiro
 Cenário: Venda com pagamento em dinheiro
 Quando adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
 E o valor total da venda é de R$ "41,80"
 E adiciona o plano de pagamento dinheiro
 Então a venda é finalizada com sucesso
 
-
+@dinheiro_troco
 Cenário: Venda com pagamento em dinheiro com troco
 Quando adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
 E adiciona o item "calca" com quantidade "1" com valor unitário de R$ "239,00"
@@ -21,7 +22,7 @@ E adiciona o plano de pagamento dinheiro informando R$ "300,00"
 Então o usuário confirma o valor do troco
 E a venda é finalizada com sucesso	
 	
-
+@crediario
 Cenário: Venda com pagamento no crediário
 Quando o usuário altera o cliente para "ANA MARIA" 
 E adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
@@ -30,6 +31,7 @@ E adiciona o plano de pagamento crediário
 Então a venda é finalizada com sucesso e são exibidas as parcelas
 
 
+@adiantamento_gerado
 Cenário: Venda com adiantamento gerado
     Quando o usuário efetivar uma venda
     E no pagamento informar valor maior do que o total da venda
@@ -37,6 +39,7 @@ Cenário: Venda com adiantamento gerado
     Então a venda deve registrar o valor do adiantamento como "adiantamento gerado"
 
 
+@adiantamento_utilizado
 Cenário: Venda com adiantamento utilizado
     Dado que o usuário possui saldo em adiantamento
     Quando o usuário efetivar uma venda

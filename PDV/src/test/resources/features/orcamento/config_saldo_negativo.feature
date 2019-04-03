@@ -3,7 +3,7 @@
 @PDV @orcamento @sem_saldo @executavel
 Funcionalidade: PDV - Orçamento com item sem saldo
 
-@cancelamento
+@saldo_negativo
 Cenário: Orçamento com item sem saldo e não permitir saldo negativo
 
 Dado que o parâmetro para permitir saldo negativo está desabilitado
@@ -12,7 +12,7 @@ Quando adiciona o item "regata" com quantidade "1" com valor unitário de R$ "59
 Então será exibida mensagem de saldo insuficiente
 
 
-@importarOrcamento
+@importarOrcamento @saldo_negativo_prosseguir
 Cenário: Orçamento com item sem saldo e permite saldo negativo
 
 Dado que o parâmetro para permitir saldo negativo está habilitado

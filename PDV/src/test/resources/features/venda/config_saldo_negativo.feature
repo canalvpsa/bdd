@@ -3,7 +3,7 @@
 @PDV @venda @sem_saldo @executavel
 Funcionalidade: PDV - Venda com item sem saldo
 
-@cancelamento
+@saldo_negativo
 Cenário: Venda com item sem saldo e não permite saldo negativo
 Dado que o parâmetro para permitir saldo negativo está desabilitado
 E que o usuário inicia uma venda
@@ -11,7 +11,7 @@ Quando adiciona o item "regata" com quantidade "1" com valor unitário de R$ "59
 Então será exibida mensagem de saldo insuficiente
 
 
-@saldo_negativo
+@saldo_negativo_prosseguir
 Cenário: Venda com item sem saldo e permite saldo negativo
 Dado que o parâmetro para permitir saldo negativo está habilitado
 E que o usuário inicia uma venda

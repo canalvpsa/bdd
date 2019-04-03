@@ -23,7 +23,7 @@ public class RelatorioVendas {
 	private String imageString;
 	private Pattern m_cancelarVenda = new Pattern(getImage("imgVendas/cancelarVenda.png")).similar(0.95f);
 	private Pattern m_cancelarCupom = new Pattern(getImage("imgVendas/cancelarCupom.png")).similar(0.95f);
-	private Pattern m_numeroVenda = new Pattern(getImage("imgVendas/numeroVenda.png")).similar(0.95f);
+	private Pattern m_numeroPedido = new Pattern(getImage("imgVendas/numeroPedido.png")).similar(0.95f);
 	private Pattern m_autorizar = new Pattern(getImage("imgVendas/autorizar.png")).similar(0.95f);
 	private Pattern m_pesquisar = new Pattern(getImage("imgVendas/pesquisar.png")).similar(0.95f);
 	private Pattern m_valor28000 = new Pattern(getImage("imgVendas/valor280.80.png")).similar(0.95f);
@@ -49,7 +49,7 @@ public class RelatorioVendas {
 
 	public void pesquisarVenda() throws ClassNotFoundException, SQLException, FindFailed {
 		resultado = consultaUltimoCF.getUltimoCupom();
-		s.wait(m_numeroVenda, 10);
+		s.wait(m_numeroPedido, 10);
 		s.type(resultado);
 		s.wait(3.0);
 		s.click(m_pesquisar);

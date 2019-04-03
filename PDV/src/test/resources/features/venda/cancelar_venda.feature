@@ -18,7 +18,7 @@ Quando cancela o último CF emitido
 Então a venda é cancelada com sucesso
 
 
-
+@cancelar_relatorio_venda
 Cenário: Cancelar a venda pelo relatório de vendas
 
 Dado que o usuário realizou uma venda
