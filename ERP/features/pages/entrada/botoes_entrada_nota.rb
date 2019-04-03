@@ -1,14 +1,17 @@
 module BotoesEntradaNota
 
     def clicarBotaoSalvar()
-        find('button', text: 'Salvar e continuar').click
+        botao = find('button', text: 'Salvar e continuar')
+        botao.click
     end
 
     def clicarBotaoFinalizar ()
-        find('button', text: 'Finalizar').click
+        botao = find('button', text: 'Finalizar')
+        botao.click
     end
 
     def clicarBotaoAdicionar ()
-        find('button', text: 'Adicionar').click
+        botao = find('button', text: 'Adicionar')
+        botao.click
     end
 end

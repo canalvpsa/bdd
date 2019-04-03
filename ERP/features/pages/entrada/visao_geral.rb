@@ -29,6 +29,9 @@ module VisaoGeral
       
       when 'valor_icms_sn'
          expect(@validarTotalizadores).to include('Valor ICMS SN R$ '+valor)
+
+      when 'valor_ipi'
+         expect(@validarTotalizadores).to include('Valor IPI R$ '+valor)
       
       when 'total_produto'
          expect(@validarTotalizadores).to include('Valor total produtos R$ '+valor)
@@ -50,6 +53,10 @@ module VisaoGeral
       validarCampos('total_produto', total_produtos)
    end
 
+   def valida_total_NF(total_NF)
+      @validarTotalizadores = coletarDados
+      validarCampos('total_nota', total_NF)
+   end
 
    def validaCST00_1
      @validarTotalizadores = coletarDados
@@ -58,6 +65,7 @@ module VisaoGeral
       validarCampos('base_icms_st','0,00')
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,07')
       validarCampos('total_nota','8,80')
    end
 
@@ -68,6 +76,7 @@ module VisaoGeral
       validarCampos('base_icms_st','0,00')
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,07')
       validarCampos('total_nota','8,80')
    end
 
@@ -78,6 +87,7 @@ module VisaoGeral
       validarCampos('base_icms_st','11,35')
       validarCampos('valor_icms_st','0,18')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','8,91')
    end
 
@@ -88,7 +98,41 @@ module VisaoGeral
       validarCampos('base_icms_st','0,00')
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','8,73')
+   end
+
+   def validaCST30_deson
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','13,68')
+      validarCampos('valor_icms_st','1,41')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','9,09')
+   end
+
+   def validaCST40_deson_n_subtrai
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','0,00')
+      validarCampos('valor_icms_st','0,00')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','8,73')
+   end
+
+   def validaCST40_deson_subtrai
+      @validarTotalizadores = coletarDados
+      validarCampos('base_icms','0,00')
+      validarCampos('valor_icms','0,00')
+      validarCampos('base_icms_st','0,00')
+      validarCampos('valor_icms_st','0,00')
+      validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
+      validarCampos('total_nota','7,68')
    end
 
    def validaCST51
@@ -98,6 +142,7 @@ module VisaoGeral
       validarCampos('base_icms_st','0,00')
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','8,73')
    end
 
@@ -108,6 +153,7 @@ module VisaoGeral
       validarCampos('base_icms_st','0,00')
       validarCampos('valor_icms_st','0,00')
       validarCampos('total_produto','8,73')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','8,73')
    end
 
@@ -120,6 +166,7 @@ module VisaoGeral
       validarCampos('base_icms_sn','26,52')
       validarCampos('valor_icms_sn','5,04')
       validarCampos('total_produto','26,52')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','26,52')
    end
 
@@ -130,6 +177,7 @@ module VisaoGeral
       validarCampos('base_icms_st','22,60')
       validarCampos('valor_icms_st','1,71')
       validarCampos('total_produto','17,79')
+      validarCampos('valor_ipi','0,00')
       validarCampos('total_nota','19,50')
    end
 
