@@ -22,8 +22,7 @@ import sincronismoUpdateManager.AcoesPDV;
 		features = {"src/test/resources/features/"},
 		glue = "steps",
 		tags = {"@executavel"},
-		plugin = {"pretty", "html:target/report-html", "json:target/report.json,"
-				+ "junit:target/cucumber-reports/Cucumber.xml"},
+		plugin = {"pretty", "html:target/report-html", "json:target/report.json", "junit:target/cucumber-reports/Cucumber.xml"},
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,
 		dryRun = false,
@@ -36,7 +35,7 @@ public class RunBDD {
 	private AfterTeste validaFinal = AfterTeste.getInstance();
 	private AbrirManagerSincronismo sincronismo = AbrirManagerSincronismo.getInstance();
 	static String docFiscalParametro;
-
+	
 	@BeforeClass
 	public static void prepararPDV() throws FindFailed, ClassNotFoundException, InterruptedException, IOException, SQLException{
 		docFiscalParametro = System.getProperty("docFiscal");
@@ -48,15 +47,15 @@ public class RunBDD {
 		System.out.println("PDV configurado para:" + docFiscal);
 		verificaPDV.verificaSituacaoPDV(docFiscal);
 	}	
-
+	
 	@After
 	public void finalizando() throws ClassNotFoundException, FindFailed, InterruptedException, SQLException, IOException{
 		finalizando();
 		sincronismo.sincronizar();
 		statusPDV.fecharPDV();
 	}
-
-
+	
+	
 	public void finalizando(Scenario scenario) throws ClassNotFoundException, FindFailed, InterruptedException, SQLException, IOException{
 		System.out.println(scenario);
 		System.out.println(this.getClass().getName());
