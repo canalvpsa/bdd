@@ -4,13 +4,11 @@ import static org.junit.Assert.assertFalse;
 
 import java.net.URL;
 
-import org.sikuli.script.App;
 import org.sikuli.script.Key;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import DAO.impl.Configuracao;
-import classesAuxiliares.BotaoOK;
 import classesAuxiliares.CancelarItem;
 import classesAuxiliares.InserirItem_BrincoEtnico;
 import classesAuxiliares.InserirItem_CalcaJeans;
@@ -25,7 +23,6 @@ import cucumber.api.java.pt.Quando;
 
 public class Venda_itens {
 	private static Venda_itens instancia = Venda_itens.getInstance();
-	private static  BotaoOK botaoOK = BotaoOK.getInstance();
 	private Screen s = new Screen();
 	private String imageString;
 

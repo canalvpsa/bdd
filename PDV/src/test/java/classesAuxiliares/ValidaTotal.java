@@ -1,14 +1,17 @@
 package classesAuxiliares;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.net.URL;
 
 import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 
 public class ValidaTotal {
 	private static ValidaTotal instancia = new ValidaTotal();
 	private String imageString;
+	private Screen s = new Screen();
 	private Pattern m_totalAcumulado4180negativo = new Pattern(getImage("imgTotais/totalAcumulado-41.80.png")).similar(0.99f);
 	private Pattern m_totalAcumulado0 = new Pattern(getImage("imgTotais/totalAcumulado0.00.png")).similar(0.99f);
 	private Pattern m_totalAcumulado3762 = new Pattern(getImage("imgTotais/totalAcumulado37.62.png")).similar(0.99f);
@@ -122,6 +125,10 @@ public class ValidaTotal {
 		default:
 			fail("NOK - Valor total nao foi validado");
 			break;
+		}
+		
+		if(s.exists(m_totalAcumulado) == null){
+			assertFalse("NOK valor total acumulado "+totalAcumulado, true);
 		}
 	}
 }

@@ -19,8 +19,7 @@ public class CancelarItem {
 	private Pattern m_listaCalcaJeans = new Pattern(getImage("imgItens/listagemCalcaJeans.png")).similar(0.98f);
 	private Pattern m_confirmaDesconZerado = new Pattern(getImage("imgOrcamentoPedido/confirmaDescontoZerado.png")).similar(0.98f);
 	private Pattern m_produtoCancelar;
-	private String nomeProduto;
-
+	
 	private String getImage(String path) {
 
 		URL url = getClass().getClassLoader().getResource(path);
@@ -58,12 +57,10 @@ public class CancelarItem {
 
 		case "calca":
 			m_produtoCancelar = m_listaCalcaJeans;
-			nomeProduto = "Calca Jeans";
 			break;
 
 		case "brinco":
 			m_produtoCancelar = m_listaBrinco;
-			nomeProduto = "Brinco";
 			break;
 
 		default:
