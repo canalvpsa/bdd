@@ -8,7 +8,10 @@ import java.awt.RenderingHints;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -38,22 +41,37 @@ public class Screenshot {
 			Robot robot = new Robot();
 			BufferedImage image = robot.createScreenCapture(screenRectangle);
 
-			File diretorio = new File("./"+"target"+"/"+classeTeste);
+			File diretorio = new File("./"+"target/cucumber-reports/screenshots"+"/");
 			if (!diretorio.exists()) {
 				diretorio.mkdirs();
 			}
-		
+			
 			String nomeArquivo = scenario.getName()+"-"+dataHora+ ".jpg";
 			File file;
 			ImageIO.write(resize(image, 800, 600), "jpg", file = new File(diretorio+"/"+nomeArquivo));
 			Thread.sleep(2000);
 			screenSize = null;
 			screenRectangle = null;
-			System.out.println(file.getAbsolutePath());
 			
-		//	String arquivoPrint = file.getAbsolutePath();
 			
-		//	scenario.embed(data, arquivoPrint);
+			
+			byte[] imageInByte;
+			BufferedImage originalImage = ImageIO.read(new File(diretorio+"/"+nomeArquivo));
+
+			// convert BufferedImage to byte array
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(originalImage, "jpg", baos);
+			baos.flush();
+			imageInByte = baos.toByteArray();
+			baos.close();
+
+			// convert byte array back to BufferedImage
+			InputStream in = new ByteArrayInputStream(imageInByte);
+			BufferedImage bImageFromConvert = ImageIO.read(in);
+
+			ImageIO.write(bImageFromConvert, "jpg", new File(file.getAbsolutePath()));
+			
+			scenario.embed(imageInByte, "image/png");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,8 +79,8 @@ public class Screenshot {
 		}
 	}
 
+	
 	private static BufferedImage resize(BufferedImage image, int width, int height) {
-
 		int type = image.getType() == 0 ? BufferedImage.TYPE_INT_RGB : image.getType();
 		BufferedImage resizedImage = new BufferedImage(width, height, type);
 		Graphics2D g = resizedImage.createGraphics();
@@ -75,5 +93,4 @@ public class Screenshot {
 		g = null;
 		return resizedImage;
 	}
-
 }
