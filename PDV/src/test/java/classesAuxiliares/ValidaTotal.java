@@ -97,6 +97,7 @@ public class ValidaTotal {
 		case "91,80":
 			m_totalAcumulado = m_totalAcumulado9180;
 			totalAcumulado = valor;
+			break;
 
 			// BAIXA DE PARCELA
 		case "140,40":
@@ -126,7 +127,7 @@ public class ValidaTotal {
 			fail("NOK - Valor total nao foi validado");
 			break;
 		}
-		
+
 		if(s.exists(m_totalAcumulado) == null){
 			assertFalse("NOK valor total acumulado "+totalAcumulado, true);
 		}

@@ -5,7 +5,7 @@ import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
-public class Adiantamento {
+public class Nao_implementados {
 
 	@Dado("^que o usuário realizou uma venda com plano de pagamento adiantamento$")
 	public void queOUsuárioRealizouUmaVendaComPlanoDePagamentoAdiantamento() throws Throwable {
@@ -33,12 +33,6 @@ public class Adiantamento {
 
 	@Então("^o saldo do adiantamento volta a ficar disponível$")
 	public void oSaldoDoAdiantamentoVoltaAFicarDisponível() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	@Dado("^que o parâmetro de enviar serviço para documento fiscal está desabilitado$")
-	public void queOParâmetroDeEnviarServiçoParaDocumentoFiscalEstáDesabilitado() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();
 	}

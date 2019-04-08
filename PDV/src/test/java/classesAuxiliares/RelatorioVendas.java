@@ -29,7 +29,7 @@ public class RelatorioVendas {
 	private Pattern m_valor28000 = new Pattern(getImage("imgVendas/valor280.80.png")).similar(0.95f);
 	private Pattern m_ativo = new Pattern(getImage("imgVendas/ativo.png")).similar(0.95f);
 	private Pattern m_informacoesVenda = new Pattern(getImage("imgVendas/informacoesVenda.png")).similar(0.95f);
-	private Pattern m_pesquisaVendas = new Pattern(getImage("imgVendas/pesquisaVendas.png")).similar(0.95f);
+	private Pattern m_pesquisaMovimentacoes = new Pattern(getImage("imgVendas/pesquisaMovimentacoes.png")).similar(0.95f);
 	private Pattern m_confirmar = new Pattern(getImage("imgGeral/confirmar.png")).similar(0.90f);
 	private Pattern m_loginGerente = new Pattern(getImage("imgGeral/loginGerente.png")).similar(0.90f);
 
@@ -80,11 +80,12 @@ public class RelatorioVendas {
 		s.click(m_autorizar);
 		s.wait(m_cancelarCupom,5.0);
 		s.type(Key.ENTER);
+		s.wait(2.0);
 	}
 
 	public void sairRelatorioVenda() throws FindFailed {
-		while (s.exists(m_pesquisaVendas) != null) {
-			s.click(m_pesquisaVendas);
+		while (s.exists(m_pesquisaMovimentacoes) != null) {
+			s.click(m_pesquisaMovimentacoes);
 			s.type(Key.ESC);
 			s.wait(3.0);
 		}

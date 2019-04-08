@@ -27,6 +27,11 @@ public class Configuracoes_PDV {
 	public void que_o_parâmetro_de_enviar_serviço_para_documento_fiscal_está_habilitado() throws Throwable {
 		verificaParametro("ENVIA_SERVICO_PARA_DOCUMENTO_FISCAL", "Y");
 	}  
+	
+	@Dado("^que o parâmetro de enviar serviço para documento fiscal está desabilitado$")
+	public void que_o_parâmetro_de_enviar_serviço_para_documento_fiscal_está_desabilitado() throws Throwable {
+		verificaParametro("ENVIA_SERVICO_PARA_DOCUMENTO_FISCAL", "N");
+	}
 
 	@Dado("^que o parâmetro para permitir saldo negativo está habilitado$")
 	public void queOParâmetroParaPermitirSaldoNegativoEstáHabilitado() throws Throwable {
