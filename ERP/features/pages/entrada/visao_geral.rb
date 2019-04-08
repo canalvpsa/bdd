@@ -185,4 +185,9 @@ module VisaoGeral
       @validarTotalizadores = coletarDados
       validarCampos('custo_adicional',valor)
    end
+
+   def validaTotalNF(valor)
+      @validarTotalizadores = coletarDados
+      validarCampos('total_nota',valor)
+   end
 end

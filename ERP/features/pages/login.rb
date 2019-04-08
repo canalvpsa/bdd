@@ -13,6 +13,6 @@ module EfetuarLogin
         find('input[id$=username]').set 'admin'
         find('input[id$=password]').set 'varejonline'
         find('input[id$=cnpj]').set 'qa_vpsa_aut'
-        find('input[id$=login-submit]').click
+        find('button', text: 'Acessar').click
     end
 end

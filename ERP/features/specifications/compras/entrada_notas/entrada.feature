@@ -160,3 +160,19 @@ Exemplos:
 |       5      |total_produtos_arredondamento.xml|   4.015,66   |     13154     |  1  |
 |       4      | total_produtos_distribuicao.xml |   5.034,25   |     13378     |  1  |
  
+
+
+@entrada_XML @total_nota_fiscal
+Esquema do Cenário: Entrada de notas com XML com valor que somam no total da nota fiscal
+    E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
+    E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
+    Quando validar os dados da nota fiscal de entrada
+    Então nenhuma mensagem de divergência de valores deve ser exibida
+    E os centavos divergentes serão distribuídos entre os itens da nota
+    E na visão geral o valor total da nota fiscal é "<total_NF>"
+    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
+
+Exemplos:
+|    XML   |numeroDocumento|serie|total_produtos|  tags_somam_nesta_NF  |total_NF|
+|vFCPST.xml|     11805     |  1  |    2117,82   |vST:376,35 vFCPST:72,39| 2.566,56|
+ 

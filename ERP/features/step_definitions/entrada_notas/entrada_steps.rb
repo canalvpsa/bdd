@@ -84,6 +84,13 @@ Então("a entrada é realizada com sucesso exibindo a mensagem com o número do 
     clicarBotaoSalvar
   end
 
+  Então("na visão geral o valor total da nota fiscal é {string}") do |total_NF|    
+    validaTotalNF(total_NF)
+
+    #Salvar na visão geral
+    clicarBotaoSalvar
+  end                                                                            
+
 
   Então("o custo total do item {string} da nota será {string}") do |codigoProduto, custoProduto|
     include BD_validacao
