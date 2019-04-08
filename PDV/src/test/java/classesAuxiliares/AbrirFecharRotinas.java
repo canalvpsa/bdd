@@ -13,7 +13,7 @@ import org.sikuli.script.Screen;
 
 public class AbrirFecharRotinas {
 	private static AbrirFecharRotinas instancia = new AbrirFecharRotinas();
-	
+
 	private Screen s = new Screen();
 	private BotaoSim botaoSim = BotaoSim.getInstance();
 	private BotaoOK botaoOK = BotaoOK.getInstance();
@@ -65,7 +65,7 @@ public class AbrirFecharRotinas {
 		imageString = url.toString();
 		return imageString;
 	}
-	
+
 	public static AbrirFecharRotinas getInstance(){
 		if (instancia ==null){
 			instancia = new AbrirFecharRotinas();
@@ -89,7 +89,7 @@ public class AbrirFecharRotinas {
 
 			case "venda":
 				verificaPDVemAtendimento();
-				
+
 				if (s.exists(m_caixaFechado) != null) {
 					System.out.println("O caixa esta fechado.");
 					s.click(m_abrirCaixa);
@@ -154,11 +154,12 @@ public class AbrirFecharRotinas {
 	public void finalizarPedido(Boolean jasperViewer) throws FindFailed {
 		s.wait(m_pagamentos, 10);
 		clicaFinalizarVenda();
-		
+
 		if(jasperViewer == true){
 			s.wait(m_fecharJasperViewer, 15.0);
-			App.focus("JasperViewer");
-			s.click(m_fecharJasperViewer);
+			if(App.focus("JasperViewer") != null){
+				s.click(m_fecharJasperViewer);
+			}
 			validaFinalizacaoVenda();
 		}else{
 			validaFinalizacaoVenda();

@@ -22,7 +22,7 @@ import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
 public class Venda_itens {
-	private static Venda_itens instancia = new Venda_itens();
+	private static Venda_itens instancia = Venda_itens.getInstance();
 	private Screen s = new Screen();
 	private String imageString;
 
@@ -40,7 +40,8 @@ public class Venda_itens {
 	private InserirItem_Regata_SemSaldo inserirRegata = InserirItem_Regata_SemSaldo.getInstance();
 	private ValidaRegataListagemProdutos validaRegata = ValidaRegataListagemProdutos.getInstance();
 	private CancelarItem cancelarItem = CancelarItem.getInstance();
-	private Pattern m_produtoSemSaldo = new Pattern(getImage("imgOrcamentoPedido/produtoSemSaldo.png")).similar(0.98f);
+	private Pattern m_produtoSemSaldo_msg1 = new Pattern(getImage("imgOrcamentoPedido/produtoSemSaldo_msg1.png")).similar(0.98f);
+	private Pattern m_produtoSemSaldo_msg2 = new Pattern(getImage("imgOrcamentoPedido/produtoSemSaldo_msg2.png")).similar(0.98f);
 
 	private String getImage(String path) {
 
@@ -85,10 +86,11 @@ public class Venda_itens {
 
 	@Então("^será exibida mensagem de saldo insuficiente$")
 	public void será_exibida_mensagem_de_saldo_insuficiente() throws Throwable {
-		
+
 		if(BDconfiguracao.getConfiguracao("PDV_PERMITE_ESTOQUE_NEGATIVO").equals("N")){
-			s.wait(m_produtoSemSaldo, 2.0);
-			if (s.exists(m_produtoSemSaldo) != null) {
+			s.wait(2.0);
+			if ((s.exists(m_produtoSemSaldo_msg1) != null) || (s.exists(m_produtoSemSaldo_msg2) != null)){
+				System.out.println("Encontrou imagem");
 				s.type(Key.ENTER);
 				s.type(Key.ESC);
 			}else{

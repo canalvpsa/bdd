@@ -21,6 +21,7 @@ public class AfterTeste {
 	private Pattern m_fecharSincronismo = new Pattern(getImage("imgSincronismo/fecharSincronismo.png")).similar(0.97f);
 	private Pattern m_popup = new Pattern(getImage("imgGeral/popup.png")).similar(0.90f);
 	private Pattern m_fecharBotao = new Pattern(getImage("imgUpManager/fecharBotao.png")).similar(0.80f);
+
 	private String imageString;
 
 	private String getImage(String path) {
@@ -36,7 +37,7 @@ public class AfterTeste {
 		}
 		return instancia;
 	}
-	
+
 
 	public void validaExecucao(Scenario scenario, String classeTeste) throws ClassNotFoundException, InterruptedException, SQLException, IOException, FindFailed{
 
@@ -50,7 +51,6 @@ public class AfterTeste {
 					s.wait(3.0);
 				}
 			}
-			finalizarRotina("teste");
 		}
 
 		if(scenario.isFailed()){
@@ -67,21 +67,12 @@ public class AfterTeste {
 			if (s.exists(m_fecharBotao) != null) {
 				s.click(m_fecharBotao);
 			}
-			finalizarRotina("teste");
 		}
 	}
 
-	public void finalizarRotina(String rotina) throws FindFailed{
-		if (rotina.contains("orcamento")) {
-			cadastro.sairOrcamento();
-		}
-
-		if (rotina.contains("venda")) {
-			cadastro.sairPedido();
-		}
-
-		if (rotina.contains("baixaParcela")) {
-			cadastro.fecharBaixaParcela();
-		}
+	public void finalizarRotina() throws FindFailed{
+		cadastro.fecharBaixaParcela();
+		cadastro.sairPedido();
+		cadastro.sairOrcamento();
 	}
 }
