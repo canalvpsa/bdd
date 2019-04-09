@@ -174,5 +174,5 @@ Esquema do Cenário: Entrada de notas com XML com valor que somam no total da no
 
 Exemplos:
 |    XML   |numeroDocumento|serie|total_produtos|  tags_somam_nesta_NF  |total_NF|
-|vFCPST.xml|     11805     |  1  |    2117,82   |vST:376,35 vFCPST:72,39| 2.566,56|
+|vFCPST.xml|     11805     |  1  |    2117,82   |vST:376,35 vFCPST:72,39|2.566,56|
  
