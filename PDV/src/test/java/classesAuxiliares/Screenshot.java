@@ -41,18 +41,17 @@ public class Screenshot {
 			Robot robot = new Robot();
 			BufferedImage image = robot.createScreenCapture(screenRectangle);
 
-			File diretorio = new File("./"+"target/cucumber-reports/screenshots"+"/");
+			File diretorio = new File("./"+"target/cucumber-reports/");
 			if (!diretorio.exists()) {
 				diretorio.mkdirs();
 			}
 			
-			String nomeArquivo = scenario.getName()+"-"+dataHora+ ".jpg";
+			String nomeArquivo = scenario.getName()+"-"+dataHora+ ".png";
 			File file;
-			ImageIO.write(resize(image, 800, 600), "jpg", file = new File(diretorio+"/"+nomeArquivo));
+			ImageIO.write(resize(image, 800, 600), "png", file = new File(diretorio+"/"+nomeArquivo));
 			Thread.sleep(2000);
 			screenSize = null;
 			screenRectangle = null;
-			
 			
 			
 			byte[] imageInByte;
@@ -60,7 +59,7 @@ public class Screenshot {
 
 			// convert BufferedImage to byte array
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ImageIO.write(originalImage, "jpg", baos);
+			ImageIO.write(originalImage, "png", baos);
 			baos.flush();
 			imageInByte = baos.toByteArray();
 			baos.close();
@@ -69,7 +68,7 @@ public class Screenshot {
 			InputStream in = new ByteArrayInputStream(imageInByte);
 			BufferedImage bImageFromConvert = ImageIO.read(in);
 
-			ImageIO.write(bImageFromConvert, "jpg", new File(file.getAbsolutePath()));
+			ImageIO.write(bImageFromConvert, "png", new File(file.getAbsolutePath()));
 			
 			scenario.embed(imageInByte, "image/png");
 			

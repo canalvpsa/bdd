@@ -1,19 +1,19 @@
 # language: pt
 
-@PDV @venda @executavel
+@PDV @venda 
 Funcionalidade: PDV - Venda no PDV com plano de pagamento em dinheiro, dinheiro com troco ou crediário.
 
 Contexto:
 Dado que o usuário inicia uma venda
 
-@dinheiro
+@dinheiro @executavel
 Cenário: Venda com pagamento em dinheiro
 Quando adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
 E o valor total da venda é de R$ "41,80"
 E adiciona o plano de pagamento dinheiro
 Então a venda é finalizada com sucesso
 
-@dinheiro_troco
+@dinheiro_troco @executavel
 Cenário: Venda com pagamento em dinheiro com troco
 Quando adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
 E adiciona o item "calca" com quantidade "1" com valor unitário de R$ "239,00"
@@ -22,7 +22,7 @@ E adiciona o plano de pagamento dinheiro informando R$ "300,00"
 Então o usuário confirma o valor do troco
 E a venda é finalizada com sucesso	
 	
-@crediario
+@crediario @executavel
 Cenário: Venda com pagamento no crediário
 Quando o usuário altera o cliente para "ANA MARIA" 
 E adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"

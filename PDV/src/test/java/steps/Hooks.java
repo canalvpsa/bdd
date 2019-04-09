@@ -25,7 +25,7 @@ public class Hooks {
 	@Before
 	public static void prepararPDV() throws FindFailed, ClassNotFoundException, InterruptedException, IOException, SQLException{
 		docFiscalParametro = System.getProperty("docFiscal");
-		String docFiscal = "DEMONSTRACAO";
+		String docFiscal = "SWEDA";
 
 		if(docFiscalParametro != null)
 			docFiscal = docFiscalParametro;
