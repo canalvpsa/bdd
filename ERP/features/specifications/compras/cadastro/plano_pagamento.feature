@@ -1,9 +1,11 @@
 #language: pt
 
+
 @ERP
 Funcionalidade: ERP - Plano de pagamento de compra
 
 Contexto: Dado que o usuário acessa o plano de pagamento de compra
+
 
 Cenário: Adicionar um plano de pagamento de compras
     Dado que o usuário informou a descrição, o vencimento, o valor mínimo da parcela e o número de parcelas
