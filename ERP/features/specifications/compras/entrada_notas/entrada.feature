@@ -30,7 +30,7 @@ Cenário: Entrada de notas manual validando status da escrituração para modelo
     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 
 
-@entrada_XML @modelo_nota @teste
+@entrada_XML @modelo_nota
 Cenário: Entrada de notas com XML validando status da escrituração
     Quando o usuário preenche os dados iniciais informando um XML
     E que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral

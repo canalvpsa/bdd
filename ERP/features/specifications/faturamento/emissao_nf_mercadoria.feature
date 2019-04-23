@@ -1,7 +1,7 @@
 #language: pt
 
 
-@ERP
+@ERP @Emissao_NF
 Funcionalidade: ERP - Emissão de NF de Mercadoria
 
 Contexto: Dado que o usuário acessa a emissão de nf de mercadoria
@@ -46,7 +46,7 @@ Cenário: Cancelar uma nota fiscal de determinado período modelo NF-e
     E a nota fiscal permanece no sistema
 
 
-Cenário: Cancelar a nota fiscal diferente do modelo NF-e
+Esquema do Cenário: Cancelar a nota fiscal diferente do modelo NF-e
     Dado que o usuário faz uma pesquisa
     E seleciona uma nota fiscal modelo "<modelo>"
     Quando clicar em "Cancelar"

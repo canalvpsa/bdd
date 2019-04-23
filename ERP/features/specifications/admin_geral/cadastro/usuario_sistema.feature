@@ -1,11 +1,9 @@
 #language: pt
 
-
 @ERP
 Funcionalidade: ERP - Usuário Sistema
 
 Contexto: Dado que o usuário acessa o cadastro de usuário do sistema
-
 
 Esquema do Cenário: Cadastrar um novo usuário do sistema
     Dado que o usuário seleciona o tipo "<tipo>" do usuário do sistema
@@ -56,7 +54,7 @@ Cenário: Pesquisar um usuário inativo do sistema
 Cenário: Pesquisar usuários inativos do sistema e exportar listagem
     Dado que o usuário clica em pesquisar
     E o usuário clicar em "Usuário(s) Inativo(s)"
-     são exibidos todos os usuários do sistema inativos
+    E são exibidos todos os usuários do sistema inativos
     Quando o usuário clicar em exportar
     Então é gerado um aquivo arquivo .csv para download
 
