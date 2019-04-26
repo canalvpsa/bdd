@@ -1,3 +1,5 @@
+#language: pt
+
 @ERP
 
 Funcionalidade: ERP - Terceiros [beta]
