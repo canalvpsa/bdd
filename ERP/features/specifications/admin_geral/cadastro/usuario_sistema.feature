@@ -19,7 +19,7 @@ Exemplos:
 
 
 Esquema do Cenário: Cadastrar um usuário do sistema inativado
-    Dado que o usuário seleciona o "<tipo>" do usuário do sistema
+    Dado que o usuário seleciona o tipo "<tipo>" do usuário do sistema
     E informa os dados de um usuário do sistema inativado
     E é exibida uma mensagem solicitando confirmação para ativá-lo
     Quando confirmar que deseja ativar o usuário do sistema
