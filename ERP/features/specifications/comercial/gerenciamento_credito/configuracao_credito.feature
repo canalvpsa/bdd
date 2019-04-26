@@ -27,6 +27,7 @@ Esquema do Cenário: Padrão para limite mensal máximo diferente de "não contr
     Quando acessar a configuração de limite de crédito
     Então no limite mensal máximo o "Dia inicial do período" será igual a "01"
 
+Exemplos:
 |    opçãoLimiteMax    |
 |sobre total de crédito|
 | informar por cliente |

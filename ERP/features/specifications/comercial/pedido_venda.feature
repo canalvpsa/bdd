@@ -31,7 +31,7 @@ Dado que o usuário inicia uma venda
     E está realizando uma venda com plano de pagamento "crediário"
     E a data de vencimento de cada parcela é comparada com o período relacionado
     Quando é verificado que a venda ultrapassa o limite mensal máximo do cliente
-    Então é exibida mensagem ao usuário "A parcela para o mês XX atingiu o limite máximo mensal do cliente"
+    Então é exibida mensagem ao usuário "Limite máximo mensal do cliente foi atingido para o período dd/mm até dd/mm. Valor em aberto (R$ x,xx) +  novas parcelas (R$ x,xx) é maior que o limite mensal de R$ xx,xx"
     E a venda não pode ser finalizada
     E não há uma forma para liberar a venda sem alterar os dados do plano de pagamento
 
@@ -43,7 +43,7 @@ Dado que o usuário inicia uma venda
     E está realizando uma venda com plano de pagamento "crediário"
     E a data de vencimento de cada parcela é comparada com o período relacionado
     E é verificado que a venda ultrapassa o limite mensal máximo do cliente
-    E é exibida mensagem ao usuário "A parcela para o mês XX atingiu o limite máximo mensal do cliente. Deseja prosseguir"
+    E é exibida mensagem ao usuário "Limite máximo mensal do cliente foi atingido para o período dd/mm até dd/mm. Valor em aberto (R$ x,xx) +  novas parcelas (R$ x,xx) é maior que o limite mensal de R$ xx,xx. Deseja realmente confirmar o pedido"
     Quando clica em "Não"
     Então a venda não pode ser finalizada
 
@@ -55,7 +55,7 @@ Dado que o usuário inicia uma venda
     E está realizando uma venda com plano de pagamento "crediário"
     E a data de vencimento de cada parcela é comparada com o período relacionado
     E é verificado que a venda ultrapassa o limite mensal máximo do cliente
-    E é exibida mensagem ao usuário "A parcela para o mês XX atingiu o limite máximo mensal do cliente. Deseja prosseguir"
+    E é exibida mensagem ao usuário "Limite máximo mensal do cliente foi atingido para o período dd/mm até dd/mm. Valor em aberto (R$ x,xx) +  novas parcelas (R$ x,xx) é maior que o limite mensal de R$ xx,xx. Deseja realmente confirmar o pedido"
     Quando clica em "Sim"
     Então o gerente informa seu usuário e senha
     E a venda é finalizada com sucesso
