@@ -55,8 +55,8 @@ public class Venda_pagamento {
 	}
 	
 	@Quando("^adiciona o plano de pagamento dinheiro informando valor parcial R\\$ \"([^\"]*)\"$")
-	public void adiciona_o_plano_de_pagamento_dinheiro_informando_valor_parcial_R$(String arg1) throws Throwable {
-	   
+	public void adiciona_o_plano_de_pagamento_dinheiro_informando_valor_parcial_R$(String valorDinheiro) throws Throwable {
+		pedidoPagamento.realizarPagamentoDinheiro(tipoEntrada, valorDinheiro);
 	}
 	
 	@Quando("^será carregado o plano de pagamento \"([^\"]*)\" no valor de R\\$ \"([^\"]*)\"$")

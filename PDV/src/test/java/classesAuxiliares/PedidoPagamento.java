@@ -29,7 +29,6 @@ public class PedidoPagamento {
 	private Pattern m_pagamentoVenda28080comTroco = new Pattern(getImage("imgTotais/pagamentoVenda280.80comTroco.png")).exact();
 	private Pattern m_pagamentoVenda28080crediario = new Pattern(getImage("imgTotais/pagamentoVenda280.80crediario.png")).exact();
 	private Pattern m_pagamentoVenda28080crediarioSelecionado = new Pattern(getImage("imgTotais/pagamentoVenda280.80crediarioSelecionado.png")).exact();
-	private Pattern m_pagamentoBaixa10000parcialDinheiro = new Pattern(getImage("imgTotais/pagamentoBaixa100.00parcialDinheiro.png")).exact();
 	private Pattern m_pagamentoVenda31424 = new Pattern(getImage("imgTotais/pagamentoVenda314.24.png")).exact();
 
 	private Pattern m_crediario2x = new Pattern(getImage("imgGeral/crediario2x.png")).similar(0.98f);
@@ -82,7 +81,7 @@ public class PedidoPagamento {
 	public void realizaPagamentoCrediario() throws FindFailed{
 		s.type(Key.F4);
 		s.type(Key.F3);
-		s.wait(m_crediario2x, 6.0);
+		s.wait(m_crediario2x, 10.0);
 		if (s.exists(m_crediario2x) != null) {
 			s.click(m_crediario2x);
 			s.wait(m_confirmar, 50);
@@ -103,10 +102,7 @@ public class PedidoPagamento {
 	}
 
 
-	public void realizaPagamentoParcialBaixaParcela(String valor) throws FindFailed{
-		efetivaPagamentoDinheiroDiferenteTotal(valor);
-		validaTotaisBaixaParcela(valor);
-	}
+	
 	public void realizarPagamentoDinheiroComTroco(String tipoEntrada, String valor, String valorPago) throws InterruptedException, FindFailed {
 
 		mouseOuTecladoIrParaPagamento(tipoEntrada);
@@ -187,18 +183,6 @@ public class PedidoPagamento {
 		}
 	}
 
-	public void validaTotaisBaixaParcela(String valor){
-		switch (valor) {
-
-		//BAIXA DE PARCELA PARCIAL
-		case "100,00":
-			if(s.exists(m_pagamentoBaixa10000parcialDinheiro) != null){
-			}else{
-				assertFalse("NOK divergencia no pagamento", true);
-			}
-			break;
-		}
-	}
 
 	public void validaTotaisCrediario(String valor){
 		switch (valor) {

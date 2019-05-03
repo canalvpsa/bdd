@@ -30,7 +30,7 @@ public class BaixarParcela {
 		imageString = url.toString();
 		return imageString;
 	}
-	
+
 	public static BaixarParcela getInstance(){
 		if (instancia ==null){
 			instancia = new BaixarParcela();
@@ -44,19 +44,19 @@ public class BaixarParcela {
 
 		switch (numeroParcela) {
 		case "1":
-			if (valorParcela == "140,40") {
+			if (valorParcela.contains("140,40")) {
 				if (s.exists(m_parcela1de14040selecionada) != null) {
 					s.doubleClick(m_parcela1de14040selecionada);
 				} else {
 					s.doubleClick(m_parcela1de14040);
 				}
-			}
-
-			if (valorParcela == "40,40") {
-				if (s.exists(m_parcela1de4040selecionada) != null) {
-					s.doubleClick(m_parcela1de4040selecionada);
-				} else {
-					s.doubleClick(m_parcela1de4040);
+			}else{
+				if (valorParcela.contains("40,40")) {
+					if (s.exists(m_parcela1de4040selecionada) != null) {
+						s.doubleClick(m_parcela1de4040selecionada);
+					} else {
+						s.doubleClick(m_parcela1de4040);
+					}
 				}
 			}
 			break;
@@ -85,7 +85,7 @@ public class BaixarParcela {
 		s.type("ANA MARIA");
 		s.type(Key.ENTER);
 
-		if (valorParcela == "140,40") {
+		if (valorParcela.contains("140,40")) {
 			if (s.exists(m_parcela1de14040selecionada) != null) {
 				s.click(m_parcela1de14040selecionada);
 			}
