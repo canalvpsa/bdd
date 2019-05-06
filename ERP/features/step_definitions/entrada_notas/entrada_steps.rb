@@ -51,14 +51,14 @@ Quando('finaliza a entrada') do
  Então("ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
     clicarBotaoFinalizar
 
-    mensagemExibida = find('.noty_body', wait: 100).text
+    mensagemExibida = find('.noty_body', wait: 200).text
     puts mensagemExibida
     expect('A entrada '+ numeroDocumento+'/'+serie+' foi efetuada com sucesso.').to include mensagemExibida
   end
 
 
 Então("a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
-    mensagemExibida = find('.noty_body', wait: 100).text
+    mensagemExibida = find('.noty_body', wait: 200).text
     puts mensagemExibida
     expect('A entrada '+ numeroDocumento+'/'+serie+' foi efetuada com sucesso.').to include mensagemExibida
   end

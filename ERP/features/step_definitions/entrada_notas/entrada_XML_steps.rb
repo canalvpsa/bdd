@@ -90,7 +90,7 @@ end
 
                                                                                                                  
 Quando("validar os dados da nota fiscal de entrada") do
-  expect(page).to have_content('Atenção')       
+  expect(page).to have_content('Atenção', wait:100)       
 end
 
 
