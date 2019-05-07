@@ -24,9 +24,9 @@ module BD_validacao
 
 
     def parametro_decimais_custo(casas_decimais)
-        query = 'UPDATE QA_ESTOQUE_AUT.PARAMETROINTEGER SET VALOR = '+casas_decimais.to_s+'
-                 WHERE ID = (SELECT id FROM QA_ESTOQUE_AUT.PARAMETRO WHERE CHAVE = 5)'
-                 'UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
+        query = 'UPDATE QA_VPSA_AUT.PARAMETROINTEGER SET VALOR = '+casas_decimais.to_s+'
+                 WHERE ID = (SELECT id FROM QA_VPSA_AUT.PARAMETRO WHERE CHAVE = 5)'
+                 'UPDATE QA_VPSA_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
         return update_banco(query)
     end
 

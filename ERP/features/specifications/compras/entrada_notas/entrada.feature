@@ -155,10 +155,13 @@ Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|casas_decimais|               XML               |total_produtos|numeroDocumento|serie|
-|       2      |total_produtos_arredondamento.xml|   4.015,66   |     13154     |  1  |
-|       5      |total_produtos_arredondamento.xml|   4.015,66   |     13154     |  1  |
-|       4      | total_produtos_distribuicao.xml |   5.034,25   |     13378     |  1  |
+|casas_decimais|            XML           |total_produtos|numeroDocumento|serie|
+|       2      |total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
+|       5      |total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
+|       4      |total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
+|       2      |total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
+|       2      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
+|       5      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
  
 
 
