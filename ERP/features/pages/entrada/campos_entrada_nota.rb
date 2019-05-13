@@ -1,19 +1,36 @@
 module CamposEntradaNota
+
     def setarQuantidade(quantidade)
         find('input[formcontrolname=quantidade]').set quantidade
     end
 
     def abrirCampoPesquisa()
-        find('.select2-search__field').click
+        campo_pesquisa = find('.select2-search__field')
+        campo_pesquisa.click
     end
 
-    def setarPesquisa(pai, termo)
-        pai.set(termo)
+    def setarPesquisa(campo, texto_pesquisa, enter)
+        campo.set texto_pesquisa
+
+        if enter == true
+            sleep 1
+            campo.send_keys(:enter)
+        end
     end
 
-    def abrirEntidades()
+
+    def abrirEntidades
         find('.form-group col-sm-6, app-vo-filtro-entidades[formcontrolname=entidade] div', match: :first)
         .find('.select2-selection__placeholder', text: 'Selecione...').click
+    end
+
+    def abrirFornecedor
+        if page.has_css?('.select2-search__field') 
+            find('.select2-search__field').click
+        else
+            find('app-vo-filtro-fornecedores[formcontrolname=fornecedor]').find('.select2-selection__placeholder', text: 'Selecione...').click
+            find('.select2-search__field').click
+        end
     end
 
     def setarEntidade(nomeEntidade)
@@ -24,7 +41,7 @@ module CamposEntradaNota
         find('input[formcontrolname=numeroDocumento]').set numDoc
     end
 
-    def setarSerieDocuimento(serDoc)
+    def setarSerieDocumento(serDoc)
         find('input[formcontrolname=serie]').set serDoc
     end
 
@@ -51,5 +68,5 @@ module CamposEntradaNota
         Timeout.timeout(1000) do
           loop until page.has_no_css?(".block-ui-wrapper-custom")
         end
-      end
+    end
 end

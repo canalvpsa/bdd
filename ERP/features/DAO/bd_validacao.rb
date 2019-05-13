@@ -30,6 +30,13 @@ module BD_validacao
         return update_banco(query)
     end
 
+    def parametro_custo_impostos(boolean)
+        query = 'UPDATE QA_VPSA_AUT.PARAMETROBOOLEAN SET VALOR = '+boolean+' 
+                 WHERE ID = (SELECT id FROM QA_VPSA_AUT.PARAMETRO WHERE CHAVE = 80);'
+                'UPDATE QA_VPSA_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
+        return update_banco(query)
+    end
+    
 
     def data_alteracao_parametro
         query = 'UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'

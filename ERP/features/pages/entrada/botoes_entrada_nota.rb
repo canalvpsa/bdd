@@ -5,12 +5,12 @@ module BotoesEntradaNota
         botao.click
     end
 
-    def clicarBotaoFinalizar ()
+    def clicarBotaoFinalizar()
         botao = find('button', text: 'Finalizar', wait:100)
         botao.click
     end
 
-    def clicarBotaoAdicionar ()
+    def clicarBotaoAdicionar()
         botao = find('button', text: 'Adicionar')
         botao.click
     end

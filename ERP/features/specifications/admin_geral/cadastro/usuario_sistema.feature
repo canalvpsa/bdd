@@ -1,10 +1,12 @@
 #language: pt
 
-@ERP
+@ERP 
 Funcionalidade: ERP - Usuário Sistema
 
-Contexto: Dado que o usuário acessa o cadastro de usuário do sistema
+Contexto: Cadastrar usuario
+Dado que o usuário acessa o cadastro de usuário do sistema
 
+@usuario
 Esquema do Cenário: Cadastrar um novo usuário do sistema
     Dado que o usuário seleciona o tipo "<tipo>" do usuário do sistema
     E informa todos os dados do usuário do sistema
@@ -14,8 +16,8 @@ Esquema do Cenário: Cadastrar um novo usuário do sistema
 
 Exemplos:
 |          tipo         |
-|  P. Física - Nacional |
-|P. Física - Estrangeira|
+|  Pessoa Física Nacional |
+#|P. Física - Estrangeira|
 
 
 Esquema do Cenário: Cadastrar um usuário do sistema inativado
