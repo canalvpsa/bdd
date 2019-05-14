@@ -6,8 +6,6 @@ Funcionalidade: ERP - Entrada de nota fiscal com divergência nos totais do XML
 Contexto: Nova entrada de notas
 Dado que o usuário inicia uma nova entrada de notas
 
-#CP-719  - Valor total dos produtos não bate com a somatória dos itens devido a casas decimais do sistema
-#CP-733  - Arredondamento com a aplicação da diferença dos totais dos produtos, causando divergência
 #CP-726  - Validação do total da nota fiscal somando VFCPST que não está nos itens (possui apenas percentual)
 #CP-734  - Validação do total da nota fiscal somando VFCPST que está nos totais nos itens
 
@@ -22,6 +20,8 @@ Esquema do Cenário: Entrada de notas com XML com valor que somam no total da no
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|    XML   |numeroDocumento|serie|total_produtos|  tags_somam_nesta_NF  |total_NF|
-|vFCPST.xml|     11805     |  1  |    2117,82   |vST:376,35 vFCPST:72,39|2.566,56|
+|        XML       |numeroDocumento|serie|total_produtos|  tags_somam_nesta_NF  |total_NF|
+|vFCPST_NF11805.xml|     11805     |  1  |    2117,82   |vST:376,35 vFCPST:72,39|2.566,56|
+|vFCPST_NF11896.xml|     11896     |  1  |    800,70    |vST:137,27 vFCPST:25,26| 963,23 |
+
  
