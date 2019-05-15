@@ -142,4 +142,3 @@ Cenário: Remover produto original em item de grade pelas opções do cadastro d
     E que o produto possui vínculo com produto original
     Quando remove o vínculo com produto original nas opções do produto
     Então o produto é salvo como novo removendo o vínculo com produto original
-
