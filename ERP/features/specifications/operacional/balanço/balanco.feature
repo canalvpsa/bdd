@@ -28,7 +28,7 @@ Cenário: Processar balanço na pesquisa do balanço
     Então o balanço será processado
 
 
-Cenário: Alterar balanço não processado
+Esquema do Cenário: Alterar balanço não processado
     Dado que o usuário selecionou balanço com status "<status>"
     Quando acessa a edição do balanço
     Então o balanço é exibido para edição
@@ -38,7 +38,7 @@ Exemplos:
 |  Erro  |
 
 
-Cenário: Alterar balanço processado
+Esquema do Cenário: Alterar balanço processado
     Dado que o usuário selecionou balanço com status "<status>"
     Quando acessa a edição do balanço
     Então é exibida a mensagem "Não é possível editar balanço de estoque processado"
