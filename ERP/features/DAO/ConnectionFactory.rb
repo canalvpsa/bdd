@@ -30,7 +30,6 @@ module ConexaoBanco
 
 
   def update_banco(query)
-
     require 'oci8' 
       con = OCI8.new('vpsa', 'vpsa', '//bd.varejonline.com.br:1521/vpsa')
       retorno = ''

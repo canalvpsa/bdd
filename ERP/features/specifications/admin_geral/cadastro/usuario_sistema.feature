@@ -15,9 +15,9 @@ Esquema do Cenário: Cadastrar um novo usuário do sistema
     E o usuário do sistema é cadastrado
 
 Exemplos:
-|          tipo         |
+|           tipo          |
 |  Pessoa Física Nacional |
-#|P. Física - Estrangeira|
+|Pessoa Física Estrangeira|
 
 
 Esquema do Cenário: Cadastrar um usuário do sistema inativado
@@ -30,9 +30,9 @@ Esquema do Cenário: Cadastrar um usuário do sistema inativado
     E um e-mail é enviado para o usuário do sistema alterar a senha
 
 Exemplos:
-|          tipo         |
-|  P. Física - Nacional |
-|P. Física - Estrangeira|
+|           tipo          |
+|  Pessoa Física Nacional |
+|Pessoa Física Estrangeira|
 
 
 Cenário: Pesquisar um usuário ativo do sistema

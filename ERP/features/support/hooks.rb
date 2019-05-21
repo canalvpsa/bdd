@@ -31,6 +31,12 @@ After ('@entrada') do
   end
 
 
+  After ('@usuario') do 
+    include BD_validacao
+    deletar_ultimo_usuario
+    end
+
+
   After do |scenario|
     if scenario.failed?
       shot_file = page.save_screenshot("log/screenshot.png")

@@ -39,9 +39,32 @@ module BD_validacao
     
 
     def data_alteracao_parametro
-        query = 'UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5'
+        query = "UPDATE QA_ESTOQUE_AUT.PARAMETRO SET DATAALTERACAO = SYSDATE WHERE chave = 5"
+        update_banco(query)
    end
 
+
+   
+   def deletar_ultimo_usuario
+        data = Time.now.strftime '%d/%m/%y 00:00:00'
+        ultimo_usuario = consulta_banco("SELECT ID FROM QA_VPSA_AUT.USUARIO WHERE DATACRIACAO >= '"+data.to_s+"' AND ROWNUM <= 1 order by id desc")
+        terceiro = consulta_banco("SELECT ID FROM QA_VPSA_AUT.terceiro WHERE USUARIO_ID =" +ultimo_usuario.to_s)
+        
+        if !ultimo_usuario.nil?
+
+            delete_email = 'DELETE FROM QA_VPSA_AUT.EMAIL WHERE EMAIL_TERCEIRO = '+terceiro.to_s
+            update_banco(delete_email)
+
+            delete_terceiro_estoque = 'DELETE QA_ESTOQUE_AUT.VPSA_TERCEIRO WHERE referenciaid = '+terceiro.to_s
+            update_banco(delete_terceiro_estoque)
+
+            delete_terceiro = 'DELETE QA_VPSA_AUT.TERCEIRO WHERE USUARIO_ID = '+ultimo_usuario.to_s
+            update_banco(delete_terceiro)
+
+            delete_usuario = 'DELETE QA_VPSA_AUT.USUARIO WHERE ID = '+ultimo_usuario.to_s
+            update_banco(delete_usuario)
+        end
+    end
 
 
     def consulta_custoProduto(codigoInterno)
