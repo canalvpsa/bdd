@@ -35,6 +35,11 @@ module ConexaoBanco
       retorno = ''
       dbConsulta = con.parse(query)
       dbConsulta.exec
+      dbConsulta.fetch() {|row|
+        retorno = row
+        puts retorno
+      }
+        return retorno[0]
   end
 
 end

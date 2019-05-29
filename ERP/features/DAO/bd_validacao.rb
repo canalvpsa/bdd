@@ -49,19 +49,28 @@ module BD_validacao
         data = Time.now.strftime '%d/%m/%y 00:00:00'
         ultimo_usuario = consulta_banco("SELECT ID FROM QA_VPSA_AUT.USUARIO WHERE DATACRIACAO >= '"+data.to_s+"' AND ROWNUM <= 1 order by id desc")
         terceiro = consulta_banco("SELECT ID FROM QA_VPSA_AUT.terceiro WHERE USUARIO_ID =" +ultimo_usuario.to_s)
-        
+puts ultimo_usuario
+puts terceiro
         if !ultimo_usuario.nil?
-
-            delete_email = 'DELETE FROM QA_VPSA_AUT.EMAIL WHERE EMAIL_TERCEIRO = '+terceiro.to_s
+ 
+            delete_email = ('DELETE FROM QA_VPSA_AUT.EMAIL WHERE EMAIL_TERCEIRO = '+terceiro.to_s)
+            puts delete_email
             update_banco(delete_email)
 
-            delete_terceiro_estoque = 'DELETE QA_ESTOQUE_AUT.VPSA_TERCEIRO WHERE referenciaid = '+terceiro.to_s
+            delete_terceiro_estoque = ('DELETE QA_ESTOQUE_AUT.VPSA_TERCEIRO WHERE referenciaid = '+terceiro.to_s)
+            puts delete_terceiro_estoque
             update_banco(delete_terceiro_estoque)
 
-            delete_terceiro = 'DELETE QA_VPSA_AUT.TERCEIRO WHERE USUARIO_ID = '+ultimo_usuario.to_s
+            delete_terceiro = ('DELETE QA_VPSA_AUT.TERCEIRO WHERE USUARIO_ID = '+ultimo_usuario.to_s)
+            puts delete_terceiro
             update_banco(delete_terceiro)
 
-            delete_usuario = 'DELETE QA_VPSA_AUT.USUARIO WHERE ID = '+ultimo_usuario.to_s
+            delete_usuario_entidade = ('DELETE QA_VPSA_AUT.USUARIO_ENTIDADE WHERE USUARIO_ID = '+ultimo_usuario.to_s)
+            puts delete_usuario_entidade
+            update_banco(delete_usuario_entidade)
+
+            delete_usuario = ('DELETE QA_VPSA_AUT.USUARIO WHERE ID = '+ultimo_usuario.to_s)
+            puts delete_usuario
             update_banco(delete_usuario)
         end
     end

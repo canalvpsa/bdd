@@ -17,24 +17,23 @@ Dado("que o usuário seleciona o tipo {string} do usuário do sistema") do |tipo
     setarDataNascimento('30031992')
     find('input[formcontrolname=documentoTerceiro').set '97405334008'
     campo_permissao = find('app-vo-select[formcontrolname=permissao]').find('.select2-selection__placeholder', text: 'Selecione...').click
-    setar_campo_permissao = campo_permissao.first('li').click
+    setar_campo_permissao = find('li', text: 'ADMINISTRADOR').click
 
-    campo_entidade = find('app-vo-filtro-entidades[formcontrolname=entidadesLiberadas]').find('.select2-hidden-accessible').click
+    campo_entidade = find('app-vo-filtro-entidades[formcontrolname=entidadesLiberadas]').find('.select2-search__field',  match: :first).click
     setar_campo_entidade = find('li',text:'Homologação' ).click
     find('input[formcontrolname=senha').set 'varejonline'
     find('input[formcontrolname=confirmarSenha').set 'varejonline'
 
-sleep 5    
   end
   
   Quando("finaliza o cadastro") do
-    pending # Write code here that turns the phrase above into concrete actions
+  botao=find('button', text: 'Salvar', wait: 5)
+  botao.click
   end
   
-  Então("é exibida a mensagem {string}") do |string|
-    pending # Write code here that turns the phrase above into concrete actions
+  Então("é exibida a mensagem {string}") do |mensagem_esperada|
+    mensagemExibida = find('.noty_body', wait: 3).text
+    puts mensagemExibida
+    expect(mensagem_esperada).to include mensagemExibida
   end
   
-  Então("o usuário do sistema é cadastrado") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
