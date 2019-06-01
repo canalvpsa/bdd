@@ -63,6 +63,7 @@ public class VendedorCliente {
 		if(cliente.equals("ANA MARIA")){
 			s.type(Key.TAB);
 			s.type("562");
+			s.wait(m_clienteAnaMaria, 3.0);
 			s.click(m_clienteAnaMaria);
 		}
 	}

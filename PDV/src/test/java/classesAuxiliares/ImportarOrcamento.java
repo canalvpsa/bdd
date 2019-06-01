@@ -95,7 +95,6 @@ public class ImportarOrcamento {
 
 
 public void finaliza() throws FindFailed {
-
 	System.out.println("Nao foi possivel encontrar o orcamento");
 	s.type(Key.ESC);
 	s.type(Key.ESC);

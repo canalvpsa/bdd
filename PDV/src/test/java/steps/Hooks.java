@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import org.junit.AfterClass;
 import org.sikuli.script.FindFailed;
+import org.sikuli.script.Settings;
 
 import abrirModulos.AbrirManagerSincronismo;
 import classesAuxiliares.AfterTeste;
@@ -22,8 +23,10 @@ public class Hooks {
 	private AbrirManagerSincronismo sincronismo = AbrirManagerSincronismo.getInstance();
 	static String docFiscalParametro;
 
+	
 	@Before
 	public static void prepararPDV() throws FindFailed, ClassNotFoundException, InterruptedException, IOException, SQLException{
+		Settings.ActionLogs = false;
 		docFiscalParametro = System.getProperty("docFiscal");
 		String docFiscal = "SWEDA";
 

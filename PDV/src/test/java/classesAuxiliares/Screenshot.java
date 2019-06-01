@@ -48,14 +48,11 @@ public class Screenshot {
 			
 			String nomeArquivo = scenario.getName()+"-"+dataHora+ ".png";
 			File file;
-			ImageIO.write(resize(image, 800, 600), "png", file = new File(diretorio+"/"+nomeArquivo));
+			ImageIO.write(image, "png", file = new File(diretorio+"/"+nomeArquivo));
 			Thread.sleep(2000);
-			screenSize = null;
-			screenRectangle = null;
-			
-			
+		
 			byte[] imageInByte;
-			BufferedImage originalImage = ImageIO.read(new File(diretorio+"/"+nomeArquivo));
+			BufferedImage originalImage = ImageIO.read(file = new File(diretorio+"/"+nomeArquivo));
 
 			// convert BufferedImage to byte array
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -68,7 +65,7 @@ public class Screenshot {
 			InputStream in = new ByteArrayInputStream(imageInByte);
 			BufferedImage bImageFromConvert = ImageIO.read(in);
 
-			ImageIO.write(bImageFromConvert, "png", new File(file.getAbsolutePath()));
+			ImageIO.write(resize(bImageFromConvert, 800, 600), "png", new File(file.getAbsolutePath()));
 			
 			scenario.embed(imageInByte, "image/png");
 			

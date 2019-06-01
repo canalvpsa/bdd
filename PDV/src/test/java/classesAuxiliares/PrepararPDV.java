@@ -26,23 +26,24 @@ public class PrepararPDV {
 	private TipoImpressora BDtipoImpressora = new TipoImpressora();
 	private Maquina BDmaquina = new Maquina();
 	private Screen s = new Screen();
-	
+
 	private Pattern m_loginPDV = new Pattern(getImage("imgGeral/loginPDV.png")).similar(0.90f);
 	private Pattern m_emAtendimento = new Pattern(getImage("imgOrcamentoPedido/emAtendimento.png")).similar(0.98f);
+	private Pattern m_PDVabrindo = new Pattern(getImage("imgGeral/PDVabrindo.png")).similar(0.98f);
 	private Pattern m_loginSenha = new Pattern(getImage("imgGeral/loginSenha.png")).similar(0.85f);
 	private Pattern m_loginUsuario = new Pattern(getImage("imgGeral/loginUsuario.png")).similar(0.85f);
 	private Pattern m_loginUsuarioVazio = new Pattern(getImage("imgGeral/loginUsuarioVazio.png")).similar(0.55f);
 	private Pattern m_abrirCaixa = new Pattern(getImage("imgGeral/abrirCaixa.png")).similar(0.90f);
 	String imageString, docFiscalParametro, docFiscal;
 	boolean PDVaberto;
-	
+
 	private String getImage(String path) {
 
 		URL url = getClass().getClassLoader().getResource(path);
 		imageString = url.toString();
 		return imageString;
 	}
-	
+
 	public static PrepararPDV getInstance(){
 		if (instancia ==null){
 			instancia = new PrepararPDV();
@@ -86,46 +87,35 @@ public class PrepararPDV {
 			}
 
 			if (PDVaberto == false) {
-				s.wait(5.0);
-				//Inicia PDV
-				statusPDV.abrePDV();
-
-				//Se trabalhar com ECF, deve validar mensagens da impressora
-
-				if(docFiscal.equals("SWEDA"))
-					ECF.validaECFaberturaPDV();
-
-				s.wait(m_loginPDV, 500);
+				iniciarPDV();
 			}
-
-			login();
 
 			// SE ESTIVER NA TELA DE VENDA, CANCELA O PEDIDO
 			if (s.exists(m_emAtendimento) != null) {
 				cadastro.sairPedido();
 			}
 		}
-
 	}
 
 
 
-	public void abrePDVnovamente() throws InterruptedException, FindFailed, IOException, ClassNotFoundException, SQLException{
+	public void iniciarPDV() throws InterruptedException, FindFailed, IOException, ClassNotFoundException, SQLException{
 		Settings.ActionLogs = false;
-
-		if (PDVaberto == false) {
-			s.wait(5.0);
-			//Inicia PDV
-			statusPDV.abrePDV();
-
-			//Se trabalhar com ECF, deve validar mensagens da impressora
-			if(BDtipoImpressora.getTipoImpressora("SWEDA") == true)
-				ECF.validaECFaberturaPDV();
-
-			s.wait(m_loginPDV, 500);
-			login();
+		s.wait(5.0);
+		//Inicia PDV
+		statusPDV.abrePDV();
+		
+		while (s.exists(m_PDVabrindo) != null) {
 		}
+
+		//Se trabalhar com ECF, deve validar mensagens da impressora
+		if(BDtipoImpressora.getTipoImpressora("SWEDA") == true)
+			ECF.validaECFaberturaPDV();
+
+		s.wait(m_loginPDV, 300);
+		login();
 	}
+
 
 
 	public void login() throws FindFailed, ClassNotFoundException, SQLException{

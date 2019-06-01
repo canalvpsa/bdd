@@ -13,6 +13,7 @@ import org.sikuli.script.Screen;
 public class BaixaParcela_pagamento {
 	private static BaixaParcela_pagamento instancia = new BaixaParcela_pagamento();
 	private Screen s = new Screen();
+	private Pattern m_pagamentoBaixa4040 = new Pattern(getImage("imgBaixaParcela/pagamentoBaixa40.40.png")).exact();
 	private Pattern m_pagamentoBaixa10000 = new Pattern(getImage("imgBaixaParcela/pagamentoBaixa100.00.png")).exact();
 	private Pattern m_pagamentoBaixa14040 = new Pattern(getImage("imgBaixaParcela/pagamentoBaixa140.40.png")).exact();
 	private String imageString;
@@ -57,10 +58,12 @@ public class BaixaParcela_pagamento {
 	public void efetivaPagamentoDinheiroDiferenteTotal(String valorPago) throws FindFailed{
 
 		valorPago = valorPago.replace(",", ".");
+		s.wait(3.0);
 		s.type(Key.F8);
 		s.type("a", KeyModifier.CTRL);
 		s.type(Key.BACKSPACE);
 		s.type(valorPago);
+		s.wait(3.0);
 		s.type(Key.ENTER);
 	}
 
@@ -75,7 +78,7 @@ public class BaixaParcela_pagamento {
 			break;
 
 		case "40,40":
-			if(s.exists(m_pagamentoBaixa10000) != null){
+			if(s.exists(m_pagamentoBaixa4040) != null){
 			}else{
 				assertFalse("NOK divergencia no pagamento", true);
 			}

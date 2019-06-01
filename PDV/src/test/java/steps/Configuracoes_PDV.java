@@ -49,7 +49,7 @@ public class Configuracoes_PDV {
 			System.out.println(configuracao+ ": Atualizado para:" +valorEsperado);
 
 			statusPDV.fecharPDV();
-			prepararPDV.abrePDVnovamente();
+			prepararPDV.iniciarPDV();
 		}else{
 			System.out.println(configuracao+ ": ja configurado para:" +valorEsperado);
 		}

@@ -11,6 +11,7 @@ Quando sai da venda sem finaliza-la
 Então a venda é cancelada com sucesso
 
 
+@cancelar_ultimo_CF
 Cenário: Cancelar o último cupom emitido
 
 Dado que o usuário realizou uma venda

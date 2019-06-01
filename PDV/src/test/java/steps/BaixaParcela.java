@@ -2,6 +2,7 @@ package steps;
 
 import org.sikuli.script.Settings;
 
+import DAO.impl.ParcelaEmAberto;
 import classesAuxiliares.AbrirFecharRotinas;
 import classesAuxiliares.BaixaParcela_pagamento;
 import classesAuxiliares.BaixarParcela;
@@ -12,6 +13,7 @@ import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
 public class BaixaParcela {
+	private ParcelaEmAberto BDparcela = new ParcelaEmAberto();
 	private BaixarParcela baixarParcela = BaixarParcela.getInstance();
 	private Venda_pagamento pagamento_venda = Venda_pagamento.getInstance();
 	private BaixaParcela_pagamento pagamento_baixa = BaixaParcela_pagamento.getInstance();
@@ -23,13 +25,15 @@ public class BaixaParcela {
 
 	@Dado("^que o cliente já possui parcela de crediário em aberto$")
 	public void que_o_cliente_já_possui_parcela_de_crediário_em_aberto() throws Throwable {
-		venda.que_o_usuário_inicia_uma_venda();
-		vendedorCliente.vincularCliente("ANA MARIA");
-		itens.adiciona_o_item_com_quantidade_com_valor_unitário_de_R$("brinco", "1", "41,80");
-		itens.adiciona_o_item_com_quantidade_com_valor_unitário_de_R$("calca", "1", "239,00");
-		pagamento_venda.adiciona_o_plano_de_pagamento_crediário();
-		venda.a_venda_é_finalizada_com_sucesso_e_são_exibidas_as_parcelas();
-		cadastro.sairPedido();
+		if(BDparcela.getparcela(1, 140.40) == false){
+			venda.que_o_usuário_inicia_uma_venda();
+			vendedorCliente.vincularCliente("ANA MARIA");
+			itens.adiciona_o_item_com_quantidade_com_valor_unitário_de_R$("brinco", "1", "41,80");
+			itens.adiciona_o_item_com_quantidade_com_valor_unitário_de_R$("calca", "1", "239,00");
+			pagamento_venda.adiciona_o_plano_de_pagamento_crediário();
+			venda.a_venda_é_finalizada_com_sucesso_e_são_exibidas_as_parcelas();
+			cadastro.sairPedido();
+		}
 	}
 
 
@@ -54,12 +58,12 @@ public class BaixaParcela {
 	public void o_vendedor_seleciona_as_parcelas_e_para_pagamento_no_valor_de_R$_cada(String numParcela1, String numParcela2, String valorParcela) throws Throwable {
 
 	}
-	
+
 	@Quando("^adiciona o plano de pagamento dinheiro informando valor parcial R\\$ \"([^\"]*)\" na baixa de parcela$")
 	public void adicionaOPlanoDePagamentoDinheiroInformandoValorParcialR$NaBaixaDeParcela(String valor) throws Throwable {
 		pagamento_baixa.realizaPagamentoParcialBaixaParcela(valor);
 	}
-	
+
 
 	@Quando("^adiciona o plano de pagamento dinheiro na baixa de parcela informando R\\$ \"([^\"]*)\"$")
 	public void adicionaOPlanoDePagamentoDinheiroNaBaixaDeParelaInformandoR$(String valorInformado) throws Throwable {
@@ -69,7 +73,6 @@ public class BaixaParcela {
 
 	@Então("^a baixa parcial é realizada com sucesso$")
 	public void a_baixa_parcial_é_realizada_com_sucesso() throws Throwable {
-		pagamento_baixa.realizaPagamentoParcialBaixaParcela("100,00");
 		cadastro.finalizarBaixaParcelaParcial();
 	}
 

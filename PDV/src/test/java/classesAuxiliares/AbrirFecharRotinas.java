@@ -34,12 +34,16 @@ public class AbrirFecharRotinas {
 	private Pattern m_orcamento = new Pattern(getImage("imgOrcamentoPedido/orcamento.png")).similar(0.98f);
 	private Pattern m_pedidoVenda = new Pattern(getImage("imgOrcamentoPedido/pedidoDeVenda.png")).similar(0.98f);
 	private Pattern m_pagamentos = new Pattern(getImage("imgOrcamentoPedido/pagamentos.png")).similar(0.99f);
+	private Pattern m_creditoDisponivel = new Pattern(getImage("imgOrcamentoPedido/creditoDisponivel.png")).similar(0.99f);
+	private Pattern m_limiteCreditoErro = new Pattern(getImage("imgOrcamentoPedido/limiteCreditoErro.png")).similar(0.99f);
+	private Pattern m_limiteCredito = new Pattern(getImage("imgOrcamentoPedido/limiteCredito.png")).similar(0.99f);
+
 	private Pattern m_ultimoPedido = new Pattern(getImage("imgOrcamentoPedido/ultimoPedido.png")).similar(0.99f);
 	private Pattern m_cancelar = new Pattern(getImage("imgOrcamentoPedido/cancelar.png")).similar(0.99f);
 	private Pattern m_finalizandoVenda = new Pattern(getImage("imgOrcamentoPedido/finalizandoVenda.png")).similar(0.90f);
 	private Pattern m_pedidoAbrir = new Pattern(getImage("imgMenu/pedidoAbrir.png")).similar(0.99f);
 	private Pattern m_emAtendimento = new Pattern(getImage("imgOrcamentoPedido/emAtendimento.png")).similar(0.95f);
-	private Pattern m_erroOperacional = new Pattern(getImage("imgOrcamentoPedido/pedidoErroOperacional.png")).similar(0.95f);
+	private Pattern m_pedidoCancelamento = new Pattern(getImage("imgOrcamentoPedido/motivoCancelamento.png")).similar(0.95f);
 	private Pattern m_funcoesTela = new Pattern(getImage("imgFuncoes/funcoes.png")).similar(0.95f);
 
 	// ImgFuncoes
@@ -156,23 +160,27 @@ public class AbrirFecharRotinas {
 		clicaFinalizarVenda();
 
 		if(jasperViewer == true){
-			s.wait(m_fecharJasperViewer, 15.0);
-			if(App.focus("JasperViewer") != null){
-				s.click(m_fecharJasperViewer);
+			if(s.exists(m_creditoDisponivel, 20) != null){
+				if(s.exists(m_limiteCreditoErro) != null){
+					assertFalse("NOK - Erro ao consultar API de limite de credito", true);
+				}
+
+				s.wait(m_fecharJasperViewer, 30.0);
+				if(App.focus("JasperViewer") != null){
+					s.click(m_fecharJasperViewer);
+				}
+			}else{
+				assertFalse("NOK - Consulta de limite de credito nao realizada", true);
 			}
-			validaFinalizacaoVenda();
-		}else{
-			validaFinalizacaoVenda();
 		}
+		validaFinalizacaoVenda();
 	}
 
 
 	public void validaFinalizacaoVenda() throws FindFailed{
-		s.wait(m_finalizandoVenda, 10.0);
+		s.wait(m_finalizandoVenda, 20.0);
 		while (s.exists(m_finalizandoVenda) != null) {
 		}
-
-		s.wait(3.0);
 		s.wait(m_ultimoPedido, 500.0);
 		s.wait(5.0);
 		s.type(Key.ESC);
@@ -209,7 +217,7 @@ public class AbrirFecharRotinas {
 					s.type(Key.ESC);
 				}
 
-				if (s.exists(m_menuGeral) == null) {
+				if (s.exists(m_emAtendimento) != null) {
 					s.type(Key.ESC);
 				}
 			}
@@ -221,7 +229,6 @@ public class AbrirFecharRotinas {
 		s.type(Key.F4);
 		if (s.exists(m_confirmacaoPagamento) != null) {
 			s.type(Key.ENTER);
-			System.out.println("OK - Mensagem finalizar baixa");
 		}
 		s.wait(3.0);
 	}
@@ -231,7 +238,6 @@ public class AbrirFecharRotinas {
 		s.type(Key.F4);
 		if (s.exists(m_confirmaValorInferior) != null) {
 			s.type(Key.ENTER);
-			System.out.println("OK - Mensagem valor inferior");
 		} else {
 			assertFalse("NOK nao exibiu mensagem valor inferior", true);
 		}
@@ -306,10 +312,11 @@ public class AbrirFecharRotinas {
 			botaoSim.clicarSim();
 			loginSenhaGerente();
 
-			if (s.exists(m_erroOperacional) != null) {
+			if (s.exists(m_pedidoCancelamento) != null) {
 				s.type(Key.ENTER);
 			}else{
-				assertFalse("NOK - Nao exibiu tipo de erro", true);
+
+				assertFalse("NOK - Nao mensagem cancelamento", true);
 			}
 		}
 	}

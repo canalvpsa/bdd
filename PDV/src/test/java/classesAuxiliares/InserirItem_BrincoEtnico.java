@@ -111,7 +111,7 @@ public class InserirItem_BrincoEtnico {
 					assertFalse("NOK - Valor produto nao encontrado", true);
 				}
 			} else {
-				fail("Erro na tela de associa��o de item na troca");
+				fail("Erro na tela de associacao de item na troca");
 			}
 
 			if (s.exists(m_valorTrocaTitulo) != null) {
@@ -138,7 +138,7 @@ public class InserirItem_BrincoEtnico {
 					assertFalse("NOK - Valor produto nao encontrado", true);
 				}
 			} else {
-				fail("Erro na tela de associa��o de item na troca");
+				fail("Erro na tela de associacao de item na troca");
 			}
 
 			if (s.exists(m_valorTrocaTitulo) != null) {

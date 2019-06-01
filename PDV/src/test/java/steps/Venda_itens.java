@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 
 import java.net.URL;
 
+import org.sikuli.script.App;
 import org.sikuli.script.Key;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
@@ -90,11 +91,14 @@ public class Venda_itens {
 		if(BDconfiguracao.getConfiguracao("PDV_PERMITE_ESTOQUE_NEGATIVO").equals("N")){
 			s.wait(2.0);
 			if ((s.exists(m_produtoSemSaldo_msg1) != null) || (s.exists(m_produtoSemSaldo_msg2) != null)){
-				System.out.println("Encontrou imagem");
 				s.type(Key.ENTER);
 				s.type(Key.ESC);
 			}else{
 				assertFalse("NOK - Mensagem de saldo insuficiente nao exibida", true);
+				if (App.focus("PDV 4.0") == null) {
+					s.type(Key.ESC);
+					s.type(Key.ESC);
+				}
 			}
 		}
 	}

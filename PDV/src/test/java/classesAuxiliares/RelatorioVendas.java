@@ -28,6 +28,7 @@ public class RelatorioVendas {
 	private Pattern m_pesquisar = new Pattern(getImage("imgVendas/pesquisar.png")).similar(0.95f);
 	private Pattern m_valor28000 = new Pattern(getImage("imgVendas/valor280.80.png")).similar(0.95f);
 	private Pattern m_ativo = new Pattern(getImage("imgVendas/ativo.png")).similar(0.95f);
+	private Pattern m_barraLoading = new Pattern(getImage("imgGeral/barraLoading.png")).similar(0.95f);
 	private Pattern m_informacoesVenda = new Pattern(getImage("imgVendas/informacoesVenda.png")).similar(0.95f);
 	private Pattern m_pesquisaMovimentacoes = new Pattern(getImage("imgVendas/pesquisaMovimentacoes.png")).similar(0.95f);
 	private Pattern m_confirmar = new Pattern(getImage("imgGeral/confirmar.png")).similar(0.90f);
@@ -53,31 +54,33 @@ public class RelatorioVendas {
 		s.type(resultado);
 		s.wait(3.0);
 		s.click(m_pesquisar);
+		
+		while(s.exists(m_barraLoading, 5) !=null){
+		}
 
 		if (s.exists(m_valor28000) != null) {
 			if (s.exists(m_ativo) != null) {
 				s.wait(3.0);
-				s.doubleClick(m_valor28000);
+				s.find(m_valor28000).doubleClick(m_valor28000);
 			} else {
 				assertFalse("NOK - Venda nao esta ativa", true);
 			}
 		} else {
-			assertFalse("NOK - Venda nao encontrada para detalhamento",
-					true);
+			assertFalse("NOK - Venda nao encontrada para detalhamento", true);
 		}
 		s.wait(m_informacoesVenda, 30.0);
 	}
 
 
 	public void cancelarVendaRelatorio() throws FindFailed {
-		s.click(m_cancelarVenda);
-		s.click(m_confirmar);
+		s.find(m_cancelarVenda).click(m_cancelarVenda);
+		s.find(m_confirmar).click(m_confirmar);
 		s.wait(m_loginGerente, 30.0);
 		s.type("usuario");
 		s.type(Key.TAB);
 		s.type("varejonline");
 		s.wait(3.0);
-		s.click(m_autorizar);
+		s.find(m_autorizar).click(m_autorizar);
 		s.wait(m_cancelarCupom,5.0);
 		s.type(Key.ENTER);
 		s.wait(2.0);
