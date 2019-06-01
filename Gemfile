@@ -5,7 +5,7 @@ gem 'activerecord-jdbc-adapter'
 gem 'capybara'
 gem 'cucumber'
 gem 'rspec'
-gem 'ruby-oci8'
+gem 'ruby-oci8', '2.2.7'
 gem 'selenium-webdriver'
 gem "yard-cucumber"
 gem "redcarpet"

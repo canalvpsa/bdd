@@ -1,6 +1,6 @@
 #language: pt
 
-@ERP
+@ERP @nao_automatizado
 Funcionalidade: ERP - Impactos da compra de seminovo e troca nacional no PDV
 
 

@@ -6,16 +6,16 @@ Funcionalidade: ERP - CTE na entrada
 Contexto: Dado que o usuário inicia uma nova entrada de notas
 
 Esquema do Cenário: Entrada com CTE para entidades de diferentes modalidades de tributação
-    Quando preenche os dados iniciais da entrada e a entidade é da modalidade de tributação "<modalidade_tributacao>"
+    Quando preenche os dados iniciais da entrada e a entidade é da modalidade de tributação "<tributacao>"
     E realiza o preenchimento dos dados do CTE
     Então será possível preencher os impostos
     E os lançamentos contábeis dos "<impostos>" relacionados ao CTe devem ser efetuados
 
 Exemplos:
-|modalidade_tributacao|    impostos   |
-|   simples_nacional  |     nenhum    |
-|   lucro_presumido   |      icms     |
-|      lucro_real     |icms,pis,cofins|
+|tributacao|    impostos   |
+|  simples |     nenhum    |
+| presumido|      icms     |
+|   real   |icms,pis,cofins|
 
 
 Esquema do Cenário: Escrituração de CTe com status "não escrituradas"
@@ -38,6 +38,7 @@ Cenário: Entrada de notas com XML e CTe
     E finaliza a entrada
     Então a entrada é concluida
     E além da nota fiscal, será registrada CTE com status "NAO_ESCRITURADA"
+
 
 
 Cenário: Entrada de notas com tipo de nota 55 com chave e CTe

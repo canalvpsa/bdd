@@ -13,7 +13,7 @@ module ConexaoBanco
 
 
   ENV['PATH'] = ENV['PATH'] + ';' + Dir.pwd.gsub!('/', '\\') + client
-  
+  ENV['NLS_LANG'] = 'BRAZILIAN PORTUGUESE_BRAZIL.WE8MSWIN1252'
 
   def consulta_banco(query)
     require 'oci8' 
@@ -30,12 +30,18 @@ module ConexaoBanco
 
 
   def update_banco(query)
-
     require 'oci8' 
       con = OCI8.new('vpsa', 'vpsa', '//bd.varejonline.com.br:1521/vpsa')
-      retorno = ''
       dbConsulta = con.parse(query)
       dbConsulta.exec
+  end
+
+  def delete_banco(query)
+    require 'oci8' 
+      con = OCI8.new('vpsa', 'vpsa', '//bd.varejonline.com.br:1521/vpsa')
+      dbConsulta = con.parse(query)
+      dbConsulta.exec
+      con.commit
   end
 
 end

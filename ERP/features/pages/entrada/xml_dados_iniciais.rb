@@ -1,23 +1,20 @@
 require 'win32ole'
 
-
 module EntradaXML
-
+ 
     def importarXML(nomeXML, concilia_nota, concilia_sistema)
-        
-        wsh = WIN32OLE.new('Wscript.Shell')
-        find('button', text: 'Importar XML').click;
-        find('button', text: 'Escolher arquivo').click
-        sleep 2
-        caminho = Dir.pwd + '/resources/'+nomeXML+'{ENTER}'
-        wsh.SendKeys(caminho.tr!('/', '\\'))
-        sleep 2
+        find('button', text: 'Importar XML').click   
+        xml = Dir.pwd+'/resources/'+nomeXML
+
+        page.execute_script("$('input[formcontrolname=arquivo]').removeAttr('readonly')")
+        selecaoArquivo = find('input[formcontrolname=arquivo]', visible:false).set(xml)
         
         concilia_nota(concilia_nota)
         concilia_sistema(concilia_sistema)
 
         find('.modal-footer').find('button', text: 'Importar').click
     end
+    
 
 
     def concilia_nota(conciliacao)
@@ -46,7 +43,7 @@ module EntradaXML
     end
 
 
-    def preencherDadosIniciaisXML_entidade(entidade)   
+    def preencherDadosIniciaisXML_entidade(entidade)  
         case entidade
         when 'real'
             entidade = 'ENTIDADE SÃO PAULO - LUCRO REAL'
@@ -62,9 +59,6 @@ module EntradaXML
         setarEntidade(entidade)
       
         abrirPesquisaOperacoes
-        operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')
-      
-        sleep 1
-        operacao.send_keys(:enter)
+        setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA', true)
     end
 end

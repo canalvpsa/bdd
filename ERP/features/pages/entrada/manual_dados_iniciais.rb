@@ -2,24 +2,20 @@ include BotoesEntradaNota
 include CamposEntradaNota
 
 module EntradaManual
-
     def preencherDadosIniciais_tiposNota(tipo_nota, nro_documento, serie)
-        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI')
-        sleep 3
-        apertarEnter(fornecedor)
-      
+        abrirFornecedor
+        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI', true)
+       
+
         abrirEntidades
         setarEntidade('ENTIDADE SÃO PAULO - LUCRO REAL')
       
         setarNumeroDocumento(nro_documento)
-        setarSerieDocuimento(serie)
+        setarSerieDocumento(serie)
       
         abrirPesquisaOperacoes
-        operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')
-      
-        sleep 1
-        operacao.send_keys(:enter)
-      
+        operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA', true)
+
         abrirPesquisaTipoNota
         setarTipoNota(tipo_nota)
     end
@@ -36,23 +32,18 @@ module EntradaManual
             entidade = 'ENTIDADE SÃO PAULO - SIMPLES'
         end
 
+        abrirFornecedor
+        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI', true)
 
-        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI')
-        sleep 3
-        apertarEnter(fornecedor)
-      
         abrirEntidades
         setarEntidade(entidade)
       
         setarNumeroDocumento(1010)
-        setarSerieDocuimento(1)
+        setarSerieDocumento(1)
       
         abrirPesquisaOperacoes
-        operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA')
-      
-        sleep 1
-        operacao.send_keys(:enter)
-      
+        operacao = setarPesquisa(abrirCampoPesquisa, 'COMPRA P/ COMERCIALIZA', true)
+
         abrirPesquisaTipoNota
         setarTipoNota('55')
     end

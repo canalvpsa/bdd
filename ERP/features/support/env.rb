@@ -3,14 +3,37 @@ require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'rspec'
 
-Capybara.configure do |c|
-    c.default_driver = :selenium 
+  Capybara.configure do |c|
+      server = ENV['url']
+      if server.nil?
+      @url = 'https://qa.varejonline.com.br:7443'
+      else
+      @url = server
+    end
+
+    c.default_driver = :selenium
     c.default_max_wait_time = 10
     c.run_server = false    
-end
+    c.default_driver = :selenium_chrome
+    c.app_host = @url
+  end
 
-Capybara.register_driver :selenium do |app|
 
-  caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--start-maximized" ]})
-    $driver = Capybara::Selenium::Driver.new(app, {:browser => :chrome, :desired_capabilities => caps})
+  RSpec.configure do |config|
+    config.expect_with :rspec do |expectations|
+      expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+    end
+
+    config.mock_with :rspec do |mocks|
+      mocks.verify_partial_doubles = true
+    end
+
+    config.shared_context_metadata_behavior = :apply_to_host_groups
+
+    config.include Capybara::DSL
+
+    config.before(:example) do
+      page.current_window.resize_to(1280,800)
+  end
+
 end

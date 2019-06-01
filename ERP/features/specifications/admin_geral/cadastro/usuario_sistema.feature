@@ -1,21 +1,22 @@
 #language: pt
 
-@ERP
+@ERP 
 Funcionalidade: ERP - Usuário Sistema
 
-Contexto: Dado que o usuário acessa o cadastro de usuário do sistema
+Contexto: Cadastrar usuario
+Dado que o usuário acessa o cadastro de usuário do sistema
 
+@usuario
 Esquema do Cenário: Cadastrar um novo usuário do sistema
     Dado que o usuário seleciona o tipo "<tipo>" do usuário do sistema
     E informa todos os dados do usuário do sistema
     Quando finaliza o cadastro
-    Então é exibida a mensagem "Registro adicionado com sucesso"
-    E o usuário do sistema é cadastrado
+    Então é exibida a mensagem "Usuário salvo com sucesso"
 
 Exemplos:
-|          tipo         |
-|  P. Física - Nacional |
-|P. Física - Estrangeira|
+|           tipo          |
+|  Pessoa Física Nacional |
+|Pessoa Física Estrangeira|
 
 
 Esquema do Cenário: Cadastrar um usuário do sistema inativado
@@ -28,9 +29,9 @@ Esquema do Cenário: Cadastrar um usuário do sistema inativado
     E um e-mail é enviado para o usuário do sistema alterar a senha
 
 Exemplos:
-|          tipo         |
-|  P. Física - Nacional |
-|P. Física - Estrangeira|
+|           tipo          |
+|  Pessoa Física Nacional |
+|Pessoa Física Estrangeira|
 
 
 Cenário: Pesquisar um usuário ativo do sistema
@@ -65,7 +66,6 @@ Cenário: Excluir um usuário do sistema
     Quando clicar em excluir
     E confirmar
     Então é exibida a mensagem "Registro excluído com sucesso"
-    E o usuário do sistema é excluído
 
 
 Cenário: Excluir um usuário do sistema cadastrado como vendedor, caixa ou gerente na rotina "Vendedor"
@@ -74,7 +74,6 @@ Cenário: Excluir um usuário do sistema cadastrado como vendedor, caixa ou gere
     Quando clicar em excluir
     E confirmar
     Então é exibida a mensagem "Não foi possível excluir usuário"
-    E o usuário do sistema permanece cadastrado
 
 
 Cenário: Alterar um usuário do sistema
@@ -84,4 +83,3 @@ Cenário: Alterar um usuário do sistema
     E alterar os dados
     E confirmar a alteração
     Então é exibida a mensagem "Registro alterado com sucesso"
-    E o usuário do sistema é atualizado
