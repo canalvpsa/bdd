@@ -3,6 +3,10 @@ Before ('@entrada') do
   realizar_Login('/server/erp/estoque/entradas')
 end
 
+Before('@seminovo', '@troca_nacional') do
+  pending
+ end
+
 
 Before ('@usuario') do 
   realizar_Login('/server/erp/usuarios')
@@ -39,11 +43,9 @@ After ('@entrada') do
 
   After do |scenario|
     if scenario.failed?
-      shot_file = page.save_screenshot("log/screenshot.png")
+      data = Time.now.strftime '%d-%m-%y-%H_%M_%S'
+      shot_file = page.save_screenshot("log/screenshot_"+data.to_s+".png")
       shot_b64 = Base64.encode64(File.open(shot_file, "rb").read)
       embed(shot_b64, "image/png", "Screenshot") # Cucumber anexa o screenshot no report
     end
   end
-
-
-  #rake specs ["-t @smoke"]

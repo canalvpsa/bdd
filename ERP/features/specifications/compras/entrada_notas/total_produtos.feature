@@ -29,3 +29,6 @@ Exemplos:
 |       2      |total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
 |       2      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
 |       5      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
+|       2      |total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
+|       5      |total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
+ 
