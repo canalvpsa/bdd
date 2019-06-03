@@ -20,7 +20,7 @@ Dado("que o usuário informou todos os dados da entrada e o tipo da nota é {str
     clicarBotaoSalvar
 end
   
-Dado("que os produtos adicionados são:") do |table|
+Dado("que os produtos adicionados nas entradas manuais são:") do |table|
     @produto_lista = table.hashes 
 end
 
@@ -77,13 +77,20 @@ Quando("o usuário preenche os dados iniciais informando um XML") do
 end
   
 Quando("que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral") do
-    steps %(
-        Dado("que confirma a conciliação, confirma os dados adicionais e confirma os produtos")
-    )
-
-    #Salvar visão geral
+   #Salvar na conciliação
+   sleep 2
+   clicarBotaoSalvar
+  
+    #Salvar nos dados adicionais
     sleep 2
     clicarBotaoSalvar
+ 
+   #Salvar nos produtos
+   clicarBotaoSalvar
+ 
+   #Salvar visão geral
+   sleep 2
+   clicarBotaoSalvar
 end
   
 
@@ -198,5 +205,24 @@ Então("na visão geral o valor total da nota fiscal é {string}") do |total_NF|
   valida_total_NF(total_NF)
 
    #Salvar na visão geral
+   clicarBotaoSalvar
+end
+
+
+Dado("que informa desconto de {string} nos dados adicionais") do |desconto|
+  setarDesconto(desconto)
+end
+
+Dado("que confirma os dados adicionais") do
+  #Salvar nos dados adicionais
+  sleep 2
+  clicarBotaoSalvar
+end
+
+Dado("adiciona os produtos") do
+  incluirProdutos(@produto_lista)
+ 
+   #Salvar nos produtos
+   sleep 2
    clicarBotaoSalvar
 end

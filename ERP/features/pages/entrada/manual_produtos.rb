@@ -2,12 +2,17 @@ module EntradaProdutos
     def incluirProdutos(lista_produtos)
 
           lista_produtos.each do |p|
-               # converte para inteiro e faz loop
-               # p["codigo_produto"].to_i.times do
                setarPesquisa(abrirCampoPesquisa, p["codigo_item"], false)
                sleep 1
 
-               setarQuantidade(p["quantidade"]+'_000')
+               i = 0
+               num = consulta_parametro_custo
+               begin
+                    zeros = zeros.to_s + "0"
+                    i +=1
+               end while i < num
+
+               setarQuantidade(p["quantidade"]+'_'+zeros)
                clicarBotaoAdicionar
                sleep 1
           end

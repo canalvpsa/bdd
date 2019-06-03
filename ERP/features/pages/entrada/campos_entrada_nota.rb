@@ -63,6 +63,10 @@ module CamposEntradaNota
       dataEmissao.set data
     end
 
+    def setarDesconto(desconto)
+        find('input[formcontrolname=valorDesconto]').set desconto
+      end
+
 
     def wait_until_load
         Timeout.timeout(1000) do

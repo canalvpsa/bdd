@@ -5,10 +5,16 @@ Funcionalidade: ERP - Entrada de nota fiscal com divergência nos totais do XML
 
 Contexto: Nova entrada de notas
 Dado que o usuário inicia uma nova entrada de notas
+E que os produtos adicionados nas entradas manuais são:
+    |codigo_item|quantidade| 
+    |  2541.001 |     2    |
+    |  2541.002 |     1    |
 
 #CP-719  - Valor total dos produtos não bate com a somatória dos itens devido a casas decimais do sistema
 #CP-733  - Arredondamento com a aplicação da diferença dos totais dos produtos, causando divergência.
 #Agora o server irá enviar 4 casas decimais ao estoque, aplicando apenas a diferença dos totais dos produtos, seja ela positiva ou negativa.
+#CP-738  - Parâmetro de custo: 2 casas decimais e divergência no total dos produtos
+#CP-742  - Parâmetro de custo: 4 casas decimais e a nota possui 5 casas decimais causando divergência no total dos produtos
 
 @entrada_XML @total_produtos
 Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
@@ -22,13 +28,28 @@ Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|casas_decimais|            XML           |total_produtos|numeroDocumento|serie|
-|       2      |total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
-|       5      |total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
-|       4      |total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
-|       2      |total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
-|       2      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
-|       5      |total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
-|       2      |total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
-|       5      |total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
+|casas_decimais|            XML            |total_produtos|numeroDocumento|serie|
+|       2      | total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
+|       5      | total_produtos_NF13154.xml|   4.015,66   |     13154     |  1  |
+|       4      | total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
+|       2      | total_produtos_NF13378.xml|   5.034,25   |     13378     |  1  |
+|       2      | total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
+|       5      | total_produtos_NF13742.xml|   4.372,52   |     13742     |  1  |
+|       2      | total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
+|       5      | total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
+|       2      |total_produtos_NF109916.xml|   3.093,48   |     109916    |  1  |
+|       5      |total_produtos_NF109916.xml|   3.093,48   |     109916    |  1  |
  
+
+
+#CP-741  - Desconto aplicado no total era exibido rateado na visão geral dos itens mas exibia divergência acusando somatória dos itens 0
+@entrada_manual @desconto
+Cenário: Entrada de notas manual com desconto
+    Dado que o usuário informou todos os dados da entrada e o tipo da nota é "1"
+    E que informa desconto de "18,16" nos dados adicionais
+    E que confirma os dados adicionais
+    E adiciona os produtos
+    Quando validar os dados da nota fiscal de entrada
+    Então nenhuma mensagem de divergência de valores deve ser exibida
+    E na visão geral o valor total dos produtos é "11,84"
+    Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "1010" e série "1" 

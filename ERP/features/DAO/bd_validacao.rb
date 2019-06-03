@@ -22,6 +22,11 @@ module BD_validacao
         return consulta_banco(query)
     end
 
+    def consulta_parametro_custo()
+        query = 'SELECT id FROM QA_VPSA_AUT.PARAMETRO WHERE CHAVE = 5'
+        return consulta_banco(query)
+    end
+
 
     def parametro_decimais_custo(casas_decimais)
         query = 'UPDATE QA_VPSA_AUT.PARAMETROINTEGER SET VALOR = '+casas_decimais.to_s+'
