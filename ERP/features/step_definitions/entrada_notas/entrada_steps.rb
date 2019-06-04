@@ -43,7 +43,7 @@ end
 
   
 Quando("finaliza a entrada") do
-  clicarBotaoFinalizar
+  prosseguirAteFinalizar
 end
   
 Então("a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
@@ -172,10 +172,6 @@ end
     else
       puts "CST/CSOSN nao previsto"
     end
-    
-     #Salvar na visão geral
-     sleep 2
-     clicarBotaoSalvar
   end
   
   Então("ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
@@ -195,22 +191,20 @@ end
   
   Então("na visão geral o valor total dos produtos é {string}") do |total_produtos|
     valida_total_produtos(total_produtos)
-
-    #Salvar na visão geral
-    clicarBotaoSalvar
   end
 
   
 Então("na visão geral o valor total da nota fiscal é {string}") do |total_NF|
   valida_total_NF(total_NF)
+end
 
-   #Salvar na visão geral
-   clicarBotaoSalvar
+Então("na visão geral o valor total do desconto é {string}") do |desconto|
+  valida_total_desconto(desconto)
 end
 
 
 Dado("que informa desconto de {string} nos dados adicionais") do |desconto|
-  setarDesconto(desconto)
+  preencherDesconto(desconto)
 end
 
 Dado("que confirma os dados adicionais") do

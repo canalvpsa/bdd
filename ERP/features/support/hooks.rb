@@ -27,8 +27,14 @@ def mensagemBeamer
   end
 end
 
+After('@seminovo', '@troca_nacional') do
+  pending
+ end
+
+
 After ('@entrada') do 
   include BD_validacao
+  page.has_css?('app-vo-filter-container',wait:10)
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
     find('#noty-ok-button', text: 'Sim').click
@@ -41,11 +47,15 @@ After ('@entrada') do
     end
 
 
+
   After do |scenario|
     if scenario.failed?
       data = Time.now.strftime '%d-%m-%y-%H_%M_%S'
+      page.current_window.maximize
+      #page.execute_script("document.body.style.zoom = '50%'")
       shot_file = page.save_screenshot("log/screenshot_"+data.to_s+".png")
       shot_b64 = Base64.encode64(File.open(shot_file, "rb").read)
       embed(shot_b64, "image/png", "Screenshot") # Cucumber anexa o screenshot no report
+      page.current_window.resize_to(1280,800)
     end
   end

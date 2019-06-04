@@ -18,7 +18,6 @@ require 'rspec'
     c.app_host = @url
   end
 
-
   RSpec.configure do |config|
     config.expect_with :rspec do |expectations|
       expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -35,5 +34,4 @@ require 'rspec'
     config.before(:example) do
       page.current_window.resize_to(1280,800)
   end
-
 end
