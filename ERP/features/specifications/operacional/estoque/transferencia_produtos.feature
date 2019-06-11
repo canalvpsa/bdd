@@ -25,7 +25,7 @@ Exemplos:
 |preco_venda|
 
 
-Cenário: Validar valor entrada com diferentes configurações de conferências de produtos
+Esquema do Cenário: Validar valor entrada com diferentes configurações de conferências de produtos
     Dado que a entidade está configurada com conferência de produtos igual a "<conferencia_produto>"
     E a transferência de produtos foi realizada com o tipo de valor é "<tipo_valor>"
     E a entidade destino está configurada como "<conferencia_produto>"

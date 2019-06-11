@@ -1,30 +1,33 @@
 module BotoesEntradaNota
 
-    def clicarBotaoSalvar()
-        click_button('Salvar e continuar', wait:100)
-    end
-
-    def clicarBotaoFinalizar()
-        click_button('Finalizar', wait:100)
+    def clicarBotao()
+        botao = find('.wizard-button-next', wait:100)
+        wait_until_load_button
+        botao.click
     end
 
     def clicarBotaoAdicionar()
-        click_button('Adicionar', wait:100)
+        click_button('Adicionar', wait:5)
     end
+    
 
     def prosseguirAteFinalizar()
-        if page.has_css?("app-vo-entrada-itens") 
-            click_button('Salvar e continuar', wait:100)
-            wait_until_load
+        #produtos
+        if page.has_css?("app-vo-wizard-step app-vo-entrada-itens") 
+            page.execute_script ("window.scrollTo(0,0)")
+            clicarBotao
+            wait_until_load_page
         end
 
+        #visao geral
         if page.has_css?("app-vo-entrada-visao-geral") 
-            click_button('Salvar e continuar', wait:100)
-            wait_until_load
+            clicarBotao
+            wait_until_load_page
         end
 
+        #pagamento
         if page.has_css?("app-vo-entrada-pagamento") 
-            click_button('Finalizar', wait:100)
+            clicarBotao
         end
     end
 end

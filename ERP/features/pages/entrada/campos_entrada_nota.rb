@@ -68,7 +68,7 @@ module CamposEntradaNota
       end
 
 
-    def wait_until_load
+    def wait_until_load_page
         Timeout.timeout(1000) do
           loop until page.has_no_css?(".block-ui-wrapper-custom")
         end
@@ -79,4 +79,12 @@ module CamposEntradaNota
             loop until page.has_no_css?(".loading-stick")
           end
       end
+
+      
+    def wait_until_load_button
+      Timeout.timeout(1000) do
+        botao = find('.wizard-button-next', wait:100)
+        loop until botao.has_no_css?('disabled')
+      end
+    end
 end
