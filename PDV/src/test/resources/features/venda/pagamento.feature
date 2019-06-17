@@ -31,6 +31,18 @@ Cenário: Venda com pagamento no crediário
     Então a venda é finalizada com sucesso e são exibidas as parcelas
 
 
+@cartao @ignore
+Cenário: Venda com pagamento em cartão
+    Dado que o parâmetro de obrigatoriedade está habilitado no ERP
+    Quando adiciona o item "brinco" com quantidade "1" com valor unitário de R$ "41,80"
+    E o valor total da venda é de R$ "41,80"
+    E adiciona o plano de pagamento cartão sem informar NSU
+    Então é exibida mensagem informando que o NSU é obrigatório
+    Mas se o NSU é informando
+    Então a venda é finalizada com sucesso
+
+
+
 @adiantamento_gerado @ignore
 Cenário: Venda com adiantamento gerado
     Quando o usuário efetivar uma venda

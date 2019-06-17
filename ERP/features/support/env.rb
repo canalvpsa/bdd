@@ -35,3 +35,7 @@ require 'rspec'
       page.current_window.resize_to(1280,800)
   end
 end
+
+Before('@seminovo', '@troca_nacional') do
+  pending
+ end

@@ -65,7 +65,7 @@ Quando("o usuário informar na entrada o tipo de nota {string} com número do do
 end
 
 Quando("o usuário preenche os dados iniciais informando um XML") do
-  importarXML('42181275552133001303550040000005621722790267.xml', 'codigo_produto', 'codigo_interno')
+  importarXML('xml_simples.xml', 'codigo_produto', 'codigo_interno')
   preencherDadosIniciaisXML_entidade('real')
 
   # Salvar nos dados iniciais
@@ -202,7 +202,7 @@ Dado('que confirma os dados adicionais') do
 end
 
 Dado('adiciona os produtos') do
-  incluir_produtos(@produto_lista)
+  incluirProdutos(@produto_lista)
 
   # Salvar nos produtos
   sleep 2

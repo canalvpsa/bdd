@@ -1,6 +1,6 @@
 #language: pt
 
- @ERP @entrada
+ @ERP @entrada @total_nota_fiscal
 Funcionalidade: ERP - Entrada de nota fiscal com divergência nos totais do XML
 
 Contexto: Nova entrada de notas
@@ -13,7 +13,7 @@ E que os produtos adicionados nas entradas manuais são:
 #CP-726  - Validação do total da nota fiscal somando VFCPST que não está nos itens (possui apenas percentual)
 #CP-734  - Validação do total da nota fiscal somando VFCPST que está nos totais nos itens
 
-@entrada_XML @total_nota_fiscal
+@entrada_XML
 Esquema do Cenário: Entrada de notas com XML com valor que somam no total da nota fiscal
     E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
@@ -29,7 +29,7 @@ Exemplos:
 |vFCPST_NF11896.xml|     11896     |  1  |    800,70    |vST:137,27 vFCPST:25,26| 963,23 |
 
  #CP-741  - Desconto aplicado no total era exibido rateado na visão geral dos itens mas exibia divergência acusando somatória dos itens 0
-@entrada_XML @total_nota_fiscal @desconto
+@entrada_XML @desconto
 Esquema do Cenário: Entrada de notas com XML com desconto em um item e em todos os itens
     E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_produto" e no sistema "codigo_interno"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos

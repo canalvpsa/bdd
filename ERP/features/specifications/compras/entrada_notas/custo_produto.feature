@@ -1,6 +1,6 @@
 #language: pt
 
- @ERP
+ @ERP @custo
 Funcionalidade: ERP - Entrada de nota fiscal no ERP e validação do custo dos produtos
 
 Contexto: Nova entrada de notas

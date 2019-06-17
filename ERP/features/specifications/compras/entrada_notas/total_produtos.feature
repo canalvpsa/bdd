@@ -1,6 +1,6 @@
 #language: pt
 
- @ERP @entrada
+ @ERP @entrada @total_produtos
 Funcionalidade: ERP - Entrada de nota fiscal com divergência nos totais do XML
 
 Contexto: Nova entrada de notas
@@ -12,7 +12,7 @@ Dado que o usuário inicia uma nova entrada de notas
 #CP-738  - Parâmetro de custo: 2 casas decimais e divergência no total dos produtos
 #CP-742  - Parâmetro de custo: 4 casas decimais e a nota possui 5 casas decimais causando divergência no total dos produtos
 
-@entrada_XML @total_produtos
+@entrada_XML
 Esquema do Cenário: Entrada de notas com XML e diferença de total de produtos
     Dado que o parâmetro de custo do ERP está configurado para <casas_decimais> casas decimais
     E que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
