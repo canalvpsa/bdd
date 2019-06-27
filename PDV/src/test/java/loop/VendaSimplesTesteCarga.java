@@ -120,7 +120,6 @@ public class VendaSimplesTesteCarga {
 
 			s.type(Key.F8);
 			s.type(Key.ENTER);
-			System.out.println("OK - Valor a pagar informado");
 
 			//FINALIZA A VENDA
 			clicaFinalizarVenda();

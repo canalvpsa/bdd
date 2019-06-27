@@ -16,9 +16,9 @@ public class SimpleRepeatRule implements TestRule {
 
         @Override
         public void evaluate() throws Throwable {
-            for (int i = 0; i < 5000; i++) {
+            for (int i = 1; i < 5000; i++) {
                 statement.evaluate();
-                System.out.println("Contador de execucoes: "+i++);
+                System.out.println("Contador de execucoes: "+i);
             }
         }
     }
