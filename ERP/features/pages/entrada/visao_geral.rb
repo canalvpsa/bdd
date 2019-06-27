@@ -36,6 +36,9 @@ module VisaoGeral
       when 'total_produto'
          expect(@validarTotalizadores).to include('Valor total produtos R$ '+valor)
 
+      when 'total_desconto'
+         expect(@validarTotalizadores).to include('Valor desconto R$ '+valor)
+
       when 'total_nota'
          expect(@validarTotalizadores).to include('Valor total nota R$ '+valor)
 
@@ -51,6 +54,11 @@ module VisaoGeral
    def valida_total_produtos(total_produtos)
       @validarTotalizadores = coletarDados
       validarCampos('total_produto', total_produtos)
+   end
+
+   def valida_total_desconto(total_desconto)
+      @validarTotalizadores = coletarDados
+      validarCampos('total_desconto', total_desconto)
    end
 
    def valida_total_NF(total_NF)

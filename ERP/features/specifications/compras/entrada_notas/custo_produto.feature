@@ -1,11 +1,11 @@
 #language: pt
 
- @ERP
+ @ERP @custo
 Funcionalidade: ERP - Entrada de nota fiscal no ERP e validação do custo dos produtos
 
 Contexto: Nova entrada de notas
 Dado que o usuário inicia uma nova entrada de notas
-E que os produtos adicionados são:
+E que os produtos adicionados nas entradas manuais são:
 |codigo_item|quantidade|valor_unitario|valor_total|
 |  2541.001 |     2    |     10,00    |   20,00   |
 |  2541.002 |     1    |     10,00    |   10,00   |

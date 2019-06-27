@@ -12,6 +12,8 @@ module EntradaXML
         concilia_nota(concilia_nota)
         concilia_sistema(concilia_sistema)
 
+        wait_until_load_campos
+
         find('.modal-footer').find('button', text: 'Importar').click
     end
     

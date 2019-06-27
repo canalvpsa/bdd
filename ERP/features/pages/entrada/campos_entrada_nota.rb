@@ -13,7 +13,7 @@ module CamposEntradaNota
         campo.set texto_pesquisa
 
         if enter == true
-            sleep 1
+            sleep 3
             campo.send_keys(:enter)
         end
     end
@@ -63,10 +63,28 @@ module CamposEntradaNota
       dataEmissao.set data
     end
 
+    def preencherDesconto(desconto)
+        find('input[formcontrolname=valorDesconto]').set desconto
+      end
 
-    def wait_until_load
+
+    def wait_until_load_page
         Timeout.timeout(1000) do
           loop until page.has_no_css?(".block-ui-wrapper-custom")
         end
+    end
+
+    def wait_until_load_campos
+        Timeout.timeout(1000) do
+            loop until page.has_no_css?(".loading-stick")
+          end
+      end
+
+      
+    def wait_until_load_button
+      Timeout.timeout(1000) do
+        botao = find('.wizard-button-next', wait:100)
+        loop until botao.has_no_css?('disabled')
+      end
     end
 end

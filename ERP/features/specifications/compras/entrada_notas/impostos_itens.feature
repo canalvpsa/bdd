@@ -1,6 +1,6 @@
 #language: pt
 
- @ERP @entrada
+ @ERP @entrada @imposto
 Funcionalidade: ERP - Entrada de nota fiscal no ERP com validação dos impostos
 
 Contexto: Nova entrada de notas

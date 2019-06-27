@@ -5,7 +5,7 @@ Funcionalidade: ERP - Entrada de nota fiscal no ERP e validação do status da e
 
 Contexto: Nova entrada de notas
 Dado que o usuário inicia uma nova entrada de notas
-E que os produtos adicionados são:
+E que os produtos adicionados nas entradas manuais são:
     |codigo_item|quantidade| 
     |  2541.001 |     2    |
     |  2541.002 |     1    |
