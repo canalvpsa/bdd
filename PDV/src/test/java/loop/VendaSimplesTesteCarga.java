@@ -24,6 +24,7 @@ public class VendaSimplesTesteCarga {
 
 	private AbrirFecharRotinas cadastro = AbrirFecharRotinas.getInstance();
 	private BotaoSim botaoSim = BotaoSim.getInstance();
+
 	boolean pdvAberto;
 	private String imageString;
 	private Screen s = new Screen();
@@ -46,8 +47,9 @@ public class VendaSimplesTesteCarga {
 	private Pattern m_cancelar = new Pattern(getImage("imgOrcamentoPedido/cancelar.png")).similar(0.99f);
 	private Pattern m_finalizandoVenda = new Pattern(getImage("imgOrcamentoPedido/finalizandoVenda.png")).similar(0.90f);
 	private Pattern m_pedidoAbrir = new Pattern(getImage("imgMenu/pedidoAbrir.png")).similar(0.99f);
-	private Pattern m_erroOperacional = new Pattern(getImage("imgOrcamentoPedido/pedidoErroOperacional.png")).similar(0.95f);
-
+	private Pattern m_pedidoCancelamento = new Pattern(getImage("imgOrcamentoPedido/motivoCancelamento.png")).similar(0.95f);
+	static String docFiscalParametro;
+	
 	private String getImage(String path) {
 
 		URL url = getClass().getClassLoader().getResource(path);
@@ -57,7 +59,8 @@ public class VendaSimplesTesteCarga {
 
 	@Rule
 	public SimpleRepeatRule repeatRule = new SimpleRepeatRule();
-
+	
+	
 	@Test
 	public void vendaDinheiro() throws FindFailed, IOException{
 		Settings.ActionLogs = false;
@@ -194,10 +197,10 @@ public class VendaSimplesTesteCarga {
 			botaoSim.clicarSim();
 			loginSenhaGerente();
 
-			if (s.exists(m_erroOperacional) != null) {
+			if (s.exists(m_pedidoCancelamento) != null) {
 				s.type(Key.ENTER);
 			}else{
-				assertFalse("NOK - Nao exibiu tipo de erro", true);
+				assertFalse("NOK - Nao mensagem cancelamento", true);
 			}
 			System.out.println("OK -Cancelamento realizado");
 		}
@@ -250,15 +253,12 @@ public class VendaSimplesTesteCarga {
 	}
 
 	public void validaFinalizacaoVenda() throws FindFailed{
-		s.wait(m_finalizandoVenda, 5.0);
-		System.out.println("Aguardando finalizacao venda");
+		s.wait(m_finalizandoVenda, 20.0);
 		while (s.exists(m_finalizandoVenda) != null) {
 		}
-
 		s.wait(m_ultimoPedido, 500.0);
+		s.wait(5.0);
 		s.type(Key.ESC);
-		s.wait(3.0);
-		System.out.println("OK - Pedido de venda finalizado");
 
 		sairPedido();
 	}
