@@ -49,7 +49,7 @@ public class VendaSimplesTesteCarga {
 	private Pattern m_pedidoAbrir = new Pattern(getImage("imgMenu/pedidoAbrir.png")).similar(0.99f);
 	private Pattern m_pedidoCancelamento = new Pattern(getImage("imgOrcamentoPedido/motivoCancelamento.png")).similar(0.95f);
 	static String docFiscalParametro;
-	
+
 	private String getImage(String path) {
 
 		URL url = getClass().getClassLoader().getResource(path);
@@ -59,13 +59,28 @@ public class VendaSimplesTesteCarga {
 
 	@Rule
 	public SimpleRepeatRule repeatRule = new SimpleRepeatRule();
-	
-	
+
+
 	@Test
 	public void vendaDinheiro() throws FindFailed, IOException{
 		Settings.ActionLogs = false;
 		verificaPDVfechado();
+		
 		System.out.println("\n\n---- Inicio vendaSimples ----");
+		int dataSize = 1024 * 1024;
+		Runtime rt = Runtime.getRuntime();  
+		System.out.println("Bites:");
+		System.out.println("Máximo memória: " + (rt.maxMemory() + " B "));  
+		System.out.println("Total memória: " + (rt.totalMemory() + " B "));  
+		System.out.println("Memória livre " + (rt.freeMemory() + " B "));   
+		System.out.println("Memória usada " + (rt.totalMemory() - rt.freeMemory()) + " B ");  
+
+		System.out.println("\nMB:");
+		System.out.println("Máximo memória: " + rt.maxMemory() / dataSize + " MB");  
+		System.out.println("Total memória: " + rt.totalMemory() / dataSize + " MB");  
+		System.out.println("Memória livre " + rt.freeMemory() / dataSize + " MB");   
+		System.out.println("Memória usada " + (rt.totalMemory() - rt.freeMemory()) /dataSize + " MB");  
+		
 		Date dataHoraAtual = new Date();
 		String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
 		String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
@@ -124,7 +139,8 @@ public class VendaSimplesTesteCarga {
 			//FINALIZA A VENDA
 			clicaFinalizarVenda();
 			validaFinalizacaoVenda();
-
+			 
+		
 		} else {
 			fail("PDV nao esta em atendimento");
 		}
@@ -166,7 +182,7 @@ public class VendaSimplesTesteCarga {
 
 					// SE ESTIVER NA TELA DE VENDA, CANCELA O PEDIDO
 					if (s.exists(m_emAtendimento) != null) {
-						System.out.println("NOK - N�o est� na tela inicial");
+						System.out.println("NOK - Nao esta na tela inicial");
 						cadastro.sairPedido();
 					}
 				}
