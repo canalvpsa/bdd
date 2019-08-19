@@ -30,22 +30,18 @@ module VisaoGeral
 
 
    def valida_total_produtos(total_produtos)
-      expect(@validarTotalizadores). to have_text('Valor total produtos R$ '+total_produtos)
+      expect(coletarDados). to have_text('Valor total produtos R$ '+total_produtos)
    end
 
    def valida_total_desconto(total_desconto)
-      expect(coletarDados). to have_text('Valor total produtos R$ '+total_desconto)
+      expect(coletarDados). to have_text('Valor desconto R$ '+total_desconto)
    end
 
    def valida_total_NF(total_NF)
-      expect(coletarDados). to have_text('Valor total produtos R$ '+total_NF)
+      expect(coletarDados). to have_text('Valor total nota R$ '+total_NF)
    end
 
    def validaCustoAdicional(valor)
-      expect(coletarDados). to have_text('Valor total produtos R$ '+valor)
-   end
-
-   def validaTotalNF(valor)
-      expect(coletarDados). to have_text('Valor total produtos R$ '+valor)
+      expect(coletarDados). to have_text('Valor custo adicional R$ '+valor)
    end
 end

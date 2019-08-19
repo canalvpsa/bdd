@@ -47,6 +47,7 @@ After do |scenario|
     page.current_window.maximize
     page.execute_script("document.body.style.zoom = '70%'")
     shot_file = page.save_screenshot('log/screenshot_' + data.to_s + '.png')
+    puts 'log/screenshot_' + data.to_s + '.png'
     shot_b64 = Base64.encode64(File.open(shot_file, 'rb').read)
     embed(shot_b64, 'image/png', 'Screenshot') # Cucumber anexa o screenshot no report
     page.current_window.resize_to(1280, 800)
