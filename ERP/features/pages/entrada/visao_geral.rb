@@ -9,193 +9,43 @@ module VisaoGeral
       return totalizadoresNota+"\n\n"
    end
 
-   def validarCampos(campo, valor)
-      case campo
+   def validaXML(xml)
+      @validarTotalizadores = coletarDados
+      file = YAML.load_file(File.join(Dir.pwd, 'features/support/fixtures/imposto.yaml'))
+      imposto = file[xml]
+      puts imposto
 
-      when 'base_icms'
-         expect(@validarTotalizadores).to include('BC ICMS R$ '+valor)
-      
-      when 'valor_icms'
-          expect(@validarTotalizadores).to include('Valor ICMS R$ '+valor)
-      
-      when 'base_icms_st'
-         expect(@validarTotalizadores).to include('BC ICMS ST R$ '+valor)
-      
-      when 'valor_icms_st'
-         expect(@validarTotalizadores).to include('Valor ICMS ST R$ '+valor)
-
-      when 'base_icms_sn'
-         expect(@validarTotalizadores).to include('BC ICMS SN R$ '+valor)
-      
-      when 'valor_icms_sn'
-         expect(@validarTotalizadores).to include('Valor ICMS SN R$ '+valor)
-
-      when 'valor_ipi'
-         expect(@validarTotalizadores).to include('Valor IPI R$ '+valor)
-      
-      when 'total_produto'
-         expect(@validarTotalizadores).to include('Valor total produtos R$ '+valor)
-
-      when 'total_desconto'
-         expect(@validarTotalizadores).to include('Valor desconto R$ '+valor)
-
-      when 'total_nota'
-         expect(@validarTotalizadores).to include('Valor total nota R$ '+valor)
-
-      when 'custo_adicional'
-         expect(@validarTotalizadores).to include('Valor custo adicional R$ '+valor)
-      
-      else
-         puts "Campo para validacao nao previsto"
-       end
+      expect(@validarTotalizadores). to have_text('BC ICMS R$ '+imposto["bICMS"])
+      expect(@validarTotalizadores). to have_text('Valor ICMS R$ '+imposto["vICMS"])
+      expect(@validarTotalizadores). to have_text('BC ICMS ST R$ '+imposto["bICMSST"])
+      expect(@validarTotalizadores). to have_text('Valor ICMS ST R$ '+imposto["vICMSST"])
+      if !imposto["bICMSSN"].nil?
+         expect(@validarTotalizadores). to have_text('BC ICMS SN R$ '+imposto["bICMSSN"])
+         expect(@validarTotalizadores). to have_text('Valor ICMS SN R$ '+imposto["vICMSSN"])
+      end
+      expect(@validarTotalizadores). to have_text('Valor IPI R$ '+imposto["vIPI"])
+      expect(@validarTotalizadores). to have_text('Valor total produtos R$ '+imposto["total_produto"])
+      expect(@validarTotalizadores). to have_text('Valor total nota R$ '+imposto["total_NF"])
    end
 
 
    def valida_total_produtos(total_produtos)
-      @validarTotalizadores = coletarDados
-      validarCampos('total_produto', total_produtos)
+      expect(@validarTotalizadores). to have_text('Valor total produtos R$ '+total_produtos)
    end
 
    def valida_total_desconto(total_desconto)
-      @validarTotalizadores = coletarDados
-      validarCampos('total_desconto', total_desconto)
+      expect(coletarDados). to have_text('Valor total produtos R$ '+total_desconto)
    end
 
    def valida_total_NF(total_NF)
-      @validarTotalizadores = coletarDados
-      validarCampos('total_nota', total_NF)
-   end
-
-   def validaCST00_1
-     @validarTotalizadores = coletarDados
-      validarCampos('base_icms','8,73')
-      validarCampos('valor_icms','1,05')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,07')
-      validarCampos('total_nota','8,80')
-   end
-
-   def validaCST00_2
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,07')
-      validarCampos('total_nota','8,80')
-   end
-
-   def validaCST10_1
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','8,73')
-      validarCampos('valor_icms','0,61')
-      validarCampos('base_icms_st','11,35')
-      validarCampos('valor_icms_st','0,18')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','8,91')
-   end
-
-   def validaCST10_2
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','8,73')
-      validarCampos('valor_icms','0,61')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','8,73')
-   end
-
-   def validaCST30_deson
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','13,68')
-      validarCampos('valor_icms_st','1,41')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','9,09')
-   end
-
-   def validaCST40_deson_n_subtrai
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','8,73')
-   end
-
-   def validaCST40_deson_subtrai
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','7,68')
-   end
-
-   def validaCST51
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','8,73')
-   end
-
-   def validaCST51_diferimento
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','8,73')
-      validarCampos('valor_icms','0,79')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('total_produto','8,73')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','8,73')
-   end
-
-   def validaCSOSN101
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','0,00')
-      validarCampos('valor_icms_st','0,00')
-      validarCampos('base_icms_sn','26,52')
-      validarCampos('valor_icms_sn','5,04')
-      validarCampos('total_produto','26,52')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','26,52')
-   end
-
-   def validaCSOSN202
-      @validarTotalizadores = coletarDados
-      validarCampos('base_icms','0,00')
-      validarCampos('valor_icms','0,00')
-      validarCampos('base_icms_st','22,60')
-      validarCampos('valor_icms_st','1,71')
-      validarCampos('total_produto','17,79')
-      validarCampos('valor_ipi','0,00')
-      validarCampos('total_nota','19,50')
+      expect(coletarDados). to have_text('Valor total produtos R$ '+total_NF)
    end
 
    def validaCustoAdicional(valor)
-      @validarTotalizadores = coletarDados
-      validarCampos('custo_adicional',valor)
+      expect(coletarDados). to have_text('Valor total produtos R$ '+valor)
    end
 
    def validaTotalNF(valor)
-      @validarTotalizadores = coletarDados
-      validarCampos('total_nota',valor)
+      expect(coletarDados). to have_text('Valor total produtos R$ '+valor)
    end
 end

@@ -1,0 +1,182 @@
+CST00_com_ICMS.xml:
+    num_Doc: 17
+    serie: 10
+    bICMS: '8,73'
+    vICMS: '1,05'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '8,73'
+    vIPI: '0,07'
+    bICMSSN: 
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '8,80'
+CST00_zerado_comBC.xml:
+    num_Doc: 17
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '8,73'
+    vIPI: '0,07'
+    bICMSSN: 
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '8,80'
+CST10_com_ICMSST.xml:
+    num_Doc: 8
+    serie: 10
+    bICMS: '8,73'
+    vICMS: '0,61'
+    bICMSST: '11,35'
+    vICMSST: '0,18'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '8,91'
+CST10_zerado_com_BCST.xml:
+    num_Doc: 9
+    serie: 10
+    bICMS: '8,73'
+    vICMS: '0,61'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN:
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST30_desoneracao.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '13,68'
+    vICMSST: '1,41'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN:
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '9,09'
+CST40_deson_n_subtrai.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '13,68'
+    vICMSST: '1,41'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN:
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST40_deson_subtrai.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '13,68'
+    vICMSST: '1,41'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN:
+    vICMSSN:
+    total_produto: '8,73'
+    total_NF: '7,68'
+CST51_zerado.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN: 
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST51_zerado_comBC.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN: 
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST51_sem_tags.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN: 
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST51_dif_sem_vICMS.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN: 
+    total_produto: '8,73'
+    total_NF: '8,73'
+CST51_dif.xml:
+    num_Doc: 6
+    serie: 10
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN: 
+    total_produto: '8,73'
+    total_NF: '8,73'
+ICMSSN101_com_ICMSSN.xml:
+    num_Doc: 105
+    serie: 2
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '0,00'
+    vICMSST: '0,00'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: '26,52'
+    vICMSSN: '5,04'
+    total_produto: '26,52'
+    total_NF: '26,52'
+ICMSSN202_com_ICMSST.xml:
+    num_Doc: 101
+    serie: 2
+    bICMS: '0,00'
+    vICMS: '0,00'
+    bICMSST: '22,60'
+    vICMSST: '1,72'
+    bIPI: '0,00'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN:
+    total_produto: '17,79'
+    total_NF: '19,50'

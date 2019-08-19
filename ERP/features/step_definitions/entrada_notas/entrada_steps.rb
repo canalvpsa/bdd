@@ -102,14 +102,20 @@ end
 Dado("que confirma a conciliação, confirma os dados adicionais e confirma os produtos") do
   # Salvar na conciliação
   sleep 2
+  wait_until_load_page
+  find('app-vo-entrada-conciliacao',wait:20)
   clicarBotao
 
   # Salvar nos dados adicionais
   sleep 2
+  wait_until_load_page
+  find('app-vo-entrada-valores',wait:10)
   clicarBotao
 
   # Salvar nos produtos
-  sleep 2
+  sleep 4
+  wait_until_load_page
+  find('app-vo-wizard-step app-vo-entrada-itens',wait:10)
   clicarBotao
 end
 
@@ -125,44 +131,8 @@ Então("nenhuma mensagem de divergência de valores deve ser exibida") do
 end
 
 Então("na visão geral da entrada com os impostos devem estar preenchidos de acordo com o XML informado {string}") do |xml|
-  case xml
+  validaXML(xml)
 
-  when 'CST00_com_ICMS.xml'
-    validaCST00_1
-
-  when 'CST00_zerado_comBC.xml'
-    validaCST00_2
-
-  when 'CST10_com_ICMSST.xml'
-    validaCST10_1
-
-  when 'CST10_zerado_com_BCST.xml'
-    validaCST10_2
-
-  when 'CST30_desoneracao.xml'
-    validaCST30_deson
-
-  when 'CST40_deson_n_subtrai.xml'
-    validaCST40_deson_n_subtrai
-
-  when 'CST40_deson_subtrai.xml'
-    validaCST40_deson_subtrai
-
-  when 'CST51_zerado.xml', 'CST51_zerado_comBC.xml', 'CST51_sem_tags.xml', 'CST51_dif_sem_vICMS.xml'
-    validaCST51
-
-  when 'CST51_dif.xml'
-    validaCST51_diferimento
-
-  when 'ICMSSN101_com_ICMSSN.xml'
-    validaCSOSN101
-
-  when 'ICMSSN202_com_ICMSST.xml'
-    validaCSOSN202
-
-  else
-    puts 'CST/CSOSN nao previsto'
-  end
 end
 
 Então("ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento {string} e série {string}") do |numeroDocumento, serie|
