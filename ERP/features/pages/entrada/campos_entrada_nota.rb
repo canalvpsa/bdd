@@ -69,7 +69,6 @@ module CamposEntradaNota
 
 
     def wait_until_load_page
-        loading = find('.block-ui-wrapper', wait:100)
         Timeout.timeout(1000) do
           loop until loading.has_no_css?('.block-ui-wrapper.active')
         end
