@@ -178,3 +178,53 @@ Dado('adiciona os produtos') do
   sleep 2
   clicarBotao
 end
+
+
+
+Dado("que o usuário informou todos os dados da entrada e a operação da nota é {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Quando("validar os dados financeiros da entrada de notas") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("nenhum valor é exibido") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que o plano de pagamento de compras padrão é {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que o parâmetro que permite editar o valor da provisão em entrada de notas XML está {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("o plano pagamento exibido é {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("o valor total {string} alteração") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que existe um pedido de compra em aberto com plano de pagamento {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que o usuário associou o pedido de compra na entrada manual") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que o usuário preencheu os demais campos da entrada e a operação da nota é {string}") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que o usuário preencheu os dados iniciais informando o {string} e a operação {string}") do |string, string2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("as parcelas são exibidas conforme o XML") do
+  pending # Write code here that turns the phrase above into concrete actions
+end

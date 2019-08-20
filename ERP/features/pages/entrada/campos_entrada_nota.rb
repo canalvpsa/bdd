@@ -20,7 +20,7 @@ module CamposEntradaNota
 
 
     def abrirEntidades
-        find('.form-group col-sm-6, app-vo-filtro-entidades[formcontrolname=entidade] div', match: :first)
+        find('app-vo-entrada-dados-iniciais app-vo-filtro-entidades[formcontrolname=entidade] div')
         .find('.select2-selection__placeholder', text: 'Selecione...').click
     end
 
@@ -69,14 +69,15 @@ module CamposEntradaNota
 
 
     def wait_until_load_page
+        loading = find('.block-ui-wrapper', wait:100)
         Timeout.timeout(1000) do
-          loop until page.has_no_css?(".block-ui-wrapper-custom")
+          loop until loading.has_no_css?('.block-ui-wrapper.active')
         end
     end
 
     def wait_until_load_campos
         Timeout.timeout(1000) do
-            loop until page.has_no_css?(".loading-stick")
+            loop until page.has_no_css?('.loading-stick')
           end
       end
 
