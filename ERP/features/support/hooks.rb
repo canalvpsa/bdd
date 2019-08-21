@@ -23,7 +23,7 @@ def mensagemBeamer
   end
 end
 
-After('@seminovo', '@troca_nacional') do
+After('@seminovo', '@troca_nacional', '@financeiro') do
   pending
 end
 
@@ -33,6 +33,8 @@ After ('@entrada') do
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
     find('#noty-ok-button', text: 'Sim').click
+    mensagemExibida = find('.noty_body', wait: 200).text
+    expect(mensagemExibida).to have_text('foi excluida com sucesso')
   end
 end
 
