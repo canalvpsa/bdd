@@ -20,15 +20,15 @@ module CamposEntradaNota
 
 
     def abrirEntidades
-        find('app-vo-entrada-dados-iniciais app-vo-filtro-entidades[formcontrolname=entidade] div')
-        .find('.select2-selection__placeholder', text: 'Selecione...').click
+        find('app-vo-entrada-dados-iniciais app-vo-filtro-entidades')
+        .find('.select2-selection__arrow').click
     end
 
     def abrirFornecedor
         if page.has_css?('.select2-search__field') 
             find('.select2-search__field').click
         else
-            find('app-vo-filtro-fornecedores[formcontrolname=fornecedor]').find('.select2-selection__placeholder', text: 'Selecione...').click
+            find('app-vo-entrada-dados-iniciais app-vo-filtro-fornecedores[formcontrolname=fornecedor]').find('.select2-selection__placeholder', text: 'Selecione...').click
             find('.select2-search__field').click
         end
     end
@@ -72,6 +72,7 @@ module CamposEntradaNota
         Timeout.timeout(1000) do
           loop until page.has_no_css?('.block-ui-wrapper.active')
         end
+        expect(page).not_to have_css('.noty_type__error', wait: 2)
     end
 
     def wait_until_load_campos
