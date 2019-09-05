@@ -181,7 +181,6 @@ Dado('adiciona os produtos') do
 end
 
 
-
 Dado("que o usuário informou todos os dados da entrada e a operação da nota é {string}") do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
