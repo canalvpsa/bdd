@@ -14,7 +14,7 @@ require 'rspec'
     c.default_driver = :selenium
     c.default_max_wait_time = 10
     c.run_server = false    
-    c.default_driver = :selenium_chrome
+    driver = c.default_driver = :selenium_chrome
     c.app_host = @url
   end
 
@@ -28,15 +28,13 @@ require 'rspec'
     end
 
     config.shared_context_metadata_behavior = :apply_to_host_groups
-
     config.include Capybara::DSL
-
-    config.before(:example) do
-      page.current_window.resize_to(1280,800)
-      
   end
-end
 
+  Before do
+    Capybara.page.current_window.resize_to(1280,800)
+  end 
+  
 Before('@seminovo', '@troca_nacional') do
   pending
  end
