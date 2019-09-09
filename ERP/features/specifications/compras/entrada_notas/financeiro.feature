@@ -1,6 +1,6 @@
 #language: pt
 
-@ERP @entrada @financeiro
+#@ERP @entrada @financeiro
 Funcionalidade: ERP - Plano de pagamento na entrada de notas e parâmetro que permite alteração de valor da provisão
 
 Contexto: Nova entrada de notas
@@ -11,7 +11,7 @@ E que os produtos adicionados nas entradas manuais são:
 |  2541.002 |     1    |
 
 #Entrada de notas manual
-@entrada_manual
+#@entrada_manual
 Cenário: Entrada de notas manual sem valor de pagamento
    Dado que o usuário informou todos os dados da entrada e a operação da nota é "Transferência p/ comercialização - Externa"
    E que confirma os dados adicionais, adiciona os produtos e confirma a visão geral
@@ -20,7 +20,7 @@ Cenário: Entrada de notas manual sem valor de pagamento
    E nenhum valor é exibido
    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
-@entrada_manual
+#@entrada_manual
 Esquema do Cenário: Entrada de notas manual com valor de pagamento
    Dado que o plano de pagamento de compras padrão é "30/60/90"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
@@ -37,7 +37,7 @@ Esquema do Cenário: Entrada de notas manual com valor de pagamento
 
 
 #Entrada de notas manual com pedido de compras associado
-@entrada_manual @entrada_pedido
+#@entrada_manual @entrada_pedido
 Esquema do Cenário: Entrada de notas manual com pedido de compra com valor financeiro
    Dado que existe um pedido de compra em aberto com plano de pagamento "BOLETO 2X"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
@@ -55,7 +55,7 @@ Esquema do Cenário: Entrada de notas manual com pedido de compra com valor fina
 
 
 # Entrada de notas com XML
-@entrada_XML
+#@entrada_XML
 Esquema do Cenário: Entrada de notas com XML que não possui parcelas e operação não gera financeiro
    Dado que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
    E que o usuário preencheu os dados iniciais informando o "<XML>" e a operação "Transferência p/ comercialização - Externa"
@@ -70,7 +70,7 @@ Esquema do Cenário: Entrada de notas com XML que não possui parcelas e operaç
 |desabilitado|     nao_permite    |xml_simples.xml|      562      |  4  |
 
 
-@entrada_XML
+#@entrada_XML
 Esquema do Cenário: Entrada de notas com XML que possui parcelas e operação não gera financeiro
    Dado que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
    E que o usuário preencheu os dados iniciais informando o "<XML>" e a operação "Transferência p/ comercialização - Externa"
@@ -86,7 +86,7 @@ Esquema do Cenário: Entrada de notas com XML que possui parcelas e operação n
 |desabilitado|     nao_permite    |CST00_com_ICMS.xml|       17      |  10 |
 
 
-@entrada_XML
+#@entrada_XML
 Esquema do Cenário: Entrada de notas com XML que possui parcelas e operação gera financeiro
    Dado que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
    E que o usuário preencheu os dados iniciais informando o "<XML>" e a operação "Compra p/ comercialização"
@@ -105,7 +105,7 @@ Esquema do Cenário: Entrada de notas com XML que possui parcelas e operação g
 
 
 # Entrada de notas com XML e pedido de compras associado 
-@entrada_XML @entrada_pedido
+#@entrada_XML @entrada_pedido
 Esquema do Cenário: Entrada de notas com XML que não possui parcelas, pedido de compra associado e operação não gera financeiro
    Dado que existe um pedido de compra em aberto com plano de pagamento "BOLETO 2X"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
@@ -122,7 +122,7 @@ Esquema do Cenário: Entrada de notas com XML que não possui parcelas, pedido d
 |desabilitado|     nao_permite    |xml_simples.xml|      562      |  4  |
 
 
-@entrada_XML @entrada_pedido
+#@entrada_XML @entrada_pedido
 Esquema do Cenário: Entrada de notas com XML que não possui parcelas, pedido de compra associado e operação gera financeiro
    Dado que existe um pedido de compra em aberto com plano de pagamento "BOLETO 2X"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
@@ -142,7 +142,7 @@ Esquema do Cenário: Entrada de notas com XML que não possui parcelas, pedido d
 
 
 
-@entrada_XML @entrada_pedido
+#@entrada_XML @entrada_pedido
 Esquema do Cenário: Entrada de notas com XML que possui parcelas, pedido de compra associado e operação não gera financeiro
    Dado que existe um pedido de compra em aberto com plano de pagamento "BOLETO 2X"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"
@@ -160,7 +160,7 @@ Esquema do Cenário: Entrada de notas com XML que possui parcelas, pedido de com
 |desabilitado|     nao_permite    |CST00_com_ICMS.xml|       17      |  10 |
 
 
-@entrada_XML @entrada_pedido
+#@entrada_XML @entrada_pedido
 Esquema do Cenário: Entrada de notas com XML que possui parcelas, pedido de compra associado e operação gera financeiro
    Dado que existe um pedido de compra em aberto com plano de pagamento "BOLETO 2X"
    E que o parâmetro que permite editar o valor da provisão em entrada de notas XML está "<parametro>"

@@ -33,6 +33,7 @@ module BotoesEntradaNota
         #pagamento
         if paginaAtiva.has_css?("app-vo-entrada-pagamento") 
             clicarBotao
+            wait_until_load_page
         end
     end
 end

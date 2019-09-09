@@ -114,7 +114,7 @@ Dado("que confirma a conciliação, confirma os dados adicionais e confirma os p
   clicarBotao
 
   # Salvar nos produtos
-  sleep 4
+  sleep 2
   wait_until_load_page
   find('app-vo-wizard-step app-vo-entrada-itens',wait:10)
   clicarBotao
@@ -180,6 +180,14 @@ Dado('adiciona os produtos') do
   clicarBotao
 end
 
+
+Dado("que na conciliação um item do {string} é conciliado com vários do sistema") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado("que na conciliação vários itens do {string} são conciliados com o mesmo item do sistema") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
 
 Dado("que o usuário informou todos os dados da entrada e a operação da nota é {string}") do |string|

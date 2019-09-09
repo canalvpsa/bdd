@@ -46,13 +46,14 @@ end
 After do |scenario|
   if scenario.failed?
     data = Time.now.strftime '%d-%m-%y-%H_%M_%S'
-    page.current_window.maximize
+    puts find('.noty_body').text
+    #page.current_window.maximize
     page.execute_script("document.body.style.zoom = '70%'")
     shot_file = page.save_screenshot('log/screenshot_' + data.to_s + '.png')
     puts 'log/screenshot_' + data.to_s + '.png'
     shot_b64 = Base64.encode64(File.open(shot_file, 'rb').read)
     embed(shot_b64, 'image/png', 'Screenshot') # Cucumber anexa o screenshot no report
-    page.current_window.resize_to(1280, 800)
+    #page.current_window.resize_to(1280, 800)
     page.execute_script("document.body.style.zoom = '100%'")
   end
 end

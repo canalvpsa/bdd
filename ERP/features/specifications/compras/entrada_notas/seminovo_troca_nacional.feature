@@ -1,13 +1,13 @@
 
 #language: pt
 
- @ERP @entrada
+# @ERP @entrada
 Funcionalidade: ERP - Pesquisa de seminovo e troca nacional nas entradas
 
 Contexto: Pesquisa entrada de notas
 Dado que o usuário está na pesquisa de entrada de notas
 
-@seminovo @troca_nacional
+#@seminovo @troca_nacional
 Esquema do Cenário: Excluir entrada de notas de seminovo ou troca nacional
     Dado que no PDV foi efetuada uma compra com o tipo "<tipo>"
     E a compra estiver no ERP
