@@ -32,7 +32,8 @@ After ('@entrada') do
   if page.has_css?('app-vo-filter-container', wait: 10)
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
-    find('#noty-ok-button', text: 'Sim').click
+    find('#noty-ok-button', text: 'Sim', wait: 5).click
+    sleep 1
     mensagemExibida = find('.noty_body', wait: 200).text
     expect(mensagemExibida).to have_text('foi excluida com sucesso')
   end
