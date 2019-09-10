@@ -33,8 +33,9 @@ After ('@entrada') do
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
     find('#noty-ok-button', text: 'Sim', wait: 5).click
-    sleep 1
-    mensagemExibida = find('.noty_body', wait: 200).text
+    wait_until_load_page
+    find('.noty_type__success', wait: 10)
+    mensagemExibida = find('.noty_body').text
     expect(mensagemExibida).to have_text('foi excluida com sucesso')
   end
 end
