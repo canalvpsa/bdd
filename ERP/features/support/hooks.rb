@@ -48,7 +48,11 @@ end
 After do |scenario|
   if scenario.failed?
     data = Time.now.strftime '%d-%m-%y-%H_%M_%S'
+    
+    if page.has_css?('noty_body', wait: 10)
     puts find('.noty_body').text
+    end
+
     #page.current_window.maximize
     page.execute_script("document.body.style.zoom = '70%'")
     shot_file = page.save_screenshot('log/screenshot_' + data.to_s + '.png')
