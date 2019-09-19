@@ -70,16 +70,16 @@ public class VendaSimplesTesteCarga {
 		int dataSize = 1024 * 1024;
 		Runtime rt = Runtime.getRuntime();  
 		System.out.println("Bites:");
-		System.out.println("Máximo memória: " + (rt.maxMemory() + " B "));  
-		System.out.println("Total memória: " + (rt.totalMemory() + " B "));  
-		System.out.println("Memória livre " + (rt.freeMemory() + " B "));   
-		System.out.println("Memória usada " + (rt.totalMemory() - rt.freeMemory()) + " B ");  
+		System.out.println("Maximo memoria: " + (rt.maxMemory() + " B "));  
+		System.out.println("Total memoria: " + (rt.totalMemory() + " B "));  
+		System.out.println("Memoria livre " + (rt.freeMemory() + " B "));   
+		System.out.println("Memoria usada " + (rt.totalMemory() - rt.freeMemory()) + " B ");  
 
 		System.out.println("\nMB:");
-		System.out.println("Máximo memória: " + rt.maxMemory() / dataSize + " MB");  
-		System.out.println("Total memória: " + rt.totalMemory() / dataSize + " MB");  
-		System.out.println("Memória livre " + rt.freeMemory() / dataSize + " MB");   
-		System.out.println("Memória usada " + (rt.totalMemory() - rt.freeMemory()) /dataSize + " MB");  
+		System.out.println("Maximo memoria: " + rt.maxMemory() / dataSize + " MB");  
+		System.out.println("Total memoria: " + rt.totalMemory() / dataSize + " MB");  
+		System.out.println("Memoria livre " + rt.freeMemory() / dataSize + " MB");   
+		System.out.println("Memoria usada " + (rt.totalMemory() - rt.freeMemory()) /dataSize + " MB");  
 		
 		Date dataHoraAtual = new Date();
 		String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);

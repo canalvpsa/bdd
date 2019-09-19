@@ -3,12 +3,12 @@ package sincronismoUpdateManager;
 import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.sikuli.script.App;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
@@ -41,10 +41,7 @@ public class AcoesPDV {
 	public void abrePDV() throws InterruptedException, IOException {
 
 		Settings.ActionLogs = false;
-
-		File dir = new File("C:/VPSA/PDV");
-		String cmd = "java -jar PDVStarter.jar";
-		Process process = Runtime.getRuntime().exec(cmd, null, dir);
+		App.open("C:\\VPSA\\PDV\\CaixaVpsa.bat");
 	}
 
 
