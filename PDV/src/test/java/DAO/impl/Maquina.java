@@ -26,7 +26,7 @@ public class Maquina {
 	public void atualizarAtualizaecf() throws ClassNotFoundException, SQLException {
 
 		PreparedStatement stmt = ConnectionFactory.getConnection().prepareStatement(
-				"UPDATE terminal SET atualizaecf = '1' WHERE caixa_id = 1");
+				"UPDATE terminal SET atualizaecf = '1' WHERE id = 1");
 
 		stmt.executeUpdate();
 		stmt.close();
