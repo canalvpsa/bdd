@@ -34,7 +34,7 @@ After ('@entrada') do
     find('button', text: 'Excluir').click
     find('#noty-ok-button', text: 'Sim', wait: 5).click
     wait_until_load_page
-    find('.noty_type__success', wait: 10)
+    find('.noty_body', wait: 10)
     mensagemExibida = find('.noty_body').text
     expect(mensagemExibida).to have_text('foi excluida com sucesso')
   end
@@ -48,18 +48,20 @@ end
 After do |scenario|
   if scenario.failed?
     data = Time.now.strftime '%d-%m-%y-%H_%M_%S'
-    
+
     if page.has_css?('noty_body', wait: 10)
     puts find('.noty_body').text
+    page.driver.browser.action.move_to(page.find('.noty_progressbar').native).perform
+    find('.noty_body').trigger(:mouseover)
     end
 
-    #page.current_window.maximize
+    page.current_window.maximize
     page.execute_script("document.body.style.zoom = '70%'")
     shot_file = page.save_screenshot('log/screenshot_' + data.to_s + '.png')
     puts 'log/screenshot_' + data.to_s + '.png'
     shot_b64 = Base64.encode64(File.open(shot_file, 'rb').read)
-    embed(shot_b64, 'image/png', 'Screenshot') # Cucumber anexa o screenshot no report
-    #page.current_window.resize_to(1280, 800)
+    embed(shot_b64, 'image/png', 'screenshot_' + data.to_s) # Cucumber anexa o screenshot no report
+    page.current_window.resize_to(1280, 800)
     page.execute_script("document.body.style.zoom = '100%'")
   end
 end

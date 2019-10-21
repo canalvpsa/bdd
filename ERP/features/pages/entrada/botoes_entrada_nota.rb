@@ -6,11 +6,13 @@ module BotoesEntradaNota
             loop until botao.has_no_css?('.wizard-button-next:disabled')
           end
         botao.click
+        expect(page).not_to have_css('.noty_type__error', wait: 3)
     end
 
 
     def clicarBotaoAdicionar()
         click_button('Adicionar', wait:5)
+        expect(page).not_to have_css('.noty_type__error', wait: 3)
     end
     
 

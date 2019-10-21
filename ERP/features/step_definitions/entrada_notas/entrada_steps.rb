@@ -57,8 +57,9 @@ end
 Quando("o usuário informar na entrada o tipo de nota {string} com número do documento {string} e série {string} informando chave de acesso") do |tipo_nota, doc, serie|
   preencherDadosIniciais_tiposNota(tipo_nota, doc, serie)
 
-  find('input[formcontrolname=chaveNfe]').set '42181275552133001303550040000005621722790267'
-  setarDataEmissao('20122018')
+  chaveNFe = find('input[formcontrolname=chaveNfe]')
+  chaveNFe.set '42181275552133001303550040000005621722790267'
+ setarDataEmissao('20122018')
 
   sleep 1
   # Salvar nos dados iniciais
@@ -177,7 +178,7 @@ Dado('adiciona os produtos') do
 
   # Salvar nos produtos
   sleep 2
-  clicarBotao
+ clicarBotao
 end
 
 

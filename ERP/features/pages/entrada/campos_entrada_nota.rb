@@ -72,7 +72,7 @@ module CamposEntradaNota
         Timeout.timeout(1000) do
           loop until page.has_no_css?('.block-ui-wrapper.active')
         end
-        expect(page).not_to have_css('.noty_type__error', wait: 2)
+        expect(page).not_to have_css('.noty_type__error', wait: 3)
     end
 
     def wait_until_load_campos

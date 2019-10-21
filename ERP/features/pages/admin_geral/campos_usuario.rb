@@ -1,6 +1,5 @@
 module CamposUsuario
 
-
     def abrirCampoPesquisa()
         campo_pesquisa = find('.select2-search__field')
         campo_pesquisa.click

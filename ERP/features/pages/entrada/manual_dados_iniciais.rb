@@ -2,9 +2,11 @@ include BotoesEntradaNota
 include CamposEntradaNota
 
 module EntradaManual
+
+    
     def preencherDadosIniciais_tiposNota(tipo_nota, nro_documento, serie)
         abrirFornecedor
-        fornecedor = setarPesquisa(abrirCampoPesquisa, 'LUNELLI', true)
+        setarPesquisa(abrirCampoPesquisa, 'LUNELLI', true)
        
 
         abrirEntidades

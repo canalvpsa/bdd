@@ -1,4 +1,5 @@
 module EntradaProdutos
+     
     def incluirProdutos(lista_produtos)
 
           lista_produtos.each do |p|

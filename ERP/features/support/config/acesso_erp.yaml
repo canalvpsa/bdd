@@ -1,0 +1,11 @@
+---
+url: "https://qa3.varejonline.com.br:8446"
+database:
+   host: "bd.varejonline.com.br:1521/vpsa"
+   dbname: "vpsa"
+   user: "vpsa"
+   password: "vpsa"
+users:
+  admin:
+    email: "admin"
+    pass: "varejonline"

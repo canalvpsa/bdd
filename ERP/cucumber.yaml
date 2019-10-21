@@ -1,5 +1,12 @@
 ---
-default: -p bdd
-bdd: --format pretty
-dot: --format progress
-html:  --format html --out=log/report.html
+default: -p acesso_erp -p chrome -p html -p pretty
+ci: -p dev -p chrome -p json -p progress
+acesso_erp: ENV_TYPE=acesso_erp
+lang: ENV_TYPE=acesso_erp
+firefox:  BROWSER=firefox
+chrome: BROWSER=chrome
+headless: BROWSER=headless
+html: --format html --out=log/report.html
+json: --format json --out=log/report.json
+pretty: --format pretty
+progress: --format progress
