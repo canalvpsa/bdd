@@ -1,5 +1,5 @@
 module CamposEntradaNota
-
+    
     def setarQuantidade(quantidade)
         find('input[formcontrolname=quantidade]').set quantidade
     end
