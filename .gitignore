@@ -5,5 +5,3 @@ doc
 .yardoc
 Rakefile
 readme.md
-ERP/log/*
-NOVO_PDV/log/*
