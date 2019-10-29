@@ -34,7 +34,19 @@ CST10_zerado_com_BCST_PICMSST.xml:
     bICMSSN: 
     vICMSSN:
     total_produto: '63,98'
-    total_NF: '76,92'    
+    total_NF: '76,92'   
+CST10_zerado_com_BCST_VICMSST.xml:
+    num_Doc: 707
+    serie: 17
+    bICMS: '20,90'
+    vICMS: '1,46'
+    bICMSST: '27,80'
+    vICMSST: '0,49'
+    vIPI: '0,00'
+    bICMSSN: 
+    vICMSSN:
+    total_produto: '22,00'
+    total_NF: '21,39'    
 CST10_com_ICMSST.xml:
     num_Doc: 8
     serie: 10
