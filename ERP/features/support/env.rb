@@ -5,28 +5,44 @@ require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'rspec'
 
-CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/#{ENV['ENV_TYPE']}.yaml"))
+# CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/#{ENV['ENV_TYPE']}.yaml"))
 
-case ENV['BROWSER']
-when 'firefox'
-  @driver = :selenium
+# case ENV['BROWSER']
+# when 'firefox'
+#   @driver = :selenium
 
-when 'chrome'
-  @driver = :selenium_chrome
+# when 'chrome'
+#   @driver = :selenium_chrome
 
-when 'headless'
-  @driver = :selenium_chrome_headless
+# when 'headless'
+#   @driver = :selenium_chrome_headless
 
-else
-  puts 'invalid browser'
+# else
+#   puts 'invalid browser'
+# end
+
+Capybara.configure do |c|
+  server = ENV['url']
+  if server.nil?
+  @url = 'https://qa.varejonline.com.br:7443'
+  else
+  @url = server
 end
 
-Capybara.configure do |config|
-  config.default_driver = @driver
-  config.app_host = CONFIG['url']
-  config.default_max_wait_time = 10
-  config.run_server = false
+c.default_driver = :selenium
+c.default_max_wait_time = 10
+c.run_server = false    
+driver = c.default_driver = :selenium_chrome
+c.app_host = @url
 end
+
+
+# Capybara.configure do |config|
+#   config.default_driver = @driver
+#   config.app_host = CONFIG['url']
+#   config.default_max_wait_time = 10
+#   config.run_server = false
+# end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
