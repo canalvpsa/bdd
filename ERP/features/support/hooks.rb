@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Before ('@entrada') do
-  realizar_Login('/server/erp/estoque/entradas')
+  realizar_Login('/erp')
+  #realizar_Login('/server/erp/estoque/entradas/criar/manual')
 end
 
 Before ('@usuario') do
@@ -32,9 +33,9 @@ After ('@entrada') do
   if page.has_css?('app-vo-filter-container', wait: 10)
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
-    find('#noty-ok-button', text: 'Sim', wait: 5).click
+    find('#noty-ok-button', text: 'Sim', wait: 10).click
     wait_until_load_page
-    find('.noty_body', wait: 10)
+    find('.noty_body', wait: 30)
     mensagemExibida = find('.noty_body').text
     expect(mensagemExibida).to have_text('foi excluida com sucesso')
   end
