@@ -38,11 +38,11 @@ Exemplos:
 
 
 
-@entrada_XML @novo
+@entrada_XML
 Esquema do Cenário: Entrada de notas com XML conciliando um item para vários
     Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
     E que a conciliação de um dos itens do XML é realizada para dois itens do sistema:
-|                   nome_produto                   | quantidade|
+|                 nome_produto                | quantidade|
 |BLUSA FRENTE CHIFFON ESTAMPADA PRETO/BRANCO G|1.000,00000|
 |BLUSA FRENTE CHIFFON ESTAMPADA PRETO/BRANCO G|2.400,00000|
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
@@ -52,6 +52,6 @@ Esquema do Cenário: Entrada de notas com XML conciliando um item para vários
     E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
 
 Exemplos:
-|              XML             |total_produtos|numeroDocumento|serie|
-|total_produtos_conciliacao.xml|   3.093,48   |     109916    |  1  |
+|              XML             |total_produtos|numeroDocumento|serie|chamado|
+|total_produtos_conciliacao.xml|   3.093,48   |     109916    |  1  | COR-15|
  
