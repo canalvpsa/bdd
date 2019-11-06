@@ -13,7 +13,7 @@ module VisaoGeral
       @validarTotalizadores = coletarDados
       file = YAML.load_file(File.join(Dir.pwd, 'features/support/fixtures/imposto.yaml'))
       imposto = file[xml]
-      puts imposto
+      #puts imposto
 
       expect(@validarTotalizadores). to have_text('BC ICMS R$ '+imposto["bICMS"])
       expect(@validarTotalizadores). to have_text('Valor ICMS R$ '+imposto["vICMS"])

@@ -14,6 +14,7 @@ module CamposEntradaNota
 
         if enter == true
             sleep 3
+            find('li', wait:10)
             campo.send_keys(:enter)
         end
     end
@@ -34,7 +35,7 @@ module CamposEntradaNota
     end
 
     def setarEntidade(nomeEntidade)
-        find('li', text: nomeEntidade.upcase).click
+        find('li', text: nomeEntidade.upcase, wait:10).click
     end
 
     def setarNumeroDocumento(numDoc)

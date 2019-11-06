@@ -14,7 +14,7 @@ Dado que o usuário inicia uma nova entrada de notas
 #OP-1192 - XML CSOSN202 (como se fosse CST10)
 
 
-@entrada_XML @cst @icms @icmsst @ipi @entrada
+@entrada_XML @cst @icms @icmsst @ipi
 Esquema do Cenário: Entrada de notas com XML e validação de ICMS,ICMS ST e IPI para determinado CST/CSOSN
     Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_produto" e no sistema "codigo_interno"
     E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
