@@ -33,6 +33,7 @@ After ('@entrada') do
   if page.has_css?('app-vo-filter-container', wait: 10)
     find('.text-center', text: consulta_ultimaEntrada, match: :prefer_exact).click
     find('button', text: 'Excluir').click
+    sleep 1.5
     find('#noty-ok-button', text: 'Sim', wait: 10).click
     wait_until_load_page
     find('.noty_body', wait: 30)

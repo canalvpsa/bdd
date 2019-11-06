@@ -35,3 +35,23 @@ Exemplos:
 |       5      | total_produtos_NF34880.xml|    927,53    |     34880     |  1  |
 |       2      |total_produtos_NF109916.xml|   3.093,48   |     109916    |  1  |
 |       5      |total_produtos_NF109916.xml|   3.093,48   |     109916    |  1  |
+
+
+
+@entrada_XML @novo
+Esquema do Cenário: Entrada de notas com XML conciliando um item para vários
+    Dado que o usuário preencheu os dados iniciais informando o "<XML>" conciliando na nota "codigo_barras" e no sistema "codigo_barras"
+    E que a conciliação de um dos itens do XML é realizada para dois itens do sistema:
+|                   nome_produto                   | quantidade|
+|BLUSA FRENTE CHIFFON ESTAMPADA PRETO/BRANCO G|1.000,00000|
+|BLUSA FRENTE CHIFFON ESTAMPADA PRETO/BRANCO G|2.400,00000|
+    E que confirma a conciliação, confirma os dados adicionais e confirma os produtos
+    Quando validar os dados da nota fiscal de entrada
+    Então nenhuma mensagem de divergência de valores deve ser exibida
+    E na visão geral o valor total dos produtos é "<total_produtos>"
+    E ao finalizar, a entrada é realizada com sucesso exibindo a mensagem com o número do documento "<numeroDocumento>" e série "<serie>" 
+
+Exemplos:
+|              XML             |total_produtos|numeroDocumento|serie|
+|total_produtos_conciliacao.xml|   3.093,48   |     109916    |  1  |
+ 

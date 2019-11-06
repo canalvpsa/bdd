@@ -6,6 +6,7 @@ include EntradaProdutos
 include EntradaManual
 include EntradaXML
 include VisaoGeral
+include XMLConciliacao
 
 Dado("que o usuário inicia uma nova entrada de notas") do
   visit '/server/erp/estoque/entradas/criar/manual'
@@ -21,6 +22,11 @@ end
 
 Dado("que os produtos adicionados nas entradas manuais são:") do |table|
   @produto_lista = table.hashes
+end
+
+Dado("que a conciliação de um dos itens do XML é realizada para dois itens do sistema:") do |table|
+  @produto_conciliacao = table.hashes
+  conciliarItens(@produto_conciliacao)
 end
 
 Dado("que confirma os dados adicionais, adiciona os produtos e confirma a visão geral") do
