@@ -25,6 +25,13 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import loc from './elements/LoginElements'
 
+// Cypress.Commands.add('login2', () => {
+//     cy.setCookie('CSRF-TOKEN', '675726cd-07ff-4d8e-8782-be092bdc3332')
+//     cy.setCookie('baseOuCNPJ', 'qa_vpsa')
+//     cy.setCookie('_single-sign-on-server_session', 'BAh7B0kiD3Nlc3Npb25faWQGOgZFRkkiJTYwNWE5Yzg5MjRiN2MyMDQ0NzBkNGIxZmVmMTRjYzRiBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMTFYcm1zVy9OZzdGQ1pDTHFhQ2J4aENMMmhPTzBXd0RNTUVVdjJranVpaWs9BjsARg%3D%3D--73822576aaf927656844ef6c270125cef1eb26ca')
+//     cy.setCookie('tgt', 'TGC-1579871952rM5HkToQI31jtRbWNKT')
+// })
+
 Cypress.Commands.add('login', () => {
     cy.visit('https://qa.varejonline.com.br:7443/erp')
     cy.get(loc.LOGIN.USER).type('admin')
