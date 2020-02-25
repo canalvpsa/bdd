@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import loc from './elements/LoginElements'
-
+import 'cypress-file-upload';
 // Cypress.Commands.add('login2', () => {
 //     cy.setCookie('CSRF-TOKEN', '675726cd-07ff-4d8e-8782-be092bdc3332')
 //     cy.setCookie('baseOuCNPJ', 'qa_vpsa')
@@ -33,10 +33,13 @@ import loc from './elements/LoginElements'
 // })
 
 Cypress.Commands.add('login', () => {
-    cy.visit('https://qa.varejonline.com.br:7443/erp')
+    cy.visit(Cypress.env('baseUrl')+'/erp')
     cy.get(loc.LOGIN.USER).type('admin')
     cy.get(loc.LOGIN.PASSWORD).type('varejonline')
-    cy.get(loc.LOGIN.BASE).type('qa_vpsa')
+    cy.get(loc.LOGIN.BASE).type('qa_vpsa_auto')
     cy.get(loc.LOGIN.BTN_LOGIN).click()
     cy.get('.breadcumbs-first').should('contain', 'Página inicial')
 })
+
+
+

@@ -15,3 +15,14 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 }
+
+// const oracle = require('oracledb'),
+//       configSwitcher = require('cypress-config-switcher'),
+//       db = require('cypress-oracle-db');
+
+// module.exports = (on, config) => {
+//   config = configSwitcher.loadEnvConfig(config);
+
+//   tasks = db.loadDBPlugin(oracle, config.db);
+//   on('task', tasks);
+//}

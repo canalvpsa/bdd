@@ -1,8 +1,9 @@
 {
-    "name": "curso_cypress",
+    "name": "erp_cypress",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "cwd": "${workspaceRoot}",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "cypress:open": "cypress open",
@@ -13,6 +14,8 @@
     },
     "devDependencies": {
         "cypress": "^3.4.1",
+        "cypress-capybara": "0.0.2",
+        "cypress-file-upload": "^3.5.3",
         "cypress-xpath": "^1.4.0"
     },
     "keywords": [],

@@ -1,0 +1,275 @@
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+    <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+        <infNFe Id="NFe42191075552133001303550170000007011168335175" versao="4.00">
+            <ide>
+                <cUF>42</cUF>
+                <cNF>16833517</cNF>
+                <natOp>Venda</natOp>
+                <mod>55</mod>
+                <serie>17</serie>
+                <nNF>701</nNF>
+                <dhEmi>2019-10-23T11:13:20-02:00</dhEmi>
+                <dhSaiEnt>2019-10-23T11:13:20-02:00</dhSaiEnt>
+                <tpNF>1</tpNF>
+                <idDest>2</idDest>
+                <cMunFG>4215687</cMunFG>
+                <tpImp>1</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>5</cDV>
+                <tpAmb>2</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>2</indPres>
+                <procEmi>0</procEmi>
+                <verProc>1</verProc>
+            </ide>
+            <emit>
+                <CNPJ>75552133001303</CNPJ>
+                <xNome>LUNELLI COMERCIO DE VESTUARIO LTDA</xNome>
+                <xFant>GUARAMIRIM - LOJA COLABORADOR</xFant>
+                <enderEmit>
+                    <xLgr>Rua AMILTON FRANCISCO  RAUSISES HOEPFNER</xLgr>
+                    <nro>2541</nro>
+                    <xCpl>RESIDENCIAL CIDADE INDUSTRIAL GALPAO 01 BLOBO A</xCpl>
+                    <xBairro>JARDIM AMERICA</xBairro>
+                    <cMun>4215687</cMun>
+                    <xMun>Santa Terezinha do Progresso</xMun>
+                    <UF>SC</UF>
+                    <CEP>89270000</CEP>
+                    <fone>4733737000</fone>
+                </enderEmit>
+                <IE>257316981</IE>
+                <CRT>3</CRT>
+            </emit>
+            <dest>
+                <CNPJ>92258069000138</CNPJ>
+                <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+                <enderDest>
+                    <xLgr>MATHEUS LUIZ DALADA</xLgr>
+                    <nro>225</nro>
+                    <xBairro>BAIRRO</xBairro>
+                    <cMun>4106902</cMun>
+                    <xMun>Curitiba</xMun>
+                    <UF>PR</UF>
+                    <CEP>81480330</CEP>
+                    <fone>47555555555</fone>
+                </enderDest>
+                <indIEDest>9</indIEDest>
+                <email>anamaria @gmail.com</email>
+            </dest>
+            <det nItem="1">
+                <prod>
+                    <cProd>2541.001</cProd>
+                    <cEAN>SEM GTIN</cEAN>
+                    <xProd>REGATA CETIM BASICA CINZA 36</xProd>
+                    <NCM>03019490</NCM>
+                    <CFOP>6102</CFOP>
+                    <uCom>PC</uCom>
+                    <qCom>2</qCom>
+                    <vUnCom>11</vUnCom>
+                    <vProd>22.00</vProd>
+                    <cEANTrib>7909352215113</cEANTrib>
+                    <uTrib>PC</uTrib>
+                    <qTrib>2</qTrib>
+                    <vUnTrib>11</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <orig>0</orig>
+                            <CST>00</CST>
+                            <modBC>3</modBC>
+                            <vBC>22.00</vBC>
+                            <pICMS>12.00</pICMS>
+                            <vICMS>2.64</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>601</cEnq>
+                        <IPITrib>
+                            <CST>99</CST>
+                            <vBC>22.00</vBC>
+                            <pIPI>0.00</pIPI>
+                            <vIPI>0.00</vIPI>
+                        </IPITrib>
+                    </IPI>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>22.00</vBC>
+                            <pPIS>1.65</pPIS>
+                            <vPIS>0.36</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>22.00</vBC>
+                            <pCOFINS>7.60</pCOFINS>
+                            <vCOFINS>1.67</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                    <ICMSUFDest>
+                        <vBCUFDest>22.00</vBCUFDest>
+                        <vBCFCPUFDest>22.00</vBCFCPUFDest>
+                        <pFCPUFDest>0.00</pFCPUFDest>
+                        <pICMSUFDest>18.00</pICMSUFDest>
+                        <pICMSInter>12.00</pICMSInter>
+                        <pICMSInterPart>100.00</pICMSInterPart>
+                        <vFCPUFDest>0.00</vFCPUFDest>
+                        <vICMSUFDest>1.32</vICMSUFDest>
+                        <vICMSUFRemet>0.00</vICMSUFRemet>
+                    </ICMSUFDest>
+                </imposto>
+            </det>
+            <det nItem="2">
+                <prod>
+                    <cProd>2541.002</cProd>
+                    <cEAN>SEM GTIN</cEAN>
+                    <xProd>REGATA CETIM BASICA CINZA 38</xProd>
+                    <NCM>03019490</NCM>
+                    <CFOP>6102</CFOP>
+                    <uCom>PC</uCom>
+                    <qCom>2</qCom>
+                    <vUnCom>11</vUnCom>
+                    <vProd>22.00</vProd>
+                    <cEANTrib>7909352215137</cEANTrib>
+                    <uTrib>PC</uTrib>
+                    <qTrib>2</qTrib>
+                    <vUnTrib>11</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <orig>0</orig>
+                            <CST>00</CST>
+                            <modBC>3</modBC>
+                            <vBC>22.00</vBC>
+                            <pICMS>0.00</pICMS>
+                            <vICMS>0.00</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>601</cEnq>
+                        <IPITrib>
+                            <CST>99</CST>
+                            <vBC>22.00</vBC>
+                            <pIPI>0.00</pIPI>
+                            <vIPI>0.00</vIPI>
+                        </IPITrib>
+                    </IPI>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>22.00</vBC>
+                            <pPIS>1.65</pPIS>
+                            <vPIS>0.36</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>22.00</vBC>
+                            <pCOFINS>7.60</pCOFINS>
+                            <vCOFINS>1.67</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                    <ICMSUFDest>
+                        <vBCUFDest>22.00</vBCUFDest>
+                        <vBCFCPUFDest>22.00</vBCFCPUFDest>
+                        <pFCPUFDest>0.00</pFCPUFDest>
+                        <pICMSUFDest>18.00</pICMSUFDest>
+                        <pICMSInter>12.00</pICMSInter>
+                        <pICMSInterPart>100.00</pICMSInterPart>
+                        <vFCPUFDest>0.00</vFCPUFDest>
+                        <vICMSUFDest>1.32</vICMSUFDest>
+                        <vICMSUFRemet>0.00</vICMSUFRemet>
+                    </ICMSUFDest>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>44.00</vBC>
+                    <vICMS>2.64</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vFCPUFDest>0.00</vFCPUFDest>
+                    <vICMSUFDest>2.64</vICMSUFDest>
+                    <vICMSUFRemet>0.00</vICMSUFRemet>
+                    <vFCP>0.00</vFCP>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vFCPST>0.00</vFCPST>
+                    <vFCPSTRet>0.00</vFCPSTRet>
+                    <vProd>44.00</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>0.00</vIPI>
+                    <vIPIDevol>0.00</vIPIDevol>
+                    <vPIS>0.72</vPIS>
+                    <vCOFINS>3.34</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>44.00</vNF>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>9</modFrete>
+                <vol>
+                    <qVol>0</qVol>
+                </vol>
+            </transp>
+            <pag>
+                <detPag>
+                    <indPag>0</indPag>
+                    <tPag>99</tPag>
+                    <vPag>44.00</vPag>
+                </detPag>
+            </pag>
+            <infAdic>
+                <infAdFisco>Documentos associados a esta nota fiscal: 1-6852.</infAdFisco>
+                <infCpl>Val. Aprox. dos Tributos F: R$ 5,92 (13,45%), E: R$ 5,28 (12,00%) Fonte: IBPT Valores totais do ICMS Interestadual: DIFAL da UF destino PR: R$2.64 + FCP R$0.00; DIFAL da UF Origem SC: R$0.00 PED.: 1-6852</infCpl>
+            </infAdic>
+            <infRespTec>
+                <CNPJ>23479438000108</CNPJ>
+                <xContato>Juliano Mortari</xContato>
+                <email>juliano.mortari@varejonline.com.br</email>
+                <fone>08000202807</fone>
+            </infRespTec>
+        </infNFe>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                <Reference URI="#NFe42191075552133001303550170000007011168335175">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    <DigestValue>N/mHhGh3PD6DvqEAYPG1WdZC7uU=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>Xa172X3rik/FXeF0uLZdNBVw+kj2x/W2Nqmers5hoID2g9m6n4tfpej8r9QtKA1Yi4I5s4ZukS6Y4ZIlWn+wBmTSZqQgUfQY7tL5zHPN19Xtjpb/QvlB3n1jvrOyChPkIEeZD/HRpIItTbWQpIbkgYD/E8p3d5UCA6DuEM1nBSOgWBE2zI/cM+gWnqMEqe4Ao9yOR8khe5aOIXyTPc1cYXEAHarAgHZjOWyB6SJTBjDOd5+Dbe+kNTh+XgmSlWAPbMt+ZTBxEQmlchPdHOjfK5rE0Z9rLU0oSmbK9jqhvUvycI8rHUOSxQDO+EiC5kpinJ0OReTWW7E7waCogg+hrw==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>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</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe versao="4.00">
+        <infProt>
+            <tpAmb>2</tpAmb>
+            <verAplic>SVRS201908091113</verAplic>
+            <chNFe>42191075552133001303550170000007011168335175</chNFe>
+            <dhRecbto>2019-10-23T10:15:21-03:00</dhRecbto>
+            <nProt>342190000795539</nProt>
+            <digVal>N/mHhGh3PD6DvqEAYPG1WdZC7uU=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>

@@ -40,3 +40,9 @@ Cypress.SelectorPlayground.defaults({
       set: function () { }
     })
   })
+
+
+
+// import mis from 'cypress-oracle-db';
+// mis.loadDBCommands();
+// import './commands.js';

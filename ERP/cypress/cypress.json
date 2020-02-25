@@ -1,5 +1,8 @@
 {
-    "baseUrl": "https://qa.varejonline.com.br:7443/",
-    "defaultCommandTimeout": 10000,
-    "chromeWebSecurity": false
+  "defaultCommandTimeout": 10000,
+  "chromeWebSecurity": false,
+  
+  "env": {
+    "baseUrl": "https://dev2.varejonline.com.br:7443"
   }
+}

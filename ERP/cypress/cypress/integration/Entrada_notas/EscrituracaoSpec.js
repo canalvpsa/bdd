@@ -9,37 +9,65 @@ describe('ERP - Entrada de nota fiscal no ERP e validação do status da escritu
     before(() => {
         cy.clearCookies()
         cy.login()
+        //   entradaNotas.excluirUtimaEntrada('1010')
     })
 
     beforeEach(() => {
         Cypress.Cookies.preserveOnce('CSRF-TOKEN', 'baseOuCNPJ', '_single-sign-on-server_session', 'service', 'tgt')
     })
-   
+
     const modeloNota = ['1A', '1', '55', '4']
     const escrituracao = 'ESCRITURADA_EXTERNO'
     const produtos = ['g2.001', 'g2.002']
 
-    
+
     modeloNota.forEach(modeloNota => {
         it(`Entrada de notas manual validando status da escrituração para modelo ${modeloNota}`, () => {
             if (modeloNota == '55')
                 escrituracao = 'NAO_ESCRITURADA'
 
             entradaNotas.preencherDadosIniciais_tiposNota(modeloNota)
-            cy.get(entradaElements.BTN_SALVAR).click()
             entradaNotas.incluirProdutos(produtos)
-            cy.get(entradaElements.BTN_SALVAR).click()
-            cy.get(entradaElements.BTN_SALVAR).click()
+            entradaNotas.clicarSalvar()//conciliacao
+            entradaNotas.clicarSalvar() //produtos
+            entradaNotas.clicarSalvar()//dados adocionais
+            entradaNotas.clicarSalvar() //Visao geral
+            entradaNotas.clicarSalvar() //Financeiro
+            cy.get(entradaElements.MENSAGEM, { timeout: 100000 })
+                .should('contain', 'A entrada 1010/1 foi efetuada com sucesso')
+
+            //valdar escrituração
+            entradaNotas.excluirUtimaEntrada('1010')
+
         })
     })
 
 
     it(`Entrada de notas manual validando status da escrituração para modelo 55 e chave de acesso`, () => {
+        entradaNotas.preencherDadosIniciais_comChave()
+        entradaNotas.incluirProdutos(produtos)
+        entradaNotas.clicarSalvar()//conciliacao
+        entradaNotas.clicarSalvar() //produtos
+        entradaNotas.clicarSalvar()//dados adocionais
+        entradaNotas.clicarSalvar() //Visao geral
+        entradaNotas.clicarSalvar() //Financeiro
+        cy.get(entradaElements.MENSAGEM, { timeout: 100000 })
+            .should('contain', 'A entrada 1010/1 foi efetuada com sucesso')
 
+        //valdar escrituração
+        entradaNotas.excluirUtimaEntrada('1010')
     })
 
-    it(`Entrada de notas com XML validando status da escrituração`, () => {
+    it.only(`Entrada de notas com XML validando status da escrituração`, () => {
+        entradaNotas.preencherDadosIniciais_xml('XMLs/xml_simples.xml', 'codigo_produto', 'codigo_interno')
+        entradaNotas.clicarSalvar()//conciliacao
+        entradaNotas.clicarSalvar() //produtos
+        entradaNotas.clicarSalvar()//dados adocionais
+        entradaNotas.clicarSalvar() //Visao geral
+        entradaNotas.clicarSalvar() //Financeiro
+        entradaNotas.validarMensagem('foi efetuada com sucesso')
 
+        entradaNotas.excluirUtimaEntrada('562')
     })
 
     //     enário: Entrada de notas manual validando status da escrituração para modelo 55 e chave de acesso
