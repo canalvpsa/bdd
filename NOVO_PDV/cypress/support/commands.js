@@ -24,23 +24,12 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-import loc from './elements/Elements'
+import loc from './elements/LoginElements'
 
 Cypress.Commands.add('login', () => {
-    // cy.visit('http://192.168.25.96:9090/pdv')
-    // cy.get(loc.LOGIN.USER).type('vendedor')
-    // cy.get(loc.LOGIN.PASSWORD).type('varejo')
-    // cy.get(loc.LOGIN.BTN_ENTRAR).click()
-    // cy.get('.usuario > span').should('contain', 'Olá')
-
-    cy.server()           // enable response stubbing
-cy.route({
-        method: 'POST',
-        url: 'http://192.168.25.96:9090/pdv', // baseUrl is prepended to url
-        form: true, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
-        body: {
-            login: 'vendedor',
-            senha: 'varejo'
-        }
-      })
+    cy.visit('https://pdv.varejonline.com.br/pdv/')
+    cy.get(loc.LOGIN.USER).type('vendedor')
+    cy.get(loc.LOGIN.PASSWORD).type('varejo')
+    cy.get(loc.LOGIN.BTN_ENTRAR).click()
+    cy.get('.usuario > span').should('contain', 'Olá')
 })

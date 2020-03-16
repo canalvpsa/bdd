@@ -1,17 +1,24 @@
 {
-  "name": "novo_pdv",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open",
-    "test:chrome": "cypress run --browser chrome --no-exit"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^3.4.1"
-  }
+    "name": "novo_pdv",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "cwd": "${workspaceRoot}",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "cypress:open": "cypress open",
+        "test:chrome": "cypress run --browser chrome --no-exit"
+    },
+    "dependencies": {
+        "https-pem": "^2.0.0"
+    },
+    "devDependencies": {
+        "cypress": "^3.4.1",
+        "cypress-capybara": "0.0.2",
+        "cypress-file-upload": "^3.5.3",
+        "cypress-xpath": "^1.4.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

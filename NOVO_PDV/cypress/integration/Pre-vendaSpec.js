@@ -1,24 +1,20 @@
 /// <reference types="Cypress" />
 
-// import entradaElements from '../../support/elements/Entrada_notasElements'
-// import EntradaNotas from '../../support/pageobjects/EntradaNotasPage'
-// const entradaNotas = new EntradaNotas();
+import inserirItens from '../support/elements/inserirItensElements'
 
 describe('Pré-venda', () => {
 
     before(() => {
         cy.clearCookies()
         cy.login()
-        
     })
-
-    // beforeEach(() => {
-    //     Cypress.Cookies.preserveOnce('CSRF-TOKEN', 'baseOuCNPJ', '_single-sign-on-server_session', 'service', 'tgt')
-    // })
 
 
     it(`Pré venda para cliente diversos`, () => {
-        cy.visit('http://192.168.25.96:9090/pdv')
+        cy.get(inserirItens.PRODUTO.FN_ADICIONAR_CARRINHO('1')).click()
+        cy.get(inserirItens.PRODUTO.MENSAGEM)
+                .should('contain', 'Produto BLUSA MANGA CURTA REF XYZ P AZ sem classificação fiscal')
+        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
     })
 
 
