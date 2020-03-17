@@ -30,6 +30,7 @@ Cypress.Commands.add('login', () => {
     cy.visit('https://pdv.varejonline.com.br/pdv/')
     cy.get(loc.LOGIN.USER).type('vendedor')
     cy.get(loc.LOGIN.PASSWORD).type('varejo')
+    cy.get(loc.LOGIN.CONECTADO).click()
     cy.get(loc.LOGIN.BTN_ENTRAR).click()
     cy.get('.usuario > span').should('contain', 'Olá')
 })
