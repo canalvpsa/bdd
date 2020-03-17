@@ -1,8 +1,10 @@
 const clienteElements = {
     CLIENTE:{
-        CLIENTE: '.mb-1 terceiro-div',
-    },
-    BTN_PAGAMENTOS: '.btn-salvar'
+        CLIENTE: '.font-weight-normal',
+        SELECAODIV: '.barra-pesquisa',
+        INSERCAOCLIENTE: '.mat-form-field-should-float'
+   },
+   // BTN_PAGAMENTOS: '.btn-salvar'
 }
 
-export default checkoutElements;
+export default clienteElements;

@@ -14,7 +14,6 @@
     },
     "devDependencies": {
         "cypress": "^3.4.1",
-        "cypress-capybara": "0.0.2",
         "cypress-file-upload": "^3.5.3",
         "cypress-xpath": "^1.4.0"
     },

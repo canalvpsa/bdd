@@ -2,6 +2,7 @@
 
 import inserirItens from '../support/elements/inserirItensElements'
 import checkout from '../support/elements/checkoutElements'
+import cliente from '../support/elements/clienteElements'
 
 describe('Pré-venda', () => {
 
@@ -44,11 +45,25 @@ describe('Pré-venda', () => {
         cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
     })
 
-    it(`Pré venda para cliente diferente de diversos`, () => {
+   it(`Pré venda para cliente diferente de diversos`, () => {
+    cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
+    cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*0135')
+    cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+    .should('contain', 'Desconto Progressivo')
+    cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('0002.0001')
+    cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+    .should('contain', 'Blusa Manga Curta Ref Xyz P Az')
+    cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('Teste Transferência M Ro')
+    cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+    .should('contain', '110,00')
+    cy.get(checkout.CHECKOUT.BTN_PAGAMENTO).click()
     })
         
 
-    it(`Pré venda sem informar itens`, () => {
+    it.only(`Pré venda sem informar itens`, () => {
+        cy.get(cliente.CLIENTE.CLIENTE).click()
+        cy.get(cliente.CLIENTE.SELECAODIV).click()
+        cy.get(cliente.CLIENTE.INSERCAOCLIENTE).type('Carlos')
     })
      
 
