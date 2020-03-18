@@ -3,6 +3,7 @@
 import inserirItens from '../support/elements/inserirItensElements'
 import checkout from '../support/elements/checkoutElements'
 import cliente from '../support/elements/clienteElements'
+import desconto from '../support/elements/descontoElements'
 
 describe('Pré-venda', () => {
 
@@ -60,40 +61,30 @@ describe('Pré-venda', () => {
     })
         
 
-    it.only(`Pré venda sem informar itens`, () => {
-        cy.get(cliente.CLIENTE.CLIENTE).click()
-        cy.get(cliente.CLIENTE.SELECAODIV).click()
-        cy.get(cliente.CLIENTE.INSERCAOCLIENTE).type('Carlos')
+    it.only(`Venda com vínculo de cliente`, () => {
+        cy.get(cliente.CLIENTE.CLIENTE).contains('Diversos').click()
+        cy.get(cliente.CLIENTE.INSERCAOCLIENTE).type('Carlos Alessandro Laurindo')
+        cy.contains('095.605.299-19').click()
+        cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
+        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*0002.0003')
+        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+        .should('contain', 'Blusa Manga Curta Ref Xyz')
+        cy.wait(500)
+        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
     })
      
 
-    it(`Pré venda adicionando produto através da pesquisa`, () => {
+    it(`Inserção de desconto`, () => {
+        cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
+        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*Boneca T02.')
+        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+        .should('contain', 'Boneca T02.')
+        //cy.get('.mb-3',).type('50,00')
+        cy.get('.flex-direction-column')
+        cy.get('.mb-3',)
+        cy.get('.form-control').type('50,00')
     })
      
-    it(`Pré venda adicionando produto através da inserção rápida`, () => {
-    })
-     
-    it(`Pré venda adicionando quantidades para produto através da tela de itens inseridos`, () => {
-    })
-     
-    it(`Pré venda adicionando quantidades para produto adicionando pela pesquisa de produto`, () => {
-    })
-     
-    it(`Pré venda adicionando quantidades para produto adicionando pela inserção rápida`, () => {
-    })
-     
-    it(`Pré venda diminuindo quantidade para produto`, () => {
-    })
-     
-    it(`Pré venda removendo produto da listagem`, () => {
-    })
 
-
-    it(`Pré venda com desconto em reais no total`, () => {
-    })
-        
-
-    it(`Pré venda com desconto em percentual no total`, () => {
-    })
 
 })

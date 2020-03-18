@@ -9,7 +9,7 @@ const inserirItensElements = {
         INSERCAORAPIDA: '.fa-bolt',
         ADICIONARITEM: '.insercao-rapida'
     },
-    BTN_SALVAR_ATENDIMENTO: '.btn-outline-secondary',
+    BTN_SALVAR_ATENDIMENTO: '.btn-salvar',
 }
 
 export default inserirItensElements;

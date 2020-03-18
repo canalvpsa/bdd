@@ -1,10 +1,10 @@
-const clienteElements = {
-    CLIENTE:{
-        CLIENTE: 'app-select-terceiro',
+const descontoElements = {
+    Desconto:{
+        Formato: '.button.btn.btn-pimary',
         SELECAODIV: '.barra-pesquisa',
         INSERCAOCLIENTE: '.mat-input-element'
    },
    // BTN_PAGAMENTOS: '.btn-salvar'
 }
 
-export default clienteElements;
+export default descontoElements;
