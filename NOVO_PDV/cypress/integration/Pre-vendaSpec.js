@@ -86,16 +86,17 @@ describe('Pré-venda', () => {
   //      cy.get('.form-control').type('50,00')
   //  })
      
-  it.only(`Relatório de movimentações`, () => {
+  it.only(`Editando e finalizando um documento`, () => {
     cy.get(menu.SELECAO.MOVIMENTACOES).click()
     cy.get(':nth-child(1) > .card-body > .clickable > .fad').click()
     cy.get('[tooltip="Continuar atendimento"] > .acao-atendimento > .acao-legenda-completa').click()
     cy.get(':nth-child(1) > .w-25 > .botoesQuantidade > :nth-child(3) > .fal').click()
     cy.get(':nth-child(1) > .w-50 > span').click()
     cy.get('.select2-selection__arrow > b').click()
-    cy.get('.select2-search__field').type('GERENTE')
+    cy.get('.select2-search__field').type('GERENTE').click({ force: true })
     //cy.get(':nth-child(1) > .w-50 > span').click()
-    cy.get('.cdk-overlay-backdrop').click()
+    cy.contains('GERENTE').click({ force: true })
+    .should('contains', 'GERENTE').click({ force: true })
 })
 
 })
