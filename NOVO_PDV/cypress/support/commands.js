@@ -27,7 +27,7 @@
 import loc from './elements/LoginElements'
 
 Cypress.Commands.add('login', () => {
-    cy.visit('https://pdv.varejonline.com.br/pdv/')
+    cy.visit('https://nfe.varejonline.com.br:8443/pdv')
     cy.get(loc.LOGIN.USER).type('vendedor')
     cy.get(loc.LOGIN.PASSWORD).type('varejo')
     cy.get(loc.LOGIN.CONECTADO).click()

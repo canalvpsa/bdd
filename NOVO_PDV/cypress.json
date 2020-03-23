@@ -3,6 +3,6 @@
     "chromeWebSecurity": false,
     
     "env": {
-      "baseUrl": "https://dev2.varejonline.com.br:7443"
+      "baseUrl": "https://nfe.varejonline.com.br:8443/"
     }
   }
