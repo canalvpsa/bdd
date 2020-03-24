@@ -67,22 +67,24 @@ describe('Pré-venda', () => {
     })
 
 
-    it.only(`Pré venda para cliente diversos`, () => {
+    it(`Pré venda para cliente válida`, () => {
         cy.get('app-select-terceiro').contains('Diversos').click()
-        cy.get('app-select-terceiro .mat-input-element').type('Carlos')
+        cy.get(cliente.CLIENTE.INSERCAOCLIENTE).type('Carlos Alessandro')
+        cy.wait(500)
+        cy.get('#mat-option-2 > .mat-option-text > .d-flex > :nth-child(1)').click({force: true})
         cy.get(inserirItens.PRODUTO.FN_ADICIONAR_CARRINHO('1')).click()
         cy.get(inserirItens.BTN_PAGAMENTO).click()
         cy.get('.flex-column > :nth-child(1) > :nth-child(2)').click()
         cy.get(':nth-child(4) > .botao-grande').click()
-        cy.get('.m-2').click()
+        cy.get('.m-2').click({force: true})
     })
 
-  //  it(`Pré venda para cliente válido`, () => {
-  //      cy.get(inserirItens.PRODUTO.FN_ADICIONAR_CARRINHO('1')).click()
-  //      cy.get(inserirItens.PRODUTO.MENSAGEM)
-  //              .should('contain', 'Produto BLUSA MANGA CURTA REF XYZ P AZ sem classificação fiscal')
-  //      cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
-  //  })
+    it.only(`Pré venda ação promocional`, () => {
+        cy.get(inserirItens.PRODUTO.FN_ADICIONAR_CARRINHO('1')).click()
+        cy.get(inserirItens.PRODUTO.MENSAGEM)
+                .should('contain', 'Produto BLUSA MANGA CURTA REF XYZ P AZ sem classificação fiscal')
+        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
+    })
 
    it(`Pré venda para cliente diferente de diversos`, () => {
     cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
@@ -112,16 +114,16 @@ describe('Pré-venda', () => {
     })
      
 
-  //  it(`Inserção de desconto`, () => {
-  //      cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
-  //      cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*Boneca T02.')
-  //      cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
-  //      .should('contain', 'Boneca T02.')
-  //      //cy.get('.mb-3',).type('50,00')
-  //      cy.get('.flex-direction-column')
-  //      cy.get('.mb-3',)
-  //      cy.get('.form-control').type('50,00')
-  //  })
+    it(`Inserção de desconto`, () => {
+        cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
+        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*Boneca T02.')
+        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
+        .should('contain', 'Boneca T02.')
+        //cy.get('.mb-3',).type('50,00')
+        cy.get('.flex-direction-column')
+        cy.get('.mb-3',)
+        cy.get('.form-control').type('50,00')
+    })
      
 
 

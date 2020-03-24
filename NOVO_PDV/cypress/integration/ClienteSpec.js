@@ -20,8 +20,9 @@ describe('Cliente', () => {
 
     it(`Pesquisa de cliente`, () => {
         cy.get(menu.SELECAO.RELCLIENTES).click()
-        cy.get('.item').click()
-        cy.get('.form-control')
+        //cy.get('.form-control').click().type('Carlos Alessandro')
+        //cy.wait(500)
+        cy.get('.fa-user-edit', '[2]').click()
     })
 
 
