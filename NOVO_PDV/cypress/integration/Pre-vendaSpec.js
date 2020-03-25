@@ -186,11 +186,42 @@ describe('Pré-venda', () => {
     })
      
 
-    it.only(`Desconto progressivo`, () => {
+    it(`Desconto progressivo`, () => {
         cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
         cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('Desconto progressivo')
         cy.wait(500)
         cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '80,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '105,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '120,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '125,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '135,00')
+        cy.wait(500)
+        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
+    })
+
+
+    it(`Pesquisa e Troca`, () => {
+        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('Desodorante 24Hs Araucária')
+        cy.wait(500)
+        cy.get('app-vendivel-grid > .container').should('contain', 'Desodorante 24Hs Araucária')
+        cy.get('.fa-shopping-cart').click({force: true})
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '80,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '105,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '120,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '125,00')
+        cy.get(':nth-child(3) > .fal').click()
+        cy.get('.total').should('contain', '135,00')
+        cy.wait(500)
+        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
     })
      
 
