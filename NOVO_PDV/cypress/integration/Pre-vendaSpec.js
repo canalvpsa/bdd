@@ -23,8 +23,12 @@ describe('Pré-venda', () => {
     })
 
     beforeEach(() => {
-        Cypress.Cookies.preserveOnce('pdv-auth-token', 'pdv-usuarios', 'pdv-componente-vendivel')
+        cy.restoreLocalStorage();
     })
+
+    afterEach(() => {
+        cy.saveLocalStorage();
+});
 
 
     it(`Inserção rápida`, () => {
@@ -87,7 +91,7 @@ describe('Pré-venda', () => {
         cy.get('.m-2').click({force: true})
     })
 
-    it.only(`Pré venda ação promocional em dinheiro`, () => {
+    it(`Pré venda ação promocional em dinheiro`, () => {
         cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
         cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('0562.0044')
         cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
