@@ -1,7 +1,7 @@
 const menuElements = {
     SELECAO:{
         ATENDIMENTO: '.fa-shopping-cart',
-        MOVIMENTACOES: '.fa-file-chart-line',
+        MOVIMENTACOES: '[href="/pdv/relatorio"] > .mat-list-item-content > .fad',
         RANKINGVENDEDOR: '.fa-chart-bar',
         RELCLIENTES: '.fa-users',
         PESQUISAITEM: '.fa-search',

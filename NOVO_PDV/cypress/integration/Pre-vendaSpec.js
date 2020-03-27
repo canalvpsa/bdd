@@ -5,6 +5,8 @@ import checkout from '../support/elements/checkoutElements'
 import cliente from '../support/elements/clienteElements'
 import desconto from '../support/elements/descontoElements'
 import menu from '../support/elements/menuElements'
+import pagamentos from '../support/elements/pagamentosElements'
+import movimento from '../support/elements/movimentacaoElements'
 
 describe('Pré-venda', () => {
 
@@ -46,13 +48,13 @@ describe('Pré-venda', () => {
     })
 
 
-    it(`Editando e finalizando um documento`, () => {
-        cy.get(menu.SELECAO.MOVIMENTACOES).click()
-        cy.get(':nth-child(1) > .card-body > .clickable > .fad').click()
-        cy.get('[tooltip="Continuar atendimento"] > .acao-atendimento > .acao-legenda-completa').click()
-        cy.get(':nth-child(1) > .w-25 > .botoesQuantidade > :nth-child(3) > .fal').click()
-        cy.get(':nth-child(1) > .w-50 > span').click()
+    it.only(`Editando e finalizando um documento`, () => {
+        cy.get(menu.SELECAO.MOVIMENTACOES).click({force: true})
         cy.wait(500)
+        cy.get(movimento.RELATORIO.DETALHAR).click()
+        cy.get(movimento.RELATORIO.CONTINUAR).click()
+        cy.get(':nth-child(1) > .w-25 > .botoesQuantidade > :nth-child(3) > .fal').click()
+        cy.get(':nth-child(1) > .w-50 > span',{timeout:500}).click()
         cy.get('.select2-selection__arrow > b').click({ force: true })
         cy.get('.select2-search__field').type('Administrador Loccitan').click()
         cy.wait(500)
