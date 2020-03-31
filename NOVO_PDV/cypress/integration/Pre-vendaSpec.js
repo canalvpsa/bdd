@@ -7,6 +7,7 @@ import desconto from '../support/elements/descontoElements'
 import menu from '../support/elements/menuElements'
 import pagamentos from '../support/elements/pagamentosElements'
 import movimento from '../support/elements/movimentacaoElements'
+import infoitem from '../support/elements/infoitemElements'
 
 describe('Pré-venda', () => {
 
@@ -55,21 +56,18 @@ describe('Pré-venda', () => {
         cy.get(movimento.RELATORIO.CONTINUAR).click()
         cy.get(':nth-child(1) > .w-25 > .botoesQuantidade > :nth-child(3) > .fal').click()
         cy.get(':nth-child(1) > .w-50 > span',{timeout:500}).click()
-        cy.get('.select2-selection__arrow > b').click({ force: true })
-        cy.get('.select2-search__field').type('Administrador Loccitan').click()
+        cy.get(infoitem.DETALHE.VENDEDOR).click({ force: true })
+        cy.get(infoitem.DETALHE.NOMEVEND).type('Administrador Loccitan').click()
         cy.wait(500)
-        //cy.get(':nth-child(1) > .w-50 > span').click() - Avaliar a situação de seleção do vendedor
-        cy.get('.select2-search__field').type('e').click({force: true}).type('{enter}')
+        cy.get(infoitem.DETALHE.NOMEVEND).type('e').click({force: true}).type('{enter}')
         cy.wait(500)
-        cy.get('.row > :nth-child(2) > .form-control').type('{backspace}')
-        cy.get('.row > :nth-child(2) > .form-control').type('2')
+        cy.get(infoitem.DETALHE.UNIDADE,{timeout:500}).type('{backspace}')
+        cy.get(infoitem.DETALHE.UNIDADE).type('2')
         cy.wait(500)
-        //CLicar fora
-        cy.get('.cdk-overlay-backdrop').click({force : true})
-        cy.get(':nth-child(3) > .btn-primary').click({force : true})
-        cy.get('.botoes-pagamento > :nth-child(1)').click({force : true})
-        cy.get('.d-flex > :nth-child(1) > .foto > app-imagem > img').click({force : true})
-        cy.wait(500)
+        cy.get(infoitem.DETALHE.SAIR, {timeout:500}).click({force : true})
+        cy.get(inserirItens.BTN_PAGAMENTO).click({force : true})
+        cy.get(pagamentos.SELECAO.CARTAO).click({force : true})
+        cy.get(pagamentos.SELECAO.OPERADORA.CIELO, {timeout:500}).click({force : true})
         cy.get('#parcelas').type('{backspace}')
         cy.wait(500)
         cy.get('#parcelas').type('2')
