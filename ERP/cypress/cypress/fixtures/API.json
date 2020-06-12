@@ -1,0 +1,4 @@
+"URL_API"{
+    "entrada_consulta": "/server/api/estoque/entrada/filtrar",
+    "entrada_excluir": ""
+}

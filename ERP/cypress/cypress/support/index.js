@@ -25,6 +25,10 @@ Cypress.SelectorPlayground.defaults({
     selectorPriority: ['id', 'class', 'attributes', 'tag', 'nth-child' ]
   })
 
+  Cypress.Screenshot.defaults({
+    screenshotOnRunFailure: false
+  })
+
   Cypress.on('window:before:load', function (win) {
     const original = win.EventTarget.prototype.addEventListener
   
@@ -40,9 +44,3 @@ Cypress.SelectorPlayground.defaults({
       set: function () { }
     })
   })
-
-
-
-// import mis from 'cypress-oracle-db';
-// mis.loadDBCommands();
-// import './commands.js';

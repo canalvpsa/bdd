@@ -16,13 +16,29 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
 }
 
-// const oracle = require('oracledb'),
-//       configSwitcher = require('cypress-config-switcher'),
-//       db = require('cypress-oracle-db');
+const oracle = require('oracledb')
 
-// module.exports = (on, config) => {
-//   config = configSwitcher.loadEnvConfig(config);
+module.exports = (on, config) => {
+  config = configSwitcher.loadEnvConfig(config);
 
-//   tasks = db.loadDBPlugin(oracle, config.db);
-//   on('task', tasks);
-//}
+  tasks = db.loadDBPlugin(oracle, config.db);
+  on('task', tasks);
+}
+
+module.exports = (on, config) => {
+  on('after:screenshot', (details) => {
+    console.log(details) // print all details to terminal
+
+    const newPath = '/new/path/to/screenshot.png'
+
+    return new Promise((resolve, reject) => {
+      fs.rename(details.path, newPath, (err) => {
+        if (err) return reject(err)
+
+        // because we renamed/moved the image, resolve with the new path
+        // so it is accurate in the test results
+        resolve({ path: newPath })
+      })
+    })
+  })
+}

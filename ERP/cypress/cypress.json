@@ -1,8 +1,27 @@
 {
   "defaultCommandTimeout": 10000,
   "chromeWebSecurity": false,
-  
+  "nodeVersion": "system",
+  "video": false,
+  "screenshotsFolder": "cypress/reports/screenshots",
+  "trashAssetsBeforeRuns": true,
   "env": {
-    "baseUrl": "https://dev2.varejonline.com.br:7443"
+    "baseUrl": "https://qa.varejonline.com.br:7443",
+    "base_compras": "qa_compras_auto",
+    "base_estoque": "qa_estoque_auto",
+    "base_vpsa": "qa_vpsa_auto"
+  },
+  "projectId": "ne2z9x",
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mochareports",
+      "quite": true,
+      "overwrite": false,
+      "html": true,
+      "json": true,
+      "timestamp": "mmddyyyy_HHMMss"
+   }
   }
 }

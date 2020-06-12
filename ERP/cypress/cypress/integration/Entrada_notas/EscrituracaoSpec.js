@@ -2,87 +2,103 @@
 
 import entradaElements from '../../support/elements/Entrada_notasElements'
 import EntradaNotas from '../../support/pageobjects/EntradaNotasPage'
+import ValidacaoAPI from '../../support/ValidacaoAPI'
+import Validacao_bd from '../../support/Validacao_bd'
+
 const entradaNotas = new EntradaNotas();
+const validacaoAPI = new ValidacaoAPI();
+const validacao_bd = new Validacao_bd();
+
+var statusEscrituracao = ''
+var numeroNota = ''
+var idEntrada
+
 
 describe('ERP - Entrada de nota fiscal no ERP e validação do status da escrituração', () => {
 
     before(() => {
         cy.clearCookies()
         cy.login()
-        //   entradaNotas.excluirUtimaEntrada('1010')
     })
 
     beforeEach(() => {
         Cypress.Cookies.preserveOnce('CSRF-TOKEN', 'baseOuCNPJ', '_single-sign-on-server_session', 'service', 'tgt')
+        cy.visit((Cypress.env('baseUrl')) + '/server/erp/estoque/entradas/')
+        // cy.get(entradaElements.ULTIMAS_NOVIDADES)
+        const numeroNota = ['1010', '562']
+
+        numeroNota.forEach(numeroNota => {
+            validacaoAPI.excluirEntrada(numeroNota)
+        })
     })
+    //validacao_bd.consulta_escrituracao()
+    const produtos = ['2541.001', '2541.002']
+    const escrituracao = [
+        {
+            modelo: '1A',
+            status: 'ESCRITURADA_EXTERNO',
+        },
+        {
+            modelo: '1',
+            status: 'ESCRITURADA_EXTERNO',
+        },
+        {
+            modelo: '55',
+            status: 'NAO_ESCRITURADA',
+        },
+        {
+            modelo: '4',
+            status: 'ESCRITURADA_EXTERNO',
+        },
+    ]
 
-    const modeloNota = ['1A', '1', '55', '4']
-    const escrituracao = 'ESCRITURADA_EXTERNO'
-    const produtos = ['g2.001', 'g2.002']
+    escrituracao.forEach(modeloNota => {
+        it(`Entrada de notas manual validando status da escrituração para modelo ${modeloNota.modelo}`, () => {
+            numeroNota = '1010'
 
-
-    modeloNota.forEach(modeloNota => {
-        it(`Entrada de notas manual validando status da escrituração para modelo ${modeloNota}`, () => {
-            if (modeloNota == '55')
-                escrituracao = 'NAO_ESCRITURADA'
-
-            entradaNotas.preencherDadosIniciais_tiposNota(modeloNota)
+            entradaNotas.preencherDadosIniciais_tiposNota(modeloNota.modelo)
+            entradaNotas.clicarBotao(entradaElements.BTN_SALVAR)//dados adicionais
             entradaNotas.incluirProdutos(produtos)
-            entradaNotas.clicarSalvar()//conciliacao
-            entradaNotas.clicarSalvar() //produtos
-            entradaNotas.clicarSalvar()//dados adocionais
-            entradaNotas.clicarSalvar() //Visao geral
-            entradaNotas.clicarSalvar() //Financeiro
-            cy.get(entradaElements.MENSAGEM, { timeout: 100000 })
-                .should('contain', 'A entrada 1010/1 foi efetuada com sucesso')
-
-            //valdar escrituração
-            entradaNotas.excluirUtimaEntrada('1010')
-
+            entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Visao geral
+            entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Pagamento
+            entradaNotas.validarMensagem('A entrada 1010/1 foi efetuada com sucesso')
+            validacaoAPI.validaEscrituracao('1010', 'ENTRADA', modeloNota.status)
+            console.log('Excluindo nota ' + numeroNota)
+            entradaNotas.excluirUtimaEntrada(numeroNota)
         })
     })
 
 
     it(`Entrada de notas manual validando status da escrituração para modelo 55 e chave de acesso`, () => {
+        statusEscrituracao = 'ESCRITURADA_EXTERNO'
+        numeroNota = '562'
+
         entradaNotas.preencherDadosIniciais_comChave()
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR)//dados adicionais
         entradaNotas.incluirProdutos(produtos)
-        entradaNotas.clicarSalvar()//conciliacao
-        entradaNotas.clicarSalvar() //produtos
-        entradaNotas.clicarSalvar()//dados adocionais
-        entradaNotas.clicarSalvar() //Visao geral
-        entradaNotas.clicarSalvar() //Financeiro
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Visao geral
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Pagamento
         cy.get(entradaElements.MENSAGEM, { timeout: 100000 })
-            .should('contain', 'A entrada 1010/1 foi efetuada com sucesso')
+            .should('contain', 'A entrada 562/4 foi efetuada com sucesso')
 
-        //valdar escrituração
-        entradaNotas.excluirUtimaEntrada('1010')
+        validacaoAPI.validaEscrituracao('562', 'ENTRADA', statusEscrituracao)
+        console.log('Excluindo nota ' + numeroNota)
+        entradaNotas.excluirUtimaEntrada(numeroNota)
     })
 
-    it.only(`Entrada de notas com XML validando status da escrituração`, () => {
+    it(`Entrada de notas com XML validando status da escrituração`, () => {
+        statusEscrituracao = 'ESCRITURADA_EXTERNO'
+        numeroNota = '562'
+
         entradaNotas.preencherDadosIniciais_xml('XMLs/xml_simples.xml', 'codigo_produto', 'codigo_interno')
-        entradaNotas.clicarSalvar()//conciliacao
-        entradaNotas.clicarSalvar() //produtos
-        entradaNotas.clicarSalvar()//dados adocionais
-        entradaNotas.clicarSalvar() //Visao geral
-        entradaNotas.clicarSalvar() //Financeiro
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR)//conciliacao
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //produtos
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR)//dados adocionais
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Visao geral
+        entradaNotas.clicarBotao(entradaElements.BTN_SALVAR) //Pagamento
         entradaNotas.validarMensagem('foi efetuada com sucesso')
-
-        entradaNotas.excluirUtimaEntrada('562')
+        validacaoAPI.validaEscrituracao('562', 'ENTRADA', statusEscrituracao)
+        console.log('Excluindo nota ' + numeroNota)
+        entradaNotas.excluirUtimaEntrada(numeroNota)
     })
-
-    //     enário: Entrada de notas manual validando status da escrituração para modelo 55 e chave de acesso
-    //     Quando o usuário informar na entrada o tipo de nota "55" com número do documento "562" e série "4" informando chave de acesso
-    //     E que confirma os dados adicionais, adiciona os produtos e confirma a visão geral
-    //     E finaliza a entrada
-    //     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "562" e série "4" 
-    //     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
-
-
-    // @entrada_XML @modelo_nota
-    // Cenário: Entrada de notas com XML validando status da escrituração
-    //     Quando o usuário preenche os dados iniciais informando um XML
-    //     E que confirma a conciliação, confirma os dados adicionais, confirma os produtos e confirma a visão geral
-    //     E finaliza a entrada
-    //     Então a entrada é realizada com sucesso exibindo a mensagem com o número do documento "562" e série "4" 
-    //     E a nota fiscal é registrada com status "ESCRITURADA_EXTERNO"
 })
