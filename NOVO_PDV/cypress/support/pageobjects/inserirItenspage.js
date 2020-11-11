@@ -1,20 +1,72 @@
-class inserirprod{
 
-    Insercaoitens = (`Inserção rápida`, () => {
-        //cy.get(inserirItens.PRODUTO.FN_ADICIONAR_CARRINHO('1')).click()
-        cy.get(inserirItens.PRODUTO.INSERCAORAPIDA).click()
-        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('2*0135')
-        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
-        .should('contain', 'Desconto Progressivo')
-        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('0002.0001')
-        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
-        .should('contain', 'Blusa Manga Curta Ref Xyz P Az')
-        cy.get(inserirItens.PRODUTO.ADICIONARITEM).type('Teste Transferência M Ro')
-        cy.get(checkout.CHECKOUT.DESCRICAOPRODUTO)
-        .should('contain', '110,00')
-        cy.get(inserirItens.BTN_SALVAR_ATENDIMENTO).click()
-    })
+/// <reference types="Cypress" />
+
+import inserirItens from '../elements/InserirItensElements'
+import checkout from '../elements/CheckoutElements'
+
+class InsercaoItensPage{
     
+
+    insercaoRapida(codigoItem){
+        cy.get(inserirItens.OPCAO_INSERCAO_RAPIDA).should('not.exist').get(inserirItens.TOGGLE_PESQUISA).click()
+        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+        cy.wait(2000)
+        cy.get(inserirItens.TOGGLE_PESQUISA).click()
+    }
+
+    insercaoRapidaNegada(codigoItem, mensagem){
+        cy.get(inserirItens.OPCAO_INSERCAO_RAPIDA).should('not.exist').get(inserirItens.TOGGLE_PESQUISA).click()
+        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+        cy.get('.noty_body').should('contain', mensagem)
+    }
+
+    insercaoPesquisa(codigoItem){
+        cy.get(inserirItens.PESQUISAITEM)
+            .click()
+            .type(codigoItem)
+            cy.server()
+        cy.route("/produto/mais-vendidos").as("listaprodutos")
+        cy.wait('@listaprodutos')
+       this.adicionarCarrinho().click()
+    }
+
+    adicionarCarrinho(){
+        
+        cy.get('.card > .card-footer > .clickable > .branco').click()
+    }
+
+    limparCampoPesquisa(){
+        cy.get(inserirItens.PESQUISAITEM).clear()
+    }
+
+    getCampoPesquisaProduto(){
+        return cy.get(inserirItens.PESQUISAITEM).should('have.length', 1)
+    }
+
+
+    insercaoPesquisaDetalheItem(codigoItem){
+        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+    }
+
+    getProdutoPesquisado(){
+        return cy.get(inserirItens.PRODUTOPESQUISADO)
+    }
+
+    getProdutoImagem(){
+        return cy.get(inserirItens.IMAGEMPRODUTO)
+    }
+
+    getPrecoAntigo(){
+        return cy.get(inserirItens.PRODUTOPESQUISADO + inserirItens.PRECOANTIGO)
+    }
+
+    getPrecoVigente(){
+        return cy.get(inserirItens.PRODUTOPESQUISADO + inserirItens.PRECOVIGENTE)
+    }
+
+    getBotaoAdicionar(){
+    return cy.get(inserirItens.BTN_ADICIONAR)
+    }
 }
 
-export default CamposEntrada;
+export default InsercaoItensPage;

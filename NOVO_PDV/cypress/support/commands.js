@@ -26,13 +26,22 @@
 
 import loc from './elements/LoginElements'
 
-Cypress.Commands.add('login', () => {
-    cy.visit('https://nfe.varejonline.com.br:8443/pdv')
-    cy.get(loc.LOGIN.USER).type('vendedor')
-    cy.get(loc.LOGIN.PASSWORD).type('varejo')
-    cy.get(loc.LOGIN.CONECTADO).click()
-    cy.get(loc.LOGIN.BTN_ENTRAR).click()
-    cy.get('.usuario > span').should('contain', 'Olá')
+Cypress.Commands.add("login", (usuario, senha) => {
+  cy.visit('https://192.168.25.51/pdv/')
+  cy.get(loc.LOGIN.USER).type(usuario)
+  cy.get(loc.LOGIN.PASSWORD).type(senha)
+  cy.get(loc.LOGIN.BOTAO).should('not.have.attr', 'disabled', { timeout: 1000000 }).click()
+  cy.get('mat-toolbar span', { timeout: 10000 }).should('contain', 'Olá')
+});
+
+Cypress.Commands.add("loginfalha", (usuario, senha) => {
+  cy.visit('https://192.168.25.51/pdv/')
+  cy.get(loc.LOGIN.USER).type(usuario)
+  cy.get(loc.LOGIN.PASSWORD).type(senha)
+  cy.get(loc.LOGIN.BOTAO).should('not.have.attr', 'disabled', { timeout: 1000000 }).click()
+  
+  cy.get('.noty_body').should('contain', 'Usuário ou senha incorretos')
+});
 
 let LOCAL_STORAGE_MEMORY = {};
 
@@ -47,4 +56,3 @@ Cypress.Commands.add("restoreLocalStorage", () => {
     localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
   });
 });
-})

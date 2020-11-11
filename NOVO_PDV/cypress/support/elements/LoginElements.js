@@ -1,8 +1,8 @@
 const loginElements = {
     LOGIN:{
-        USER: '[formcontrolname=login]',
-        PASSWORD: '[formcontrolname=senha]',
-        BTN_ENTRAR: '.btn',
+        USER: 'input[formcontrolname=login]',
+        PASSWORD: 'input[formcontrolname=senha]',
+        BOTAO: '.btn-primary',
         CONECTADO: 'app-toggle'
     }
 }

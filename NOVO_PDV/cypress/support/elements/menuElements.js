@@ -1,14 +1,11 @@
 const menuElements = {
-    SELECAO:{
-        ATENDIMENTO: '.fa-shopping-cart',
-        MOVIMENTACOES: '[href="/pdv/relatorio"] > .mat-list-item-content > .fad',
-        RANKINGVENDEDOR: '.fa-chart-bar',
-        RELCLIENTES: '.fa-users',
-        PESQUISAITEM: '.fa-search',
-        CONFIGURACAO: '.fa-cog',
+        ATENDIMENTO: '.mat-list-item-content > .fa-shopping-cart',
+        MOVIMENTACOES: 'mat-nav-list .fa-file-chart-line',
+        RANKINGVENDEDOR: 'mat-nav-list .fa-chart-bar',
+        CLIENTES: 'mat-nav-list .fa-users',
+        PESQUISA: 'mat-nav-list fa-search',
+        CONFIGURACAO: 'mat-nav-list .fa-cog',
         TRANSACAOPENDENTE: '.fa-credit-card'
-    },
-
 }
 
 export default menuElements;

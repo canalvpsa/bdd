@@ -1,0 +1,38 @@
+[
+    {
+        "login": "gerente",
+        "senha": "varejonline",
+        "descontomax": "99,99",
+        "perfil": "gerente"
+    },
+    {
+        "login": "realizado",
+        "senha": "varejonline",
+        "descontomax": "50,00",
+        "perfil": "vendedor"
+    },
+    {
+        "login": "pdv1",
+        "senha": "varejonline",
+        "descontomax": "40,00",
+        "perfil": "caixa"
+    },
+    {
+        "login": "comprador",
+        "senha": "varejonline",
+        "descontomax": "",
+        "perfil": ""
+    },
+    {
+        "login": "naovendepdv",
+        "senha": "varejonline",
+        "descontomax": "20,00",
+        "perfil": "vendedor"
+    },
+    {
+        "login": "vendedorinativo",
+        "senha": "varejonline",
+        "descontomax": "20,00",
+        "perfil": "vendedor"
+    }
+]

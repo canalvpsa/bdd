@@ -5,20 +5,27 @@
     "main": "index.js",
     "cwd": "${workspaceRoot}",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "cypress:version": "cypress version",
+        "pretest": "npm run clean:reports",
+        "prereport": "npm run delete:reports",
+        "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
+        "scripts": "cypress run",
         "cypress:open": "cypress open",
-        "test:chrome": "cypress run --browser chrome --no-exit"
+        "cypress:run": "cypress run --reporter mochawesome",
+        "test:chrome": "cypress run --browser chrome --no-exit",
+        "test": "npm run scripts"
     },
     "dependencies": {
         "https-pem": "^2.0.0",
         "package.json": "^2.0.1"
     },
     "devDependencies": {
-        "cypress": "^3.4.1",
-        "cypress-capybara": "0.0.2",
-        "cypress-cucumber-preprocessor": "^1.18.0",
+        "cypress": "^5.3.0",
         "cypress-file-upload": "^3.5.3",
-        "cypress-xpath": "^1.4.0"
+        "cypress-plugin-tab": "^1.0.5",
+        "cypress-xpath": "^1.6.0",
+        "mochawesome": "^6.1.1",
+        "mochawesome-merge": "^4.2.0"
     },
     "keywords": [],
     "author": "",
