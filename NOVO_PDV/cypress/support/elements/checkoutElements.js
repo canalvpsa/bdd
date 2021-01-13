@@ -5,13 +5,15 @@ const CheckoutElements = {
         QUANTIDADEMAIOR: '.botoesQuantidade .fa-plus-circle',
         QUANTIDADEMENOR: '.botoesQuantidade .fa-minus-circle',
         QUANTIDADEITEM: '.botoesQuantidade .font-weight-bold',
-        PRECOUNITARIO: 'div small',
+        PRECOUNITARIO: '[tooltip="Preço unitário"]',
+        DESCONTOUNITARIO: '[tooltip="Desconto total"]',
         VALORTOTAL: 'div .valor-total',
-        DESCONTO: {
-            REAIS: 'app-atendimento-vendivel-edicao .input-group-prepend .btn-primary',
-            PERCENTUAL: 'app-atendimento-vendivel-edicao .input-group-prepend .btn-outline-primary',
-            DESCONTOVALOR: 'app-atendimento-vendivel-edicao .input-group-prepend .form-control',
-            INSERCAOCLIENTE: '.mat-input-element'
+        EDICAOITEM: {
+            BTN_TIPO: 'mat-dialog-container > app-atendimento-vendivel-edicao button',
+            DESCONTOVALOR: `app-atendimento-vendivel-edicao div :nth-child(1) > .input-group > .form-control`,
+            QUANTIDADE: `app-atendimento-vendivel-edicao.ng-star-inserted > .row > :nth-child(2) > .form-control`,
+            INSERCAOCLIENTE: '.mat-input-element',
+            FN_BTN_FECHAR: `//div//button[contains(., 'Fechar (ESC)')]`,
         },
     },
     DESCONTO: {
@@ -28,6 +30,8 @@ const CheckoutElements = {
     VALORATENDIMENTO: '.action-total .total',
     FN_BTN_PAGAMENTOS: `//div//button[contains(., 'Pagamentos')]`,
     FN_BTN_SALVAR: `//div//button[contains(., 'Salvar atendimento')]`,
+    FN_BTN_CANCELAR: `//div//button[contains(., 'Cancelar atendimento')]`,
+    MENSAGEM: '.noty_body'
 }
 
 export default CheckoutElements;

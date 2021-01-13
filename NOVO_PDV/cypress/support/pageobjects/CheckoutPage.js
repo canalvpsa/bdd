@@ -3,91 +3,124 @@
 import checkout from '../elements/checkoutElements'
 
 
-class CheckoutPage{
+class CheckoutPage {
 
-    validaListaVazia(){
+    validaListaVazia() {
         cy.wait(2000)
         cy.get(checkout.CLIENTE).should('contain', 'Diversos')
-        cy.get(checkout.PRODUTOLISTA, {timeout:10000}).should('not.exist')
+        cy.get(checkout.PRODUTOLISTA, { timeout: 10000 }).should('not.exist')
         cy.get(checkout.VALORATENDIMENTO).should('contain', '0,00')
     }
 
 
-    validaBotoesPreVenda(){
+    validaBotoesPreVenda() {
         cy.xpath(checkout.FN_BTN_SALVAR).should('exist')
         cy.xpath(checkout.FN_BTN_PAGAMENTOS).should('not.exist')
     }
 
-    validaBotoesVenda(){
+    validaBotoesVenda() {
         cy.xpath(checkout.FN_BTN_SALVAR).should('exist')
         cy.xpath(checkout.FN_BTN_PAGAMENTOS).should('exist')
     }
 
-    alterarCliente(nomeCliente){
+    alterarCliente(nomeCliente) {
         cy.get(checkout.CLIENTE).click()
         cy.get(checkout.CLIENTEPESQUISA).type(nomeCliente)
         cy.get(checkout.CLIENTELISTAGEM).click({ force: true })
+        cy.get(checkout.CLIENTE).contains(nomeCliente, { matchCase: false })
     }
 
-    getAumentarQuantidadeItem(){
+    getAumentarQuantidadeItem() {
         return cy.get(checkout.LISTAPRODUTOS.QUANTIDADEMAIOR)
     }
 
-    getDiminuirQuantidadeIem(){
+    getDiminuirQuantidadeIem() {
         return cy.get(checkout.LISTAPRODUTOS.QUANTIDADEMENOR)
     }
 
-   
 
-    descontoItem_percentual(){
-
+    alterarItem(produto){
+        cy.wait(2000)
+        this.getItemListagem().contains(produto).parents('.d-flex').within(() => {
+            cy.get(checkout.LISTAPRODUTOS.DESCRICAOPRODUTO).click()
+        })
     }
 
-    descontoItem_reais(desconto){
-        cy.get(checkout.LISTAPRODUTOS.DESCRICAOPRODUTO).click()
-        cy.get(checkout.LISTAPRODUTOS.REAIS).should('contain', 'R$')
-        cy.get(checkout.LISTAPRODUTOS.DESCONTOVALOR).type(desconto)
-        cy.get(checkout.LISTAPRODUTOS.DESCRICAOPRODUTO).click()
+
+    fecharAlterarItem(){
+        cy.wait(2000)
+        cy.xpath(checkout.LISTAPRODUTOS.EDICAOITEM.FN_BTN_FECHAR).click()
+        cy.xpath(checkout.LISTAPRODUTOS.EDICAOITEM.FN_BTN_FECHAR).should('not.exist')
     }
 
-    descontoTotal_percentual(desconto){
-        cy.get(checkout.LISTAPRODUTOS.DESCRICAOPRODUTO).click()
+    alteraQuantidadeDetalhe(produto, quantidade) {
+       this.alterarItem(produto)
+        cy.get(checkout.LISTAPRODUTOS.EDICAOITEM.QUANTIDADE)
+            .type('{selectall}')
+            .type(quantidade)
+          this.fecharAlterarItem()
+    }
+
+    descontoItem_percentual(produto, desconto) {
+        this.alterarItem(produto)
+        cy.get(checkout.LISTAPRODUTOS.EDICAOITEM.BTN_TIPO).contains('R$').click()
+        cy.get(checkout.LISTAPRODUTOS.EDICAOITEM.DESCONTOVALOR)
+            .type('{selectall}')
+            .type(desconto)
+            this.fecharAlterarItem()
+    }
+
+
+    descontoItem_reais(produto, desconto) {
+        this.alterarItem(produto)
+        cy.get(checkout.LISTAPRODUTOS.EDICAOITEM.DESCONTOVALOR).type(desconto)
+        this.fecharAlterarItem()
+    }
+
+    descontoTotal_percentual(desconto) {
         cy.get(checkout.LISTAPRODUTOS.PERCENTUAL).click()
         cy.get(checkout.LISTAPRODUTOS.DESCONTOVALOR).type(desconto)
-        cy.get(checkout.LISTAPRODUTOS.DESCRICAOPRODUTO).click()
+
     }
 
-    descontoTotal_reais(){
-        
+    descontoTotal_reais() {
+
     }
 
-    getSalvarAtendimento(){
-        return cy.xpath(checkout.FN_BTN_SALVAR)
+    salvarAtendimento() {
+       cy.xpath(checkout.FN_BTN_SALVAR).click()
+       cy.get(checkout.MENSAGEM).should('contain', 'Atendimento salvo com sucesso')
+       cy.wait(3000)
     }
 
-    getItemListagem(){
+    getItemListagem() {
         return cy.get(checkout.PRODUTOLISTA)
     }
 
-    getItemQuantidade(){
+    getItemQuantidade() {
         return cy.get(checkout.LISTAPRODUTOS.QUANTIDADEITEM)
     }
 
-    getItemPrecoUnitario(){
+    getItemPrecoUnitario() {
         return cy.get(checkout.LISTAPRODUTOS.PRECOUNITARIO)
     }
 
-    getItemPrecoTotal(){    
+    getItemPrecoTotal() {
         return cy.get(checkout.LISTAPRODUTOS.VALORTOTAL)
     }
 
-    validaValorTotalItem(){
+    getItemDescontoUnitario() {
+        return cy.get(checkout.LISTAPRODUTOS.DESCONTOUNITARIO)
+    }
+
+    getValorTotalItem() {
         return cy.get(checkout.LISTAPRODUTOS.VALORTOTAL)
     }
 
-    getValorTotalVenda(){
+    getValorTotalVenda() {
         return cy.get(checkout.VALORATENDIMENTO)
     }
+
 }
 
 export default CheckoutPage;

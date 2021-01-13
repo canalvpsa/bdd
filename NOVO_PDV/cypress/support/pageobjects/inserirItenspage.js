@@ -1,27 +1,27 @@
 
 /// <reference types="Cypress" />
 
-import inserirItens from '../elements/InserirItensElements'
+import InserirItens from '../elements/InserirItensElements'
 import checkout from '../elements/CheckoutElements'
 
 class InsercaoItensPage{
     
 
     insercaoRapida(codigoItem){
-        cy.get(inserirItens.OPCAO_INSERCAO_RAPIDA).should('not.exist').get(inserirItens.TOGGLE_PESQUISA).click()
-        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+        cy.get(InserirItens.OPCAO_INSERCAO_RAPIDA).click()
+        cy.get(InserirItens.PESQUISAITEM).type(codigoItem)
         cy.wait(2000)
-        cy.get(inserirItens.TOGGLE_PESQUISA).click()
+        cy.get(InserirItens.OPCAO_PESQUISA).click()
     }
 
     insercaoRapidaNegada(codigoItem, mensagem){
-        cy.get(inserirItens.OPCAO_INSERCAO_RAPIDA).should('not.exist').get(inserirItens.TOGGLE_PESQUISA).click()
-        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+        cy.get(InserirItens.OPCAO_INSERCAO_RAPIDA).click()
+        cy.get(InserirItens.PESQUISAITEM).type(codigoItem)
         cy.get('.noty_body').should('contain', mensagem)
     }
 
     insercaoPesquisa(codigoItem){
-        cy.get(inserirItens.PESQUISAITEM)
+        cy.get(InserirItens.PESQUISAITEM)
             .click()
             .type(codigoItem)
             cy.server()
@@ -31,41 +31,40 @@ class InsercaoItensPage{
     }
 
     adicionarCarrinho(){
-        
-        cy.get('.card > .card-footer > .clickable > .branco').click()
+        cy.get('.card > .card-footer > .clickable > .branco').click().should('have.length', 1)
     }
 
     limparCampoPesquisa(){
-        cy.get(inserirItens.PESQUISAITEM).clear()
+        cy.get(InserirItens.PESQUISAITEM).clear()
     }
 
     getCampoPesquisaProduto(){
-        return cy.get(inserirItens.PESQUISAITEM).should('have.length', 1)
+        return cy.get(InserirItens.PESQUISAITEM).should('have.length', 1)
     }
 
 
     insercaoPesquisaDetalheItem(codigoItem){
-        cy.get(inserirItens.PESQUISAITEM).type(codigoItem)
+        cy.get(InserirItens.PESQUISAITEM).type(codigoItem)
     }
 
     getProdutoPesquisado(){
-        return cy.get(inserirItens.PRODUTOPESQUISADO)
+        return cy.get(InserirItens.PRODUTOPESQUISADO)
     }
 
     getProdutoImagem(){
-        return cy.get(inserirItens.IMAGEMPRODUTO)
+        return cy.get(InserirItens.IMAGEMPRODUTO)
     }
 
     getPrecoAntigo(){
-        return cy.get(inserirItens.PRODUTOPESQUISADO + inserirItens.PRECOANTIGO)
+        return cy.get(InserirItens.PRODUTOPESQUISADO + InserirItens.PRECOANTIGO)
     }
 
     getPrecoVigente(){
-        return cy.get(inserirItens.PRODUTOPESQUISADO + inserirItens.PRECOVIGENTE)
+        return cy.get(InserirItens.PRODUTOPESQUISADO + InserirItens.PRECOVIGENTE)
     }
 
     getBotaoAdicionar(){
-    return cy.get(inserirItens.BTN_ADICIONAR)
+    return cy.get(InserirItens.BTN_ADICIONAR)
     }
 }
 

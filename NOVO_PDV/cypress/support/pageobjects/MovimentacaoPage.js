@@ -26,6 +26,16 @@ class MovimentacaoPage{
   validarMensagem(mensagem) {
     cy.get(movimentacao.MENSAGEM).should('contain', mensagem)
   }
+
+  getUltimoAtendimento(){
+    return cy.get(movimentacao.DETALHAR)
+  }
+
+
+
+  getContinuarAtendimento(){
+    return cy.xpath(movimentacao.DETALHAMENTO.FN_CONTINUAR)
+  }
   
 }
 

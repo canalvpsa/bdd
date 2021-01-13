@@ -1,18 +1,21 @@
 {
-    "defaultCommandTimeout": 10000,
-    "chromeWebSecurity": false,
-    "reporter": "mochawesome",
-    "screenshotOnRunFailure": true,
-    "screenshotFolder": "cypress/report/screenshots",
-    "reporterOptions": {
-        "reportDir": "cypress/report/",
-        "overwrite": true,
-        "html": true,
-        "json": false,
-        "timestamp": "mmddyyyy_HHMMss",
-        "toConsole": true
-    },
-    "env": {
-      "baseUrl": "https://192.168.25.51/pdv"
-    }
+  "defaultCommandTimeout": 10000,
+  "viewportWidth": 1400,
+  "viewportHeight": 680,
+  "chromeWebSecurity": false,
+  "reporter": "mochawesome",
+  "screenshotOnRunFailure": true,
+  "screenshotFolder": "cypress/report/screenshots",
+  "reporterOptions": {
+    "reportDir": "cypress/report/",
+    "overwrite": true,
+    "html": true,
+    "json": false,
+    "timestamp": "mmddyyyy_HHMMss",
+    "toConsole": true
+  },
+  "env": {
+    "baseUrl": "https://192.168.25.51/pdv"
+  },
+  "projectId": "9ghoq7"
   }

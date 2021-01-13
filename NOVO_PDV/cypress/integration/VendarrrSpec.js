@@ -1,18 +1,20 @@
 /// <reference types="Cypress" />
 
-import inserirItens from '../support/elements/inserirItensElements'
+import InserirItens from '../support/elements/InserirItensElements'
 
-import pagamentos from '../support/elements/pagamentosElements'
+import pagamentos from '../support/elements/PagamentoElements'
 import checkoutElements from '../support/elements/checkoutElements'
 import menu from '../support/elements/menuElements'
 
+
 import MovimentacaoPage from '../support/pageobjects/MovimentacaoPage'
 import CheckoutPage from '../support/pageobjects/CheckoutPage'
-import InsercaoItemPage from '../support/pageobjects/InserirItensPage'
+import InsercaoItemPage from '../support/pageobjects/InserirItenspage'
 
 const movimentacao = new MovimentacaoPage()
 const inserirItem = new InsercaoItemPage()
 const checkout = new CheckoutPage()
+const pagamento = new PagamentoPage()
 
 describe('Venda', () => {
 
@@ -28,18 +30,68 @@ describe('Venda', () => {
 
     afterEach(() => {
         cy.saveLocalStorage();
-});
+    });
 })
 
+function validaPrecoContinuarAtendimento(preco) {
+    cy.get(menu.MOVIMENTACOES).click({ force: true })
+    movimentacao.getUltimoAtendimento().click()
+    movimentacao.getContinuarAtendimento().click()
+    checkout.getValorTotalVenda().should('contain', preco)
+    checkout.getSalvarAtendimento().click()
+}
 
-//     it(`Venda aumentando a quantidade do item`, () => {
-//     //     cy.get(menu.ATENDIMENTO).click()
-//     //    checkout.alterarCliente('Ana maria')
-//     //    inserirItem.insercaoRapida('7891343865330', 'Blusa Manga Curta Ref. Xyz Azul M')
-//     //    checkout.aumentarQuantidadeItem('Blusa Manga Curta Ref. Xyz Azul M')
-//     //    checkout.validaValorTotalItem('169,00')
-//     //    checkout.validaValorTotalVenda('169,00')
-//     })
+context('Continuar atendimento com usuário caixa iniciadas por usuário vendedor', () => {
+
+    beforeEach(() => {
+        inserirItem.insercaoRapida('2*7891343865330', 'Blusa Manga Curta Ref. Xyz Azul M')
+        cy.wait(3000)
+        //    cy.xpath(checkoutElements.FN_BTN_SALVAR).click()
+        cy.wait(2000)
+    })
+
+    it(`Cancelamento de atendimento com status "Em andamento"`, () => {
+        movimentacao.cancelarUltimoAtendimento("Desistencia do cliente{ENTER}", "Teste automatizado - Cancelamento")
+        movimentacao.validarMensagem('encerrado com sucesso!')
+    })
+
+
+    it(`Continuar atendimento com desconto unitário`, () => {
+        movimentacao.cancelarUltimoAtendimento("Desistencia do cliente{ENTER}", "Teste automatizado - Cancelamento")
+        movimentacao.validarMensagem('encerrado com sucesso!')
+    })
+
+    it('Continuar atendimento com troca', () => {
+    })
+
+    it('Continuar atendimento com ação promocional', () => {
+    })
+
+    it('Venda com pagamento em dinheiro', () => {
+        inserirItem.insercaoRapida('2*' + '7891343865330')
+        checkout.getValorTotalVenda().should('contain', '199,82')
+
+
+    })
+
+    it('Continuar atendimento e realizar pagamento em cartão', () => {
+    })
+
+    it('Continuar atendimento e realizar pagamento em crediário para cliente Diversos', () => {
+    })
+
+    it('Continuar atendimento e realizar pagamento em crediário para cliente sem endereço', () => {
+    })
+
+    it('Continuar atendimento e realizar pagamento em crediário para cliente com endereço', () => {
+    })
+
+    it('Continuar atendimento e realizar pagamento com adiantamento', () => {
+    })
+
+})
+
+//Vendedor por item
 
 
 //     // it(`Venda com desconto unitário`, () => {
@@ -52,18 +104,18 @@ describe('Venda', () => {
 
 //     // it(`Venda com desconto unitário e total`, () => {
 //     //     cy.get(menu.ATENDIMENTO).click()
- 
+
 //     // })
 
 //     // it(`Venda com pagamento em dinheiro`, () => {
 //     //     cy.get(menu.ATENDIMENTO).click()
- 
+
 //     // })
 
 
 //     // it(`Venda com pagamento em cheque`, () => {
 //     //     cy.get(menu.ATENDIMENTO).click()
- 
+
 //     // })
 
 

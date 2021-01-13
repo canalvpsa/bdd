@@ -1,6 +1,6 @@
 const movimentacaoElements = {
     LISTAGEM: 'app-movimentacao-listagem .form-control',
-    DETALHAR: '//app-movimentacao-listagem/div/div[2]/div[2]/div[1]/div/div[1]/span',
+    DETALHAR: '.listagem-body > :nth-child(1) > .card-body',
     MENSAGEM: '.noty_body',
     DETALHAMENTO: {
         FN_CONTINUAR: `//i[@class='fad fa-shopping-cart']/..//span[contains(., 'Continuar Atendimento')]`,
