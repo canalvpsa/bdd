@@ -10,8 +10,8 @@ const CheckoutElements = {
         VALORTOTAL: 'div .valor-total',
         EDICAOITEM: {
             BTN_TIPO: 'mat-dialog-container > app-atendimento-vendivel-edicao button',
-            DESCONTOVALOR: `app-atendimento-vendivel-edicao div :nth-child(1) > .input-group > .form-control`,
-            QUANTIDADE: `app-atendimento-vendivel-edicao.ng-star-inserted > .row > :nth-child(2) > .form-control`,
+            DESCONTOVALOR: `app-atendimento-vendivel-edicao div :nth-child(2) > .input-group > .form-control`,
+            QUANTIDADE: `app-atendimento-vendivel-edicao.ng-star-inserted > .row > :nth-child(3) > .form-control`,
             INSERCAOCLIENTE: '.mat-input-element',
             FN_BTN_FECHAR: `//div//button[contains(., 'Fechar (ESC)')]`,
         },
@@ -24,14 +24,15 @@ const CheckoutElements = {
     ACAO_PROMOCIONAL: {
 
     },
-    CLIENTE: 'app-atendimento app-select-terceiro .font-weight-normal',
-    CLIENTEPESQUISA: 'app-atendimento app-select-terceiro .barra-pesquisa .mat-input-element',
+    CLIENTE: `app-select-terceiro .mat-form-field-infix input`,
     CLIENTELISTAGEM: `.mat-option-text .d-flex`,
     VALORATENDIMENTO: '.action-total .total',
     FN_BTN_PAGAMENTOS: `//div//button[contains(., 'Pagamentos')]`,
     FN_BTN_SALVAR: `//div//button[contains(., 'Salvar atendimento')]`,
     FN_BTN_CANCELAR: `//div//button[contains(., 'Cancelar atendimento')]`,
-    MENSAGEM: '.noty_body'
+    MENSAGEM: '.noty_body',
+    CANCELAMENTO_OBSERVACAO: `app-motivo-cancelamento > div:nth-child(3) > textarea`,
+    FN_BTN_CANCELAR_DOC: `//div//button[contains(., 'Cancelar Doc. Fiscal')]`,
 }
 
 export default CheckoutElements;

@@ -20,7 +20,7 @@
         "package.json": "^2.0.1"
     },
     "devDependencies": {
-        "cypress": "^6.2.0",
+        "cypress": "^7.4.0",
         "cypress-file-upload": "^3.5.3",
         "cypress-plugin-tab": "^1.0.5",
         "cypress-xpath": "^1.6.0",

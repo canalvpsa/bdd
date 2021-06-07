@@ -3,7 +3,7 @@ const movimentacaoElements = {
     DETALHAR: '.listagem-body > :nth-child(1) > .card-body',
     MENSAGEM: '.noty_body',
     DETALHAMENTO: {
-        FN_CONTINUAR: `//i[@class='fad fa-shopping-cart']/..//span[contains(., 'Continuar Atendimento')]`,
+        FN_CONTINUAR: `//i[@class='acao-primaria fad fa-shopping-cart']/..//span[contains(., 'Continuar Atendimento')]`,
         FN_VOLTAR: `//i[@class='fad fa-reply']/..//span[contains(., 'Voltar')]`,
         FN_CANCELAR: `//i[@class='fad fa-file-times']/..//span[contains(., 'Cancelar Atendimento')]`
     },

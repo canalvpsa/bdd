@@ -2,6 +2,7 @@
 
 import checkoutElements from '../support/elements/checkoutElements'
 import menu from '../support/elements/menuElements'
+import usuario from '../support/elements/UsuarioElements'
 
 import MovimentacaoPage from '../support/pageobjects/MovimentacaoPage'
 import CheckoutPage from '../support/pageobjects/CheckoutPage'
@@ -49,6 +50,12 @@ describe('Atendimentos', () => {
         checkout.salvarAtendimento()
     }
 
+    function loginUsuarioCaixa(){
+        cy.get(menu.USUARIO).click()
+        cy.xpath(usuario.FN_BTN_SAIR).click()
+        cy.login('realizado', 'varejonline')
+    }
+
 
     context('Tipos de inserção de item e validação de quantidade', () => {
 
@@ -57,7 +64,7 @@ describe('Atendimentos', () => {
             checkout.getItemListagem().contains(codigo)
             validaQuantidadeValores('2', '199,80')
             checkout.getValorTotalVenda().should('contain', '199,80')
-            checkout.salvarAtendimento()
+            checkout.cancelarAtendimento()
         })
 
         it(`Inserção pela pesquisa`, () => {
@@ -71,7 +78,7 @@ describe('Atendimentos', () => {
             }
             validaQuantidadeValores('3', '299,70')
             checkout.getValorTotalVenda().should('contain', '299,70')
-            checkout.salvarAtendimento()
+            checkout.cancelarAtendimento()
         })
 
         it(`Inserção pelo detalhe do item`, () => {
@@ -82,6 +89,7 @@ describe('Atendimentos', () => {
             inserirItem.limparCampoPesquisa()
             validaQuantidadeValores('1', '99,90')
             checkout.getValorTotalVenda().should('contain', '99,90')
+            checkout.cancelarAtendimento()
         })
 
         it(`Aumentar e diminuir quantidades pelo + e -`, () => {
@@ -117,6 +125,7 @@ describe('Atendimentos', () => {
         })
 
         it(`Aumentar quantidade pela edição`, () => {
+            loginUsuarioCaixa()
             inserirItemVenda('75338119', '52,98')
             inserirItemVenda('75338121', '47,00')
             inserirItemVenda('75338011', '47,00')

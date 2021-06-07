@@ -1,6 +1,7 @@
 const menuElements = {
+        USUARIO: '.usuario',
         ATENDIMENTO: '.mat-list-item-content > .fa-shopping-cart',
-        MOVIMENTACOES: 'mat-nav-list .fa-file-chart-line',
+        MOVIMENTACOES: 'mat-nav-list .fa-clipboard-list-check',
         RANKINGVENDEDOR: 'mat-nav-list .fa-chart-bar',
         CLIENTES: 'mat-nav-list .fa-users',
         PESQUISA: 'mat-nav-list fa-search',
