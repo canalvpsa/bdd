@@ -1,0 +1,40 @@
+{
+    "name": "novo_pdv",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "cwd": "${workspaceRoot}",
+    "scripts": {
+        "cypress:version": "cypress version",
+        "pretest": "npm run clean:reports",
+        "prereport": "npm run delete:reports",
+        "scripts": "cypress run",
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run --reporter mochawesome",
+        "test:chrome": "cypress run --browser chrome --no-exit",
+        "test": "npm run scripts",
+        "cleanup": "rm -fr cypress/reports/mochawesome-html-report",
+        "merge_reports": "mochawesome-merge cypress/reports/mochawesome-report/*.json > output.json",
+        "mochawesome_report": "marge --reportDir cypress/reports/mochawesome-html-report -t Cypress_Test_Report -p Cypress_HMTL_Report -f Cypress_HMTL_Report --timestamp mmddyyyy_HHMMss --charts true output.json",
+        "cy:report": "npm run cleanup && cypress run && npm run merge_reports && npm run mochawesome_report",
+        "report": "run-s report:*",
+        "report:merge": "mochawesome-merge --reportDir cypress/results/json > cypress/results/mochawesome-bundle.json",
+        "report:generate": "marge cypress/results/mochawesome-bundle.json -o cypress/reports/html",
+        "report:copyScreenshots": "cp -r cypress/screenshots cypress/reports/html/screenshots"
+    },
+    "dependencies": {
+        "https-pem": "^2.0.0",
+        "package.json": "^2.0.1"
+    },
+    "devDependencies": {
+        "cypress": "^7.5.0",
+        "cypress-file-upload": "^3.5.3",
+        "cypress-plugin-tab": "^1.0.5",
+        "cypress-xpath": "^1.6.0",
+        "mochawesome": "^6.1.1",
+        "mochawesome-merge": "^4.2.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

@@ -1,8 +1,0 @@
-cypress/videos
-node_modules/
-npm-debug.log
-.idea/
-cypress/screenshots
-cypress/report/
-test-results/
-

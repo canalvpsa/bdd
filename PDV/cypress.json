@@ -1,0 +1,22 @@
+{
+  "defaultCommandTimeout": 10000,
+  "viewportWidth": 1400,
+  "viewportHeight": 680,
+  "chromeWebSecurity": false,
+  "reporter": "mochawesome",
+  "screenshotOnRunFailure": true,
+  "screenshotsFolder": "cypress/report/screenshot",
+  "reporterOptions": {
+    "reportDir": "cypress/report/",
+    "configFile": "reporter-config.json",
+    "overwrite": true,
+    "html": true,
+    "json": false,
+    "timestamp": "mmddyyyy_HHMMss",
+    "toConsole": true
+  },
+  "env": {
+    "baseUrl": "https://192.168.25.51/pdv"
+  },
+  "projectId": "9ghoq7"
+}
